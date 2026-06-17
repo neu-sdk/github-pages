@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>NeUライセンスマネージャー | ExBrainSDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="NeUライセンスマネージャー | ExBrainSDK ">
+      
+      
+      <link rel="icon" href="../images/N_logo.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/neu-sdk/general/blob/main/docfx/docs/neu-license.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/NeU_logo.svg" alt="ExBrainSDK v3.0.1">
+            ExBrainSDK v3.0.1
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="neuライセンスマネージャー">NeUライセンスマネージャー</h1>
+
+<h2 id="はじめに">はじめに</h2>
+<p>本SDKを利用するには発行されたライセンスを受け取り、NeU ライセンスマネージャーによるラインセンス有効化が必要になります。<br>
+ライセンスが有効化されていない状態で本SDKを利用しようとすると、例外処理が返ってくるような仕様になっております。<br></p>
+<h2 id="neuライセンスマネージャーの概要">NeUライセンスマネージャーの概要</h2>
+<p>NeU ライセンスマネージャーは、NeU 製品のライセンスを管理するための Windows デスクトップアプリです。
+複数のライセンスを同時にインストールして使用でき、各ライセンスの状態確認や、有効化・再有効化・無効化を行うことができます。</p>
+<p>本ツールでは以下の操作が可能です：</p>
+<ul>
+<li>インストール済みライセンスの一覧表示</li>
+<li>ライセンスの新規有効化</li>
+<li>既存ライセンスの再有効化（サーバーとの同期）</li>
+<li>ライセンスの無効化</li>
+<li>ライセンス状態の日本語表示</li>
+<li>手動の再読み込みによる最新状態への更新
+ライセンスに関する処理はすべて NeU ライセンスシステムを通して行われます。</li>
+</ul>
+<h2 id="主な機能">主な機能</h2>
+<h3 id="複数ライセンスの同時管理">複数ライセンスの同時管理</h3>
+<p>複数のライセンスがインストールされている場合、それらを一覧で確認できます。</p>
+<h3 id="サーバー連携">サーバー連携</h3>
+<p>有効化・再有効化・無効化は NeU ライセンスサーバーと通信して行われます。</p>
+<h3 id="ローカルライセンス情報の確認">ローカルライセンス情報の確認</h3>
+<p>ローカルに保存されているライセンス情報（有効期限、GUID、名義など）を表示できます。</p>
+<h3 id="ライセンスの内容">ライセンスの内容</h3>
+<p>一覧に表示される各ライセンスには、以下の情報が含まれます。</p>
+<h3 id="ライセンスタイプ-2026-04-30時点-調整中">ライセンスタイプ ※2026-04-30時点 調整中</h3>
+<ul>
+<li>Developer：外部開発者向け</li>
+<li>Commercial：アプリ利用者向け</li>
+<li>Basic：NeUライセンスマネージャーが登場する以前に発行されたTomatoライセンス</li>
+</ul>
+<h3 id="ライセンス名義">ライセンス名義</h3>
+<p>ユーザーまたは企業名</p>
+<h3 id="guid">GUID</h3>
+<p>ライセンス固有の識別子</p>
+<h3 id="有効期限">有効期限</h3>
+<p>「無期限」または指定された日付（YYYY/MM/DD）</p>
+<h3 id="状態">状態</h3>
+<p>有効期限切れ/破損/ハードウェア不一致/PC の時刻が正しくありません/その他/不明（英語名が表示されます）</p>
+<h2 id="ユーザーインターフェース">ユーザーインターフェース</h2>
+<p>画面は以下のように構成されています。</p>
+<p><img src="../images/LicenseManager.png" alt="NeuライセンスマネージャーUI"></p>
+<h3 id="再読み込み">再読み込み</h3>
+<p>ライセンス情報を再読み込みし、画面を最新状態に更新します。以下の場合に使用します：</p>
+<ul>
+<li>外部ツールでライセンスを変更した</li>
+<li>有効化・無効化後に画面が更新されていない</li>
+<li>状態を手動で確認したい</li>
+</ul>
+<h3 id="新しいライセンスを有効化">新しいライセンスを有効化</h3>
+<p>ライセンスキー入力ダイアログが開き、入力されたキーをサーバーに送信して以下を行います：</p>
+<ul>
+<li>ライセンスの登録（新規・更新）</li>
+<li>ローカルストアへの保存</li>
+<li>成功またはエラーの表示</li>
+<li>一覧の自動更新</li>
+</ul>
+<p><img src="../images/LicenseDialog.png" alt="ライセンス有効化ダイアログ"></p>
+<h3 id="再有効化-各ライセンス上に表示">再有効化 (各ライセンス上に表示)</h3>
+<p>サーバーとライセンス情報を再同期します。次の場合に使用します：</p>
+<ul>
+<li>システム時刻を修正した後</li>
+<li>サーバー側の設定が更新された</li>
+<li>ライセンスの状態がおかしいと感じた場合</li>
+<li>有効期限の延長などが行われた場合</li>
+</ul>
+<h3 id="無効化-各ライセンス上に表示">無効化 (各ライセンス上に表示)</h3>
+<p>ライセンスをローカルから削除し、サーバー上でも無効化します。次のような場合に使用します：</p>
+<ul>
+<li>PC を変更する</li>
+<li>ライセンスを他のユーザーに移したい</li>
+<li>端末からライセンスを削除したい</li>
+<li>再度有効化することも可能です（契約内容に依存します）。</li>
+</ul>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

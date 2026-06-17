@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class Block | ExBrainSDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Block | ExBrainSDK ">
+      
+      <meta name="description" content="全フレームデータを含む完了済み計測ブロック / A completed measurement block with all frame data.">
+      <link rel="icon" href="../images/N_logo.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/neu-sdk/general/new/main/apiSpec/new?filename=ExBrainSdk_HighLevel_Block.md&amp;value=---%0Auid%3A%20ExBrainSdk.HighLevel.Block%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/NeU_logo.svg" alt="ExBrainSDK v3.0.1">
+            ExBrainSDK v3.0.1
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="ExBrainSdk.HighLevel.Block">
+
+
+
+  <h1 id="ExBrainSdk_HighLevel_Block" data-uid="ExBrainSdk.HighLevel.Block" class="text-break">
+Class Block  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="ExBrainSdk.html">ExBrainSdk</a>.<a class="xref" href="ExBrainSdk.HighLevel.html">HighLevel</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>ExBrainSdk.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>全フレームデータを含む完了済み計測ブロック / A completed measurement block with all frame data.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class Block</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">Block</span></div>
+    </dd>
+  </dl>
+
+
+
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="ExBrainSdk.HighLevel.CsvExtensions.html#ExBrainSdk_HighLevel_CsvExtensions_ToCsv_ExBrainSdk_HighLevel_Block_">CsvExtensions.ToCsv(Block)</a>
+  </div>
+  <div>
+      <a class="xref" href="ExBrainSdk.HighLevel.JsonExtensions.html#ExBrainSdk_HighLevel_JsonExtensions_ToJson_ExBrainSdk_HighLevel_Block_">JsonExtensions.ToJson(Block)</a>
+  </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="ExBrainSdk_HighLevel_Block__ctor_" data-uid="ExBrainSdk.HighLevel.Block.#ctor*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_Block__ctor" data-uid="ExBrainSdk.HighLevel.Block.#ctor">
+  Block()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>JSON 逆シリアライズまたは手動構築のために空の Block を作成する / Creates an empty Block for JSON deserialization or manual construction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Block()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="ExBrainSdk_HighLevel_Block_AverageL1_" data-uid="ExBrainSdk.HighLevel.Block.AverageL1*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_Block_AverageL1" data-uid="ExBrainSdk.HighLevel.Block.AverageL1">
+  AverageL1
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ブロック作成時に取得した平均値 (L1cm) / Average (L1cm) captured at block creation time</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int AverageL1 { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_HighLevel_Block_AverageL3_" data-uid="ExBrainSdk.HighLevel.Block.AverageL3*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_Block_AverageL3" data-uid="ExBrainSdk.HighLevel.Block.AverageL3">
+  AverageL3
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ブロック作成時に取得した平均値 (L3cm) / Average (L3cm) captured at block creation time</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int AverageL3 { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_HighLevel_Block_AverageR1_" data-uid="ExBrainSdk.HighLevel.Block.AverageR1*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_Block_AverageR1" data-uid="ExBrainSdk.HighLevel.Block.AverageR1">
+  AverageR1
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ブロック作成時に取得した平均値 (R1cm) / Average (R1cm) captured at block creation time</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int AverageR1 { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_HighLevel_Block_AverageR3_" data-uid="ExBrainSdk.HighLevel.Block.AverageR3*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_Block_AverageR3" data-uid="ExBrainSdk.HighLevel.Block.AverageR3">
+  AverageR3
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ブロック作成時に取得した平均値 (R3cm) / Average (R3cm) captured at block creation time</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int AverageR3 { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_HighLevel_Block_CalmDownFrames_" data-uid="ExBrainSdk.HighLevel.Block.CalmDownFrames*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_Block_CalmDownFrames" data-uid="ExBrainSdk.HighLevel.Block.CalmDownFrames">
+  CalmDownFrames
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>クールダウンフェーズのフレーム群 / Frames from the calm-down phase</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Collection&lt;FrameData&gt; CalmDownFrames { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Collection</span>&lt;<a class="xref" href="ExBrainSdk.HighLevel.FrameData.html">FrameData</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_HighLevel_Block_DeviceId_" data-uid="ExBrainSdk.HighLevel.Block.DeviceId*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_Block_DeviceId" data-uid="ExBrainSdk.HighLevel.Block.DeviceId">
+  DeviceId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ブロック作成時に取得した装置 ID / Device ID captured at block creation time</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string DeviceId { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_HighLevel_Block_GainL1_" data-uid="ExBrainSdk.HighLevel.Block.GainL1*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_Block_GainL1" data-uid="ExBrainSdk.HighLevel.Block.GainL1">
+  GainL1
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ブロック作成時に取得したゲイン (L1cm) / Gain (L1cm) captured at block creation time</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GainL1 { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_HighLevel_Block_GainL3_" data-uid="ExBrainSdk.HighLevel.Block.GainL3*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_Block_GainL3" data-uid="ExBrainSdk.HighLevel.Block.GainL3">
+  GainL3
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ブロック作成時に取得したゲイン (L3cm) / Gain (L3cm) captured at block creation time</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GainL3 { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_HighLevel_Block_GainR1_" data-uid="ExBrainSdk.HighLevel.Block.GainR1*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_Block_GainR1" data-uid="ExBrainSdk.HighLevel.Block.GainR1">
+  GainR1
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ブロック作成時に取得したゲイン (R1cm) / Gain (R1cm) captured at block creation time</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GainR1 { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_HighLevel_Block_GainR3_" data-uid="ExBrainSdk.HighLevel.Block.GainR3*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_Block_GainR3" data-uid="ExBrainSdk.HighLevel.Block.GainR3">
+  GainR3
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ブロック作成時に取得したゲイン (R3cm) / Gain (R3cm) captured at block creation time</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GainR3 { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_HighLevel_Block_Identity_" data-uid="ExBrainSdk.HighLevel.Block.Identity*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_Block_Identity" data-uid="ExBrainSdk.HighLevel.Block.Identity">
+  Identity
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>参加者またはセッションの識別子 / Participant or session identity</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Identity { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_HighLevel_Block_Name_" data-uid="ExBrainSdk.HighLevel.Block.Name*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_Block_Name" data-uid="ExBrainSdk.HighLevel.Block.Name">
+  Name
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ブロック名 / Block name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Name { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_HighLevel_Block_PostFittingFrames_" data-uid="ExBrainSdk.HighLevel.Block.PostFittingFrames*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_Block_PostFittingFrames" data-uid="ExBrainSdk.HighLevel.Block.PostFittingFrames">
+  PostFittingFrames
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>事後装着調整フェーズのフレーム群 / Frames from the post-fitting phase</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Collection&lt;FrameData&gt; PostFittingFrames { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Collection</span>&lt;<a class="xref" href="ExBrainSdk.HighLevel.FrameData.html">FrameData</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_HighLevel_Block_PreFittingFrames_" data-uid="ExBrainSdk.HighLevel.Block.PreFittingFrames*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_Block_PreFittingFrames" data-uid="ExBrainSdk.HighLevel.Block.PreFittingFrames">
+  PreFittingFrames
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>事前装着調整フェーズのフレーム群 / Frames from the pre-fitting phase</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Collection&lt;FrameData&gt; PreFittingFrames { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Collection</span>&lt;<a class="xref" href="ExBrainSdk.HighLevel.FrameData.html">FrameData</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_HighLevel_Block_RepeatIndex_" data-uid="ExBrainSdk.HighLevel.Block.RepeatIndex*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_Block_RepeatIndex" data-uid="ExBrainSdk.HighLevel.Block.RepeatIndex">
+  RepeatIndex
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>実験内での同一ブロック名に対する 0 始まりの繰り返し番号 / Zero-based repeat count for this block name within the experiment</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int RepeatIndex { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_HighLevel_Block_TaskFrames_" data-uid="ExBrainSdk.HighLevel.Block.TaskFrames*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_Block_TaskFrames" data-uid="ExBrainSdk.HighLevel.Block.TaskFrames">
+  TaskFrames
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>タスクフェーズのフレーム群 / Frames from the task phase</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Collection&lt;FrameData&gt; TaskFrames { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Collection</span>&lt;<a class="xref" href="ExBrainSdk.HighLevel.FrameData.html">FrameData</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="ExBrainSdk_HighLevel_Block_FromJson_" data-uid="ExBrainSdk.HighLevel.Block.FromJson*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_Block_FromJson_ExBrainSdk_ExBrainApi_System_String_" data-uid="ExBrainSdk.HighLevel.Block.FromJson(ExBrainSdk.ExBrainApi,System.String)">
+  FromJson(ExBrainApi, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L121"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>JSON 文字列を Block に逆シリアライズし、ネイティブ API へ登録する / Deserializes a JSON string into a Block and registers it with the native API.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Block? FromJson(ExBrainApi api, string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="../low-level-api/ExBrainSdk.ExBrainApi.html">ExBrainApi</a></dt>
+    <dd><p>ネイティブブロックを保持する API インスタンス / The API instance that will own the native block.</p>
+</dd>
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p><a class="xref" href="ExBrainSdk.HighLevel.JsonExtensions.html#ExBrainSdk_HighLevel_JsonExtensions_ToJson_ExBrainSdk_HighLevel_Block_">ToJson(Block)</a> で生成された JSON 文字列 / JSON string produced by <a class="xref" href="ExBrainSdk.HighLevel.JsonExtensions.html#ExBrainSdk_HighLevel_JsonExtensions_ToJson_ExBrainSdk_HighLevel_Block_">ToJson(Block)</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ExBrainSdk.HighLevel.Block.html">Block</a></dt>
+    <dd><p>逆シリアライズされた Block インスタンス / The deserialized Block instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Exception</span></dt>
+    <dd><p>JSON の逆シリアライズまたはネイティブブロック生成に失敗した場合 / Thrown if deserialization fails or native block creation fails.</p>
+</dd>
+  </dl>
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

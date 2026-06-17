@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>リリースライセンスの内部仕様 | ExBrainSDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="リリースライセンスの内部仕様 | ExBrainSDK ">
+      
+      
+      <link rel="icon" href="../images/N_logo.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/neu-sdk/general/blob/main/docfx/docs/release-license-internals.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/NeU_logo.svg" alt="ExBrainSDK v3.0.1">
+            ExBrainSDK v3.0.1
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="リリースライセンスの内部仕様">リリースライセンスの内部仕様</h1>
+
+<p>このページは、ExBrain SDK のリリースライセンス実装を管理しているNeU社向けのドキュメントになります。</p>
+<h2 id="概要">概要</h2>
+<p>リリースライセンスはマシン ID ではなく、特定のアプリバージョンに紐付けられます。署名済みライセンスには <code>AppHash</code> フィールドが含まれています。リリースライセンスの場合、NeU License Manager はカノニカルハッシュとアプリ検証 JSON の両方を含む <code>AppHash</code> ペイロードを送信します。サーバーはそのペイロードをライセンスに署名します。実行時、SDK は <code>AppHash</code> を持つライセンスについて、署名されたペイロードのハッシュが埋め込まれた JSON と一致し、その JSON にリストされたすべてのファイルが記録された SHA-256 ハッシュと一致する場合にのみ有効とみなします。</p>
+<p>JSON が存在しない場合、JSON ハッシュが署名済みペイロードハッシュと一致しない場合、またはリストされたファイルのいずれかが欠落または変更されている場合、SDK はライセンスを <code>AppInvalid</code> とマークします。</p>
+<p>リリースライセンスの検証は意図的にローカルかつオフラインで行われます。実行時の機能チェックはライセンスサーバーを呼び出しません。再アクティベーション/非アクティベーション API は、アプリまたはツールがエンドユーザーの PC をサーバー側に表示させたい場合や、同期中に失効を検出したい場合に引き続きサーバーに接続できます。</p>
+<h2 id="アプリバインディングアルゴリズム">アプリバインディングアルゴリズム</h2>
+<p>検証データは構造化された JSON ですが、ハッシュは生の JSON バイトに対して計算されません。これにより、ホワイトスペースとプロパティ順序の問題を回避しています。</p>
+<p>SDK は JSON を解析し、<code>files</code> を相対パスでソートした後、次のカノニカルペイロードを再構築します：</p>
+<pre><code class="lang-json">{&quot;algorithm&quot;:&quot;sha256&quot;,&quot;canonicalization&quot;:&quot;neu-app-fingerprint-v1&quot;,&quot;entryPoint&quot;:&quot;...&quot;,&quot;files&quot;:[{&quot;path&quot;:&quot;...&quot;,&quot;sha256&quot;:&quot;...&quot;,&quot;size&quot;:123}],&quot;rootType&quot;:&quot;directory&quot;,&quot;schema&quot;:&quot;com.neu.exbrain.app-fingerprint&quot;,&quot;schemaVersion&quot;:1}
+</code></pre>
+<p><code>AppHash</code> は以下のとおりです：</p>
+<pre><code class="lang-text">sha256(canonical UTF-8 payload)
+</code></pre>
+<p>新しいリリースライセンスの場合、サーバーの <code>appHash</code> パラメーターに送信される値は JSON 文字列です：</p>
+<pre><code class="lang-json">{&quot;schema&quot;:&quot;com.neu.exbrain.apphash-v1&quot;,&quot;schemaVersion&quot;:1,&quot;hash&quot;:&quot;&lt;sha256&gt;&quot;,&quot;json&quot;:&quot;&lt;app validation JSON&gt;&quot;}
+</code></pre>
+<p>サーバーはこの完全な文字列をライセンスの <code>AppHash</code> フィールドに署名します。</p>
+<p>各ファイルのハッシュは以下のとおりです：</p>
+<pre><code class="lang-text">sha256(raw file bytes)
+</code></pre>
+<p>相対パスは常に <code>/</code> を使用し、序数順でソートされます。絶対パスや <code>..</code> を含むパスは使用できません。</p>
+<h2 id="実行時のルックアップ">実行時のルックアップ</h2>
+<p>インストール済みライセンスは両方のレジストリハイブから読み込まれます：</p>
+<ul>
+<li><code>HKCU\Software\NeU\Licenses</code></li>
+<li><code>HKLM\Software\NeU\Licenses</code></li>
+</ul>
+<p>NeU License Manager によってアクティベートされた開発者ライセンスは <code>HKCU</code> に書き込まれます。エンドユーザー向けリリースライセンスは、アプリ開発者のインストーラーによって <code>HKLM</code> にインストールされる必要があります。</p>
+<p>SDK はまず、署名済み <code>AppHash</code> ペイロードに埋め込まれた検証 JSON を確認します。古い生成ライセンスとの互換性のため、次の場所で平文の 64 文字 <code>AppHash</code> に対応する検証 JSON も検索します：</p>
+<ul>
+<li><code>HKCU\Software\NeU\AppFingerprints\&lt;appHash&gt;</code></li>
+<li><code>HKLM\Software\NeU\AppFingerprints\&lt;appHash&gt;</code></li>
+<li>値 <code>ManifestJson</code>：<code>NeuAppFingerprint.json</code> の完全なコンテンツ</li>
+<li>値 <code>AppRoot</code>：JSON 相対パスの解決に使用するインストール済みアプリケーションルートディレクトリ</li>
+<li>環境変数オーバーライド <code>NEU_APP_FINGERPRINT_JSON</code>（オプションで <code>NEU_APP_ROOT</code>）</li>
+<li>プロセス実行ファイルの隣にある <code>NeuAppFingerprint.json</code></li>
+<li><code>ExBrainSdkNative.dll</code> の隣にある <code>NeuAppFingerprint.json</code></li>
+<li>現在の作業ディレクトリの <code>NeuAppFingerprint.json</code></li>
+</ul>
+<p>埋め込みペイロードライセンスの場合、SDK は実行中の実行ファイルのディレクトリ、<code>ExBrainSdkNative.dll</code> のディレクトリ、現在の作業ディレクトリ、および <code>NEU_APP_ROOT</code> をアプリルートとして試みます。</p>
+<h2 id="ライセンス有効性ルール">ライセンス有効性ルール</h2>
+<p>通常の開発者ライセンスは既存のマシンバインド動作を維持します。</p>
+<p>リリースライセンスは <code>AppHash</code> の存在によって検出されます：</p>
+<ul>
+<li>空の <code>Guid</code>：<code>Corrupted</code></li>
+<li>期限切れライセンス：<code>Expired</code></li>
+<li><code>AppHash</code> が存在し、JSON/ファイルが一致：<code>Valid</code></li>
+<li><code>AppHash</code> が存在するが、JSON/ファイルの検証失敗：<code>AppInvalid</code></li>
+<li><code>AppHash</code> なしでマシン ID が不一致：<code>InvalidHardware</code></li>
+</ul>
+<p>リリースライセンスは意図的に <code>MachineId</code> を必要としません。</p>
+<p>現在の実装は <code>MachineId</code> の前に <code>AppHash</code> を確認するため、<code>MachineId</code> のないリリースライセンスは検証 JSON とアプリファイルが一致する限り有効です。</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>トラブルシューティング | ExBrainSDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="トラブルシューティング | ExBrainSDK ">
+      
+      
+      <link rel="icon" href="../images/N_logo.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/neu-sdk/general/blob/main/docfx/docs/trouble-shooting.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/NeU_logo.svg" alt="ExBrainSDK v3.0.1">
+            ExBrainSDK v3.0.1
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="トラブルシューティング">トラブルシューティング</h1>
+
+<h2 id="qa">Q＆A</h2>
+<h3 id="bluetoothでそもそも装置が検出されない場合は">Bluetoothでそもそも装置が検出されない場合は？</h3>
+<h5 id="確認事項">確認事項：</h5>
+<ul>
+<li>Bluetooth機能はONになっていますか？</li>
+<li>装置が他のBluetooth機器とペアリングされていませんか？</li>
+<li>他のアプリケーションが、既に装置とペアリングを行っていませんか？</li>
+<li>お使いのPCはBluetoothに対応していますか？</li>
+</ul>
+<h5 id="対処方法">対処方法：</h5>
+<ul>
+<li>装置の電源を切り、次にアプリケーションを完全に終了し、「設定」から「Bluetoothの設定」を確認し、装置がペアリング前の状態でリストに出ていることを確認します。</li>
+<li>既にペアリング済みとなっている場合は、一度接続を切断してからアプリケーションを立ち上げ直してください。</li>
+</ul>
+<hr>
+<h3 id="bluetooth接続が頻繁に切れる場合は">Bluetooth接続が頻繁に切れる場合は？</h3>
+<h5 id="確認事項-1">確認事項：</h5>
+<ul>
+<li>周囲の電波状況は安定していますか？ Wi-Fi電波やBluetooth機器がたくさん電波を発している環境ではペアリングが頻繁に切れる可能性があります。</li>
+<li>電源が切れていたり、バッテリーの残量が少なくなっていませんか？</li>
+</ul>
+<h5 id="対処方法-1">対処方法：</h5>
+<ul>
+<li>電波環境の良い場所に移動します。もしくは、計測に不必要なネットワーク機器を使用しないようにします。</li>
+<li>バッテリー残量が少ない場合は充電してください。</li>
+<li>電源が切れているときは、モバイルバッテリーやAC アダプター等を接続し計測することも可能です。</li>
+</ul>
+<hr>
+<h3 id="ゲイン調整で何度も失敗してしまう場合は">ゲイン調整で何度も失敗してしまう場合は？</h3>
+<h5 id="確認事項-2">確認事項：</h5>
+<ul>
+<li>ヘッドセットは正しく装着されていますか？髪の毛がはさまっていたり、緩く取り付けられていたり、汗を多くかいていたりするとゲイン調整に失敗することがあります。</li>
+</ul>
+<h5 id="対処方法-2">対処方法：</h5>
+<ul>
+<li>ヘッドセットを正しく装着します。稀に前額部の形状によっては、センサーユニットが額に密着しない方がいらっしゃいます。センサーユニットの位置を微調整する等して、密着しやすい箇所での計測をお試しください。</li>
+</ul>
+<hr>
+<h2 id="サポート窓口">サポート窓口</h2>
+<p>上記以外のケースで解決されない場合は、大変お手数ですが下記窓口までお問合せいただければと思います。</p>
+<ul>
+<li><p><a href="https://neu-brains.co.jp/contact/inquiry/">お問い合わせフォーム（株式会社NeU）</a></p>
+<p>NIRSハードウェア＆システム（研究用機器）を選択してください。</p>
+</li>
+</ul>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

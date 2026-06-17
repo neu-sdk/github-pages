@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>出力CSVデータ | ExBrainSDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="出力CSVデータ | ExBrainSDK ">
+      
+      
+      <link rel="icon" href="../images/N_logo.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/neu-sdk/general/blob/main/docfx/docs/csv-data.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/NeU_logo.svg" alt="ExBrainSDK v3.0.1">
+            ExBrainSDK v3.0.1
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="出力csvデータ">出力CSVデータ</h1>
+
+<h2 id="csvデータの項目について">CSVデータの項目について</h2>
+<p>計測が終了するとCSVデータが出力されます。</p>
+<p>Low-Level API による基本データを記録したCSVファイルと、High-Level API による解析結果を含むCSVファイルとの２種類が存在します。</p>
+<p>それぞれのCSVファイルにおける、データ項目について説明します。</p>
+<h3 id="low-level-csv">Low-Level CSV</h3>
+<p>Low-Level APIから出力されるCSVデータの項目です。</p>
+<h4 id="計測モードによるデータの違い">計測モードによるデータの違い</h4>
+<p>計測サイクル（10Hz / 50Hz / 100Hz / 500Hz）によって、1フレームあたりのデータ内容が異なります。</p>
+<ul>
+<li><strong>10Hz モード</strong>: 全項目が出力されます。</li>
+<li><strong>50Hz / 100Hz / 500Hz モード（高速サンプリングモード）</strong>: 各フレームには左チャンネルの生体光センサーデータのみが含まれます。右チャンネルデータ・IMUデータ・飽和カウンタ・カラーインデックス・心拍数・ノイズ検出フラグは常に <code>0</code> となります。BatteryVolt / BatteryRemain は計測開始時点の値が全フレームに固定で記録されます。また、このモードではCSVファイル名の末尾に <code>_fast</code> が付加されます。</li>
+</ul>
+<p>下表の「高速サンプリング」列は、50Hz / 100Hz / 500Hz モードでの出力可否を示します（○: 有効値あり、0: 常に0）。</p>
+<table>
+<thead>
+<tr>
+<th>項目名</th>
+<th>説明</th>
+<th>高速サンプリング</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DeviceTime</td>
+<td>計測時の年月日時分秒.ミリ秒 [yyyy/MM/dd HH:mm:ss.fff]</td>
+<td>有効</td>
+</tr>
+<tr>
+<td>HeadsetTime(sec)</td>
+<td>開始時刻からの経過時間 [秒]</td>
+<td>有効</td>
+</tr>
+<tr>
+<td>BrainIndex(left)</td>
+<td>脳活動値（左） [-]</td>
+<td>有効</td>
+</tr>
+<tr>
+<td>BrainIndex(right)</td>
+<td>脳活動値（右） [-]</td>
+<td>常に0</td>
+</tr>
+<tr>
+<td>PulseRate</td>
+<td>心拍数 [bpm]</td>
+<td>常に0</td>
+</tr>
+<tr>
+<td>dTHbL(leftSD1cm)</td>
+<td>ヘモグロビン濃度変化（左 SD1cm） [-]</td>
+<td>有効</td>
+</tr>
+<tr>
+<td>dTHbL(leftSD3cm)</td>
+<td>ヘモグロビン濃度変化（左 SD3cm） [-]</td>
+<td>有効</td>
+</tr>
+<tr>
+<td>dTHbL(rightSD1cm)</td>
+<td>ヘモグロビン濃度変化（右 SD1cm） [-]</td>
+<td>常に0</td>
+</tr>
+<tr>
+<td>dTHbL(rightSD3cm)</td>
+<td>ヘモグロビン濃度変化（右 SD3cm） [-]</td>
+<td>常に0</td>
+</tr>
+<tr>
+<td>Saturation(leftSD1cm)</td>
+<td>飽和カウンタ（左 SD1cm） [回]</td>
+<td>常に0</td>
+</tr>
+<tr>
+<td>Saturation(leftSD3cm)</td>
+<td>飽和カウンタ（左 SD3cm） [回]</td>
+<td>常に0</td>
+</tr>
+<tr>
+<td>Saturation(rightSD1cm)</td>
+<td>飽和カウンタ（右 SD1cm） [回]</td>
+<td>常に0</td>
+</tr>
+<tr>
+<td>Saturation(rightSD3cm)</td>
+<td>飽和カウンタ（右 SD3cm） [回]</td>
+<td>常に0</td>
+</tr>
+<tr>
+<td>ColorIndex(left)</td>
+<td>カラーインデックス（左） [-]</td>
+<td>常に0</td>
+</tr>
+<tr>
+<td>ColorIndex(right)</td>
+<td>カラーインデックス（右） [-]</td>
+<td>常に0</td>
+</tr>
+<tr>
+<td>NoiseDetectionFlag</td>
+<td>ノイズ検出フラグ [-]</td>
+<td>常に0</td>
+</tr>
+<tr>
+<td>Mark</td>
+<td>マーカー管理機能により、被験者の状態やタスクシーケンスの内容に関する結果を記録する。項目間を<code>\|</code>で結合させています。</td>
+<td>有効</td>
+</tr>
+<tr>
+<td>Acc-X</td>
+<td>加速度 X [G]</td>
+<td>常に0</td>
+</tr>
+<tr>
+<td>Acc-Y</td>
+<td>加速度 Y [G]</td>
+<td>常に0</td>
+</tr>
+<tr>
+<td>Acc-Z</td>
+<td>加速度 Z [G]</td>
+<td>常に0</td>
+</tr>
+<tr>
+<td>Gyro-X</td>
+<td>角速度 X [dps]</td>
+<td>常に0</td>
+</tr>
+<tr>
+<td>Gyro-Y</td>
+<td>角速度 Y [dps]</td>
+<td>常に0</td>
+</tr>
+<tr>
+<td>Gyro-Z</td>
+<td>角速度 Z [dps]</td>
+<td>常に0</td>
+</tr>
+<tr>
+<td>BatteryVolt</td>
+<td>バッテリー電圧 [V]</td>
+<td>有効 (計測開始時の値で固定)</td>
+</tr>
+<tr>
+<td>BatteryRemain</td>
+<td>バッテリー残量 [%]</td>
+<td>有効 (計測開始時の値で固定)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="high-level-csv">High-Level CSV</h3>
+<p>High-Level APIから出力されるCSVデータの項目です。Low-Level CSVとは独立したファイルで、解析済みデータを含みます。</p>
+<table>
+<thead>
+<tr>
+<th>項目名</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DeviceTime</td>
+<td>計測時の年月日時分秒.ミリ秒 [yyyy/MM/dd HH:mm:ss.fff]</td>
+</tr>
+<tr>
+<td>HeadsetTime(sec)</td>
+<td>開始時刻からの経過時間 [秒]</td>
+</tr>
+<tr>
+<td>BlockName</td>
+<td>ブロック名</td>
+</tr>
+<tr>
+<td>Identity</td>
+<td>識別子</td>
+</tr>
+<tr>
+<td>StageName</td>
+<td>ステージ名（PreFitting / Task / CalmDown / PostFitting）</td>
+</tr>
+<tr>
+<td>BrainIndex(left)</td>
+<td>脳活動値（左） [-]</td>
+</tr>
+<tr>
+<td>BrainIndex(right)</td>
+<td>脳活動値（右） [-]</td>
+</tr>
+<tr>
+<td>ColorIndex(left)</td>
+<td>カラーインデックス（左） [-]</td>
+</tr>
+<tr>
+<td>ColorIndex(right)</td>
+<td>カラーインデックス（右） [-]</td>
+</tr>
+<tr>
+<td>PulseRate</td>
+<td>心拍数 [bpm]</td>
+</tr>
+<tr>
+<td>dTHbL(leftSD1cm)</td>
+<td>ヘモグロビン濃度変化（左 SD1cm） [-]</td>
+</tr>
+<tr>
+<td>dTHbL(leftSD3cm)</td>
+<td>ヘモグロビン濃度変化（左 SD3cm） [-]</td>
+</tr>
+<tr>
+<td>dTHbL(rightSD1cm)</td>
+<td>ヘモグロビン濃度変化（右 SD1cm） [-]</td>
+</tr>
+<tr>
+<td>dTHbL(rightSD3cm)</td>
+<td>ヘモグロビン濃度変化（右 SD3cm） [-]</td>
+</tr>
+<tr>
+<td>SyntheticAcc</td>
+<td>合成加速度 [G]</td>
+</tr>
+<tr>
+<td>Acc-X</td>
+<td>加速度 X [G]</td>
+</tr>
+<tr>
+<td>Acc-Y</td>
+<td>加速度 Y [G]</td>
+</tr>
+<tr>
+<td>Acc-Z</td>
+<td>加速度 Z [G]</td>
+</tr>
+<tr>
+<td>Gyro-X</td>
+<td>角速度 X [dps]</td>
+</tr>
+<tr>
+<td>Gyro-Y</td>
+<td>角速度 Y [dps]</td>
+</tr>
+<tr>
+<td>Gyro-Z</td>
+<td>角速度 Z [dps]</td>
+</tr>
+<tr>
+<td>ElapsedSec</td>
+<td>カウント開始からの経過時間 [秒]</td>
+</tr>
+<tr>
+<td>DropCount</td>
+<td>ハードウェア側カウンタについて、現在のと前回の差から1を引いた値（ハードウェア側でドロップされたフレーム数のみを考慮）。[フレーム]</td>
+</tr>
+<tr>
+<td>Mark</td>
+<td>マーカー管理機能により、被験者の状態やタスクシーケンスの内容に関する結果を記録する。項目間を<code>\|</code>で結合させています。</td>
+</tr>
+<tr>
+<td>dTHbL_processed(leftSD3-1cm)</td>
+<td>処理済みヘモグロビン濃度変化（左 SD3-1cm） [-]</td>
+</tr>
+<tr>
+<td>dTHbL_processed(rightSD3-1cm)</td>
+<td>処理済みヘモグロビン濃度変化（右 SD3-1cm） [-]</td>
+</tr>
+<tr>
+<td>SmdBrainIndex(left)</td>
+<td>標準化平均差・脳活動値（左）(Standardized Mean Difference) [-]</td>
+</tr>
+<tr>
+<td>SmdBrainIndex(right)</td>
+<td>標準化平均差・脳活動値（右）(Standardized Mean Difference) [-]</td>
+</tr>
+</tbody>
+</table>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

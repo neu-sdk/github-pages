@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>リリースライセンス パッケージングガイド | ExBrainSDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="リリースライセンス パッケージングガイド | ExBrainSDK ">
+      
+      
+      <link rel="icon" href="../images/N_logo.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/neu-sdk/general/blob/main/docfx/docs/release-license-packaging.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/NeU_logo.svg" alt="ExBrainSDK v3.0.1">
+            ExBrainSDK v3.0.1
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="リリースライセンス-パッケージングガイド">リリースライセンス パッケージングガイド</h1>
+
+<p>このページは、ExBrain SDK アプリをリリース向けに準備するアプリケーション開発者向けのドキュメントです。</p>
+<h2 id="重要なルール">重要なルール</h2>
+<p>リリースライセンスを作成する際は、ビルドフォルダーではなく、インストール済みのアプリのコピーを NeU License Manager で指定してください。</p>
+<p>インストール済みフォルダーがお客様の実行環境です。ビルドフォルダーには余分なファイル、インストーラー出力の欠落、一時バイナリ、デバッグシンボル、または異なるレイアウトが含まれていることがよくあります。誤ったフォルダーを選択した場合、リリース SDK はアプリを <code>AppInvalid</code> として拒否する可能性があります。</p>
+<h2 id="リリースフロー">リリースフロー</h2>
+<ol>
+<li>アプリケーションをビルドします。</li>
+<li>お客様と同じように、ローカルでインストーラーを実行します。</li>
+<li>NeU License Manager を開きます。</li>
+<li><code>Create Release License</code> を選択します。</li>
+<li>インストール済みアプリケーションフォルダー、またはインストール済みの EXE/スクリプトエントリポイントを選択します。</li>
+<li>生成されたリリースパッケージファイルの保存先フォルダーを選択します。</li>
+<li>NeU License Manager はインストール済みファイルを確認し、ハッシュとアプリ検証 JSON の両方を含む <code>AppHash</code> ペイロードを作成します。</li>
+<li>ツールはその <code>AppHash</code> ペイロードを NeU ライセンスサーバーに送信します。</li>
+<li>サーバーはその <code>AppHash</code> ペイロードを含む署名済みリリースライセンスを返します。</li>
+<li>インストーラーを更新して、生成されたリリースライセンスをレジストリにインストールします。</li>
+</ol>
+<p>このプロセスは、出荷するアプリケーションファイルを変更するたびに繰り返してください。</p>
+<h2 id="python-アプリ">Python アプリ</h2>
+<p>Python アプリケーションの場合は、出荷するスクリプトとネイティブ依存関係が含まれるインストール済みフォルダーを選択するか、インストール済みエントリスクリプトを選択してください。</p>
+<p>実行時は、インストール済みアプリフォルダーを作業ディレクトリとしてアプリを起動するか、そのアプリフォルダーに <code>ExBrainSdkNative.dll</code> を配置するか、SDK を読み込む前に <code>NEU_APP_ROOT</code> をインストール済みアプリフォルダーに設定してください。これにより、SDK が署名済みリリースライセンスにリストされたファイルをチェックするためのルートフォルダーが提供されます。</p>
+<p>リリースアプリのチェックには次のようなファイルが含まれます：</p>
+<ul>
+<li><code>.py</code>、<code>.pyw</code>、<code>.pyz</code></li>
+<li><code>.pyd</code></li>
+<li><code>.dll</code></li>
+<li>パッケージデータファイル</li>
+<li>アプリと一緒に出荷されるロック/設定/リソースファイル</li>
+</ul>
+<p><code>__pycache__</code> や <code>.pyc</code> ファイルなどの生成されたキャッシュは除外されます。
+<code>log</code>、<code>logs</code>、<code>temp</code>、または <code>tmp</code> という名前の一般的なトップレベルの可変フォルダーは除外されます。必要な出荷アセットをこれらのフォルダーに入れないでください。</p>
+<h2 id="生成ファイル">生成ファイル</h2>
+<p>NeU License Manager は選択した出力フォルダーに次のファイルを書き込みます：</p>
+<ul>
+<li><code>NeUReleaseLicense_&lt;license-guid&gt;_instructions_and_license.txt</code>：バイリンガルのインストーラー手順とリリースライセンス。</li>
+</ul>
+<p>この手順ファイルには完全なリリースライセンスが含まれています。インストーラーはそのライセンステキストを示されたとおりに正確に書き込む必要があります。</p>
+<h2 id="インストーラーのレジストリキー">インストーラーのレジストリキー</h2>
+<p>エンドユーザー向けリリースビルドの場合は、マシン全体のレジストリ場所にリリースライセンスをインストールしてください：</p>
+<pre><code class="lang-text">HKLM\Software\NeU\Licenses
+</code></pre>
+<p>次の文字列値を作成します：</p>
+<ul>
+<li>値の名前：リリースライセンスの GUID</li>
+<li>値のデータ：手順ファイルの完全なリリースライセンステキスト</li>
+</ul>
+<p><code>HKLM</code> への書き込みには管理者権限が必要です。アプリ開発者はアプリケーションインストーラーからこの値を書き込む必要があります。</p>
+<p>個別の JSON ファイルや個別の <code>AppHash</code> レジストリキーは不要です。アプリ検証 JSON は署名済みリリースライセンスに埋め込まれています。</p>
+<p>NeU License Manager を通じてアクティベートされた開発者ライセンスは、引き続き <code>HKCU\Software\NeU\Licenses</code> にユーザーごとにインストールされます。SDK は <code>HKCU</code> と <code>HKLM</code> の両方を検索します。</p>
+<h2 id="appinvalid-が発生する原因">AppInvalid が発生する原因</h2>
+<p>リリース SDK は次の場合にライセンスを <code>AppInvalid</code> として報告します：</p>
+<ul>
+<li>埋め込まれたアプリ検証 JSON が存在しない</li>
+<li>埋め込まれたアプリ検証 JSON の <code>appHash</code> が署名済み <code>AppHash</code> ペイロードハッシュと一致しない</li>
+<li>埋め込まれたアプリ検証 JSON が無効なスキーマに編集された</li>
+<li>リストされたファイルが欠落している</li>
+<li>リストされたファイルのサイズが異なる</li>
+<li>リストされたファイルの SHA-256 コンテンツが異なる</li>
+</ul>
+<p>SDK は <code>AppHash</code> を確認する前に一貫した内部表現を再構築するため、ホワイトスペースと JSON プロパティの順序は問題ありません。</p>
+<h2 id="オフライン動作">オフライン動作</h2>
+<p>通常のリリース SDK 機能チェックはインターネットアクセスを必要としません。リリースライセンスは開発者やエンドユーザーのマシン ID に紐付けられていません。インストール済みアプリが署名済み <code>AppHash</code> と一致する場合にのみ、任意のマシンで有効です。</p>
+<p>エンドユーザーのツールは後から再アクティベーションリクエストを送信することができます。これにより、エンドユーザーの PC をサーバーに表示させることができ、アプリまたはライセンスマネージャーがサーバーと同期を行う際に、リモートで失効したライセンスを検出できます。</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

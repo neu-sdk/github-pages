@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class TaskComparison | ExBrainSDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class TaskComparison | ExBrainSDK ">
+      
+      <meta name="description" content="2 つのブロック集合間の統計比較結果。インスタンス生成は static メソッドを使用 / Result of a statistical comparison between two sets of blocks. Use the static methods to create instances.">
+      <link rel="icon" href="../images/N_logo.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/neu-sdk/general/new/main/apiSpec/new?filename=ExBrainSdk_HighLevel_TaskComparison.md&amp;value=---%0Auid%3A%20ExBrainSdk.HighLevel.TaskComparison%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/NeU_logo.svg" alt="ExBrainSDK v3.0.1">
+            ExBrainSDK v3.0.1
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="ExBrainSdk.HighLevel.TaskComparison">
+
+
+
+  <h1 id="ExBrainSdk_HighLevel_TaskComparison" data-uid="ExBrainSdk.HighLevel.TaskComparison" class="text-break">
+Class TaskComparison  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L411"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="ExBrainSdk.html">ExBrainSdk</a>.<a class="xref" href="ExBrainSdk.HighLevel.html">HighLevel</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>ExBrainSdk.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>2 つのブロック集合間の統計比較結果。インスタンス生成は static メソッドを使用 / Result of a statistical comparison between two sets of blocks. Use the static methods to create instances.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class TaskComparison</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">TaskComparison</span></div>
+    </dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="ExBrainSdk_HighLevel_TaskComparison_HbDensityLDifference_" data-uid="ExBrainSdk.HighLevel.TaskComparison.HbDensityLDifference*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_TaskComparison_HbDensityLDifference" data-uid="ExBrainSdk.HighLevel.TaskComparison.HbDensityLDifference">
+  HbDensityLDifference
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L422"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>左側比較の差分。パラメトリック時は meanA-meanB、ノンパラ時は medianA-medianB / meanA-meanB (parametric) or medianA-medianB (non-parametric) for the left-side comparison.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double HbDensityLDifference { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_HighLevel_TaskComparison_HbDensityLPValue_" data-uid="ExBrainSdk.HighLevel.TaskComparison.HbDensityLPValue*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_TaskComparison_HbDensityLPValue" data-uid="ExBrainSdk.HighLevel.TaskComparison.HbDensityLPValue">
+  HbDensityLPValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L418"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>hbDensityL 比較の p 値 / P-value for the hbDensityL comparison.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double HbDensityLPValue { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_HighLevel_TaskComparison_HbDensityLTestKind_" data-uid="ExBrainSdk.HighLevel.TaskComparison.HbDensityLTestKind*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_TaskComparison_HbDensityLTestKind" data-uid="ExBrainSdk.HighLevel.TaskComparison.HbDensityLTestKind">
+  HbDensityLTestKind
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L414"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>左側 (hbDensityL) 比較に使用された検定種別 / The statistical test used for the left-side (hbDensityL) comparison.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public StatisticalTest HbDensityLTestKind { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ExBrainSdk.HighLevel.StatisticalTest.html">StatisticalTest</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_HighLevel_TaskComparison_HbDensityRDifference_" data-uid="ExBrainSdk.HighLevel.TaskComparison.HbDensityRDifference*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_TaskComparison_HbDensityRDifference" data-uid="ExBrainSdk.HighLevel.TaskComparison.HbDensityRDifference">
+  HbDensityRDifference
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L424"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>右側比較の差分。パラメトリック時は meanA-meanB、ノンパラ時は medianA-medianB / meanA-meanB (parametric) or medianA-medianB (non-parametric) for the right-side comparison.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double HbDensityRDifference { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_HighLevel_TaskComparison_HbDensityRPValue_" data-uid="ExBrainSdk.HighLevel.TaskComparison.HbDensityRPValue*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_TaskComparison_HbDensityRPValue" data-uid="ExBrainSdk.HighLevel.TaskComparison.HbDensityRPValue">
+  HbDensityRPValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L420"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>hbDensityR 比較の p 値。右側無効時は NaN / P-value for the hbDensityR comparison. NaN when right side is disabled.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double HbDensityRPValue { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_HighLevel_TaskComparison_HbDensityRTestKind_" data-uid="ExBrainSdk.HighLevel.TaskComparison.HbDensityRTestKind*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_TaskComparison_HbDensityRTestKind" data-uid="ExBrainSdk.HighLevel.TaskComparison.HbDensityRTestKind">
+  HbDensityRTestKind
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L416"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>右側 (hbDensityR) 比較に使用された検定種別。右側無効時は None と NaN / The statistical test used for the right-side (hbDensityR) comparison. None and NaN p-value when right side is disabled.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public StatisticalTest HbDensityRTestKind { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ExBrainSdk.HighLevel.StatisticalTest.html">StatisticalTest</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="ExBrainSdk_HighLevel_TaskComparison_CompareBetweenGroupsTask_" data-uid="ExBrainSdk.HighLevel.TaskComparison.CompareBetweenGroupsTask*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_TaskComparison_CompareBetweenGroupsTask_ExBrainSdk_ExBrainApi_System_Collections_Generic_IReadOnlyList_ExBrainSdk_HighLevel_Block__System_Collections_Generic_IReadOnlyList_ExBrainSdk_HighLevel_Block__System_Nullable_System_Boolean__System_Nullable_System_Boolean__ExBrainSdk_HighLevel_Tail_" data-uid="ExBrainSdk.HighLevel.TaskComparison.CompareBetweenGroupsTask(ExBrainSdk.ExBrainApi,System.Collections.Generic.IReadOnlyList{ExBrainSdk.HighLevel.Block},System.Collections.Generic.IReadOnlyList{ExBrainSdk.HighLevel.Block},System.Nullable{System.Boolean},System.Nullable{System.Boolean},ExBrainSdk.HighLevel.Tail)">
+  CompareBetweenGroupsTask(ExBrainApi, IReadOnlyList&lt;Block&gt;, IReadOnlyList&lt;Block&gt;, bool?, bool?, Tail)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L499"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>独立した 2 群の参加者間で同一タスクを比較する / Compares a task between two independent groups of participants.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TaskComparison CompareBetweenGroupsTask(ExBrainApi api, IReadOnlyList&lt;Block&gt; blocksA, IReadOnlyList&lt;Block&gt; blocksB, bool? isParametric = null, bool? isEqualVariance = null, Tail tail = Tail.TwoSided)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="../low-level-api/ExBrainSdk.ExBrainApi.html">ExBrainApi</a></dt>
+    <dd><p>ログ出力に使用する API インスタンス / The API instance used for logging.</p>
+</dd>
+    <dt><code>blocksA</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ExBrainSdk.HighLevel.Block.html">Block</a>&gt;</dt>
+    <dd><p>グループ A の参加者ブロック群。blocksB と参加者 ID が重複しないこと / Blocks from participants in group A. Participant identities must not overlap with blocksB.</p>
+</dd>
+    <dt><code>blocksB</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ExBrainSdk.HighLevel.Block.html">Block</a>&gt;</dt>
+    <dd><p>グループ B の参加者ブロック群 / Blocks from participants in group B.</p>
+</dd>
+    <dt><code>isParametric</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>null: Shapiro-Wilk で自動判定、true: パラメトリック、false: ノンパラメトリック / null = auto-detect via Shapiro-Wilk, true = parametric, false = non-parametric.</p>
+</dd>
+    <dt><code>isEqualVariance</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>null: Levene 検定で自動判定、true: 等分散、false: 不等分散（isParametric=true の場合のみ使用） / null = auto-detect via Levene's test, true = equal variance, false = unequal. Only used when isParametric is true.</p>
+</dd>
+    <dt><code>tail</code> <a class="xref" href="ExBrainSdk.HighLevel.Tail.html">Tail</a></dt>
+    <dd><p>仮説検定の片側・両側指定 / Tail direction for the hypothesis test.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ExBrainSdk.HighLevel.TaskComparison.html">TaskComparison</a></dt>
+    <dd><p>比較結果 / Comparison result.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><span class="xref">InvalidOperationException</span></dt>
+    <dd><p>比較処理に失敗した場合 / Thrown when comparison processing fails.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ExBrainSdk_HighLevel_TaskComparison_CompareBetweenParticipantsTasks_" data-uid="ExBrainSdk.HighLevel.TaskComparison.CompareBetweenParticipantsTasks*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_TaskComparison_CompareBetweenParticipantsTasks_ExBrainSdk_ExBrainApi_System_Collections_Generic_IReadOnlyList_ExBrainSdk_HighLevel_Block__System_Collections_Generic_IReadOnlyList_ExBrainSdk_HighLevel_Block__System_Nullable_System_Boolean__System_Nullable_System_Boolean__ExBrainSdk_HighLevel_Tail_" data-uid="ExBrainSdk.HighLevel.TaskComparison.CompareBetweenParticipantsTasks(ExBrainSdk.ExBrainApi,System.Collections.Generic.IReadOnlyList{ExBrainSdk.HighLevel.Block},System.Collections.Generic.IReadOnlyList{ExBrainSdk.HighLevel.Block},System.Nullable{System.Boolean},System.Nullable{System.Boolean},ExBrainSdk.HighLevel.Tail)">
+  CompareBetweenParticipantsTasks(ExBrainApi, IReadOnlyList&lt;Block&gt;, IReadOnlyList&lt;Block&gt;, bool?, bool?, Tail)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L517"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>2 つの参加者集合間でタスクを比較する（<a class="xref" href="ExBrainSdk.HighLevel.TaskComparison.html#ExBrainSdk_HighLevel_TaskComparison_CompareBetweenGroupsTask_ExBrainSdk_ExBrainApi_System_Collections_Generic_IReadOnlyList_ExBrainSdk_HighLevel_Block__System_Collections_Generic_IReadOnlyList_ExBrainSdk_HighLevel_Block__System_Nullable_System_Boolean__System_Nullable_System_Boolean__ExBrainSdk_HighLevel_Tail_">CompareBetweenGroupsTask(ExBrainApi, IReadOnlyList&lt;Block&gt;, IReadOnlyList&lt;Block&gt;, bool?, bool?, Tail)</a> の別名） / Compares a task between two sets of participants (alias for <a class="xref" href="ExBrainSdk.HighLevel.TaskComparison.html#ExBrainSdk_HighLevel_TaskComparison_CompareBetweenGroupsTask_ExBrainSdk_ExBrainApi_System_Collections_Generic_IReadOnlyList_ExBrainSdk_HighLevel_Block__System_Collections_Generic_IReadOnlyList_ExBrainSdk_HighLevel_Block__System_Nullable_System_Boolean__System_Nullable_System_Boolean__ExBrainSdk_HighLevel_Tail_">CompareBetweenGroupsTask(ExBrainApi, IReadOnlyList&lt;Block&gt;, IReadOnlyList&lt;Block&gt;, bool?, bool?, Tail)</a>).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TaskComparison CompareBetweenParticipantsTasks(ExBrainApi api, IReadOnlyList&lt;Block&gt; blocksA, IReadOnlyList&lt;Block&gt; blocksB, bool? isParametric = null, bool? isEqualVariance = null, Tail tail = Tail.TwoSided)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="../low-level-api/ExBrainSdk.ExBrainApi.html">ExBrainApi</a></dt>
+    <dd><p>ログ出力に使用する API インスタンス / The API instance used for logging.</p>
+</dd>
+    <dt><code>blocksA</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ExBrainSdk.HighLevel.Block.html">Block</a>&gt;</dt>
+    <dd><p>グループ A の参加者ブロック群。blocksB と参加者 ID が重複しないこと / Blocks from participants in group A. Participant identities must not overlap with blocksB.</p>
+</dd>
+    <dt><code>blocksB</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ExBrainSdk.HighLevel.Block.html">Block</a>&gt;</dt>
+    <dd><p>グループ B の参加者ブロック群 / Blocks from participants in group B.</p>
+</dd>
+    <dt><code>isParametric</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>null: Shapiro-Wilk で自動判定、true: パラメトリック、false: ノンパラメトリック / null = auto-detect via Shapiro-Wilk, true = parametric, false = non-parametric.</p>
+</dd>
+    <dt><code>isEqualVariance</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>null: Levene 検定で自動判定、true: 等分散、false: 不等分散（isParametric=true の場合のみ使用） / null = auto-detect via Levene's test, true = equal variance, false = unequal. Only used when isParametric is true.</p>
+</dd>
+    <dt><code>tail</code> <a class="xref" href="ExBrainSdk.HighLevel.Tail.html">Tail</a></dt>
+    <dd><p>仮説検定の片側・両側指定 / Tail direction for the hypothesis test.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ExBrainSdk.HighLevel.TaskComparison.html">TaskComparison</a></dt>
+    <dd><p>比較結果 / Comparison result.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><span class="xref">InvalidOperationException</span></dt>
+    <dd><p>比較処理に失敗した場合 / Thrown when comparison processing fails.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ExBrainSdk_HighLevel_TaskComparison_ComparePairedGroupTasks_" data-uid="ExBrainSdk.HighLevel.TaskComparison.ComparePairedGroupTasks*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_TaskComparison_ComparePairedGroupTasks_ExBrainSdk_ExBrainApi_System_Collections_Generic_IReadOnlyList_ExBrainSdk_HighLevel_Block__System_Collections_Generic_IReadOnlyList_ExBrainSdk_HighLevel_Block__System_Nullable_System_Boolean__ExBrainSdk_HighLevel_Tail_" data-uid="ExBrainSdk.HighLevel.TaskComparison.ComparePairedGroupTasks(ExBrainSdk.ExBrainApi,System.Collections.Generic.IReadOnlyList{ExBrainSdk.HighLevel.Block},System.Collections.Generic.IReadOnlyList{ExBrainSdk.HighLevel.Block},System.Nullable{System.Boolean},ExBrainSdk.HighLevel.Tail)">
+  ComparePairedGroupTasks(ExBrainApi, IReadOnlyList&lt;Block&gt;, IReadOnlyList&lt;Block&gt;, bool?, Tail)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L481"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>複数参加者にまたがって 2 つのタスクを対応付け比較する / Compares two tasks across multiple participants, pairing each participant's block in A with their block in B.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TaskComparison ComparePairedGroupTasks(ExBrainApi api, IReadOnlyList&lt;Block&gt; blocksA, IReadOnlyList&lt;Block&gt; blocksB, bool? isParametric = null, Tail tail = Tail.TwoSided)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="../low-level-api/ExBrainSdk.ExBrainApi.html">ExBrainApi</a></dt>
+    <dd><p>ログ出力に使用する API インスタンス / The API instance used for logging.</p>
+</dd>
+    <dt><code>blocksA</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ExBrainSdk.HighLevel.Block.html">Block</a>&gt;</dt>
+    <dd><p>タスク A のブロック群（参加者ごとに 1 つ）。index で blocksB と対応し、参加者 ID が一致する必要あり / Blocks for task A, one per participant. Paired with blocksB by index; participant identities must match.</p>
+</dd>
+    <dt><code>blocksB</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ExBrainSdk.HighLevel.Block.html">Block</a>&gt;</dt>
+    <dd><p>タスク B のブロック群。index で blocksA と対応 / Blocks for task B, paired with blocksA by index.</p>
+</dd>
+    <dt><code>isParametric</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>null: Shapiro-Wilk で自動判定、true: パラメトリック、false: ノンパラメトリック / null = auto-detect via Shapiro-Wilk, true = parametric, false = non-parametric.</p>
+</dd>
+    <dt><code>tail</code> <a class="xref" href="ExBrainSdk.HighLevel.Tail.html">Tail</a></dt>
+    <dd><p>仮説検定の片側・両側指定 / Tail direction for the hypothesis test.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ExBrainSdk.HighLevel.TaskComparison.html">TaskComparison</a></dt>
+    <dd><p>比較結果 / Comparison result.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><span class="xref">InvalidOperationException</span></dt>
+    <dd><p>比較処理に失敗した場合 / Thrown when comparison processing fails.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ExBrainSdk_HighLevel_TaskComparison_CompareTaskAndBaseline_" data-uid="ExBrainSdk.HighLevel.TaskComparison.CompareTaskAndBaseline*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_TaskComparison_CompareTaskAndBaseline_ExBrainSdk_ExBrainApi_System_Collections_Generic_IReadOnlyList_ExBrainSdk_HighLevel_Block__System_Nullable_System_Boolean__ExBrainSdk_HighLevel_Tail_" data-uid="ExBrainSdk.HighLevel.TaskComparison.CompareTaskAndBaseline(ExBrainSdk.ExBrainApi,System.Collections.Generic.IReadOnlyList{ExBrainSdk.HighLevel.Block},System.Nullable{System.Boolean},ExBrainSdk.HighLevel.Tail)">
+  CompareTaskAndBaseline(ExBrainApi, IReadOnlyList&lt;Block&gt;, bool?, Tail)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L533"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>同一参加者ブロック内でタスク期間と事前装着調整（ベースライン）期間を比較する / Compares the task period against the pre-fitting (baseline) period within the same participant's blocks.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TaskComparison CompareTaskAndBaseline(ExBrainApi api, IReadOnlyList&lt;Block&gt; blocks, bool? isParametric = null, Tail tail = Tail.TwoSided)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="../low-level-api/ExBrainSdk.ExBrainApi.html">ExBrainApi</a></dt>
+    <dd><p>ログ出力に使用する API インスタンス / The API instance used for logging.</p>
+</dd>
+    <dt><code>blocks</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ExBrainSdk.HighLevel.Block.html">Block</a>&gt;</dt>
+    <dd><p>比較対象ブロック群。すべて同一参加者に属する必要あり / Blocks to compare. All must belong to the same participant.</p>
+</dd>
+    <dt><code>isParametric</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>null: Shapiro-Wilk で自動判定、true: パラメトリック、false: ノンパラメトリック / null = auto-detect via Shapiro-Wilk, true = parametric, false = non-parametric.</p>
+</dd>
+    <dt><code>tail</code> <a class="xref" href="ExBrainSdk.HighLevel.Tail.html">Tail</a></dt>
+    <dd><p>仮説検定の片側・両側指定 / Tail direction for the hypothesis test.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ExBrainSdk.HighLevel.TaskComparison.html">TaskComparison</a></dt>
+    <dd><p>比較結果 / Comparison result.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><span class="xref">InvalidOperationException</span></dt>
+    <dd><p>比較処理に失敗した場合 / Thrown when comparison processing fails.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ExBrainSdk_HighLevel_TaskComparison_CompareWithinParticipantPrePost_" data-uid="ExBrainSdk.HighLevel.TaskComparison.CompareWithinParticipantPrePost*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_TaskComparison_CompareWithinParticipantPrePost_ExBrainSdk_ExBrainApi_System_Collections_Generic_IReadOnlyList_ExBrainSdk_HighLevel_Block__System_Collections_Generic_IReadOnlyList_ExBrainSdk_HighLevel_Block__System_Boolean_System_Nullable_System_Boolean__System_Nullable_System_Boolean__ExBrainSdk_HighLevel_Tail_" data-uid="ExBrainSdk.HighLevel.TaskComparison.CompareWithinParticipantPrePost(ExBrainSdk.ExBrainApi,System.Collections.Generic.IReadOnlyList{ExBrainSdk.HighLevel.Block},System.Collections.Generic.IReadOnlyList{ExBrainSdk.HighLevel.Block},System.Boolean,System.Nullable{System.Boolean},System.Nullable{System.Boolean},ExBrainSdk.HighLevel.Tail)">
+  CompareWithinParticipantPrePost(ExBrainApi, IReadOnlyList&lt;Block&gt;, IReadOnlyList&lt;Block&gt;, bool, bool?, bool?, Tail)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L464"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>同一参加者の事前条件と事後条件のブロックを比較する（例: 介入前後） / Compares pre- and post-condition blocks for the same participant (e.g. before/after intervention).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TaskComparison CompareWithinParticipantPrePost(ExBrainApi api, IReadOnlyList&lt;Block&gt; blocksA, IReadOnlyList&lt;Block&gt; blocksB, bool isPaired = true, bool? isParametric = null, bool? isEqualVariance = null, Tail tail = Tail.TwoSided)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="../low-level-api/ExBrainSdk.ExBrainApi.html">ExBrainApi</a></dt>
+    <dd><p>ログ出力に使用する API インスタンス / The API instance used for logging.</p>
+</dd>
+    <dt><code>blocksA</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ExBrainSdk.HighLevel.Block.html">Block</a>&gt;</dt>
+    <dd><p>事前条件のブロック群。すべて同一参加者に属する必要あり / Blocks for the pre condition. All must belong to the same participant.</p>
+</dd>
+    <dt><code>blocksB</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ExBrainSdk.HighLevel.Block.html">Block</a>&gt;</dt>
+    <dd><p>事後条件のブロック群。すべて同一参加者に属する必要あり / Blocks for the post condition. All must belong to the same participant.</p>
+</dd>
+    <dt><code>isPaired</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>true: 対応あり比較（repeatIndex で対応付け）、false: 対応なし / true = paired comparison (blocks matched by repeatIndex); false = unpaired.</p>
+</dd>
+    <dt><code>isParametric</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>null: Shapiro-Wilk で自動判定、true: パラメトリック、false: ノンパラメトリック / null = auto-detect via Shapiro-Wilk, true = parametric, false = non-parametric.</p>
+</dd>
+    <dt><code>isEqualVariance</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>null: Levene 検定で自動判定、true: 等分散、false: 不等分散（isPaired=false かつ isParametric=true の場合のみ使用） / null = auto-detect via Levene's test, true = equal variance, false = unequal. Only used when isPaired is false and isParametric is true.</p>
+</dd>
+    <dt><code>tail</code> <a class="xref" href="ExBrainSdk.HighLevel.Tail.html">Tail</a></dt>
+    <dd><p>仮説検定の片側・両側指定 / Tail direction for the hypothesis test.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ExBrainSdk.HighLevel.TaskComparison.html">TaskComparison</a></dt>
+    <dd><p>比較結果 / Comparison result.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><span class="xref">InvalidOperationException</span></dt>
+    <dd><p>比較処理に失敗した場合 / Thrown when comparison processing fails.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ExBrainSdk_HighLevel_TaskComparison_CompareWithinParticipantTasks_" data-uid="ExBrainSdk.HighLevel.TaskComparison.CompareWithinParticipantTasks*"></a>
+
+  <h3 id="ExBrainSdk_HighLevel_TaskComparison_CompareWithinParticipantTasks_ExBrainSdk_ExBrainApi_System_Collections_Generic_IReadOnlyList_ExBrainSdk_HighLevel_Block__System_Collections_Generic_IReadOnlyList_ExBrainSdk_HighLevel_Block__System_Nullable_System_Boolean__ExBrainSdk_HighLevel_Tail_" data-uid="ExBrainSdk.HighLevel.TaskComparison.CompareWithinParticipantTasks(ExBrainSdk.ExBrainApi,System.Collections.Generic.IReadOnlyList{ExBrainSdk.HighLevel.Block},System.Collections.Generic.IReadOnlyList{ExBrainSdk.HighLevel.Block},System.Nullable{System.Boolean},ExBrainSdk.HighLevel.Tail)">
+  CompareWithinParticipantTasks(ExBrainApi, IReadOnlyList&lt;Block&gt;, IReadOnlyList&lt;Block&gt;, bool?, Tail)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/HighLevel.cs/#L445"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>同一参加者の繰り返しブロックで 2 つのタスクを比較する / Compares two tasks performed by the same participant across repeated blocks.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TaskComparison CompareWithinParticipantTasks(ExBrainApi api, IReadOnlyList&lt;Block&gt; blocksA, IReadOnlyList&lt;Block&gt; blocksB, bool? isParametric = null, Tail tail = Tail.TwoSided)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="../low-level-api/ExBrainSdk.ExBrainApi.html">ExBrainApi</a></dt>
+    <dd><p>ログ出力に使用する API インスタンス / The API instance used for logging.</p>
+</dd>
+    <dt><code>blocksA</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ExBrainSdk.HighLevel.Block.html">Block</a>&gt;</dt>
+    <dd><p>タスク A のブロック群（繰り返しごとに 1 つ）。同一参加者 ID である必要あり / Blocks for task A, one per repeat. All must share the same participant identity.</p>
+</dd>
+    <dt><code>blocksB</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="ExBrainSdk.HighLevel.Block.html">Block</a>&gt;</dt>
+    <dd><p>タスク B のブロック群。index と repeatIndex で blocksA と対応づけ / Blocks for task B, paired with blocksA by index and repeatIndex.</p>
+</dd>
+    <dt><code>isParametric</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>null: Shapiro-Wilk で自動判定、true: パラメトリック、false: ノンパラメトリック / null = auto-detect via Shapiro-Wilk, true = parametric, false = non-parametric.</p>
+</dd>
+    <dt><code>tail</code> <a class="xref" href="ExBrainSdk.HighLevel.Tail.html">Tail</a></dt>
+    <dd><p>仮説検定の片側・両側指定 / Tail direction for the hypothesis test.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ExBrainSdk.HighLevel.TaskComparison.html">TaskComparison</a></dt>
+    <dd><p>比較結果 / Comparison result.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><span class="xref">InvalidOperationException</span></dt>
+    <dd><p>比較処理に失敗した場合 / Thrown when comparison processing fails.</p>
+</dd>
+  </dl>
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

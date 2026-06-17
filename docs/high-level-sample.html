@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>High-Level API サンプルアプリ | ExBrainSDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="High-Level API サンプルアプリ | ExBrainSDK ">
+      
+      
+      <link rel="icon" href="../images/N_logo.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/neu-sdk/general/blob/main/docfx/docs/high-level-sample.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/NeU_logo.svg" alt="ExBrainSDK v3.0.1">
+            ExBrainSDK v3.0.1
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="high-level-api-サンプルアプリ">High-Level API サンプルアプリ</h1>
+
+<h2 id="操作ガイド">操作ガイド</h2>
+<ol>
+<li>装置を起動させて、PC と Bluetooth か USB 接続させて下さい。接続ができていないと計測開始の工程へ進められない仕様になっているため、安定しやすい USB 接続を推奨します。</li>
+<li>装置を装着してください。センサーユニットが眉の上に来るように装着し、髪の毛が挟まらないように注意して下さい。具体的な装着方法については、取扱説明書（リンク）をご覧ください。</li>
+<li>PowerShell を開いていただき、<code>HighLevelSample.exe</code> を実行してください。処理がすべて完了すると「Press any key to quit」と表示され、キー入力を受け取るまでアプリは終了しません。これにより、デフォルトのターミナルから実行した場合でもウィンドウが即座に閉じてしまうことを防げます。</li>
+<li>実行すると、API 初期化、デバイス接続、ゲイン調整、キャリブレーション、実験開始、複数ブロック計測、統計比較、実験終了、デバイス切断までが順に実行されます。</li>
+</ol>
+<h2 id="コード全体">コード全体</h2>
+<p>このセクションでは、High-Level API を利用して計測処理を一通り実行するサンプルアプリのコードを掲載しています。
+コードは、デバイス接続からゲイン調整・キャリブレーション、実験の開始、ブロック実行、統計比較、そして計測終了までの流れを段階的に示しており、実際のアプリケーション開発の基盤となる構造を確認できます。</p>
+<p>ここで示されるコードは、後続セクション「各パートのコード解説」で詳しく分解しながら解説します。
+まずは全体像を把握するために、本セクションを参照してください。</p>
+<h2 id="programcs">Program.cs</h2>
+<pre><code class="lang-csharp">using ExBrainSdk;
+using ExBrainSdk.Enumerations;
+
+var api = new ExBrainApi((_, s) =&gt; Console.WriteLine(&quot;C# Status &quot; + s), (id, message, type) =&gt;
+{
+    Console.WriteLine($&quot;C# Log: [{id}] [{type}] {message}&quot;);
+});
+
+_ = api.InitApi(true, false, null, null);
+if (await api.SearchAndConnectDeviceAsync(EnmSdkConnectType.eNotSelected, 3) == EnmSdkResult.eSuccess)
+{
+    await HighLevelSample.Run(api);
+    Console.WriteLine(&quot;High-Level Sample finished&quot;);
+}
+else
+{
+    Console.WriteLine(&quot;Failed to connect to device.&quot;);
+}
+api.ExitApi();
+
+Console.WriteLine(&quot;Press any key to quit&quot;);
+Console.ReadKey();
+</code></pre>
+<h2 id="highlevelsamplecs">HighLevelSample.cs</h2>
+<pre><code class="lang-csharp">using ExBrainSdk;
+using ExBrainSdk.HighLevel;
+
+public static class HighLevelSample
+{
+    public static async Task Run(ExBrainApi api, Action&lt;string&gt;? log = null, bool performGainAdjustment = true, bool performCalibration = true, Experiment.NotifyInstantFrameCallback? instantFrameCallback = null, string? outputFolder = &quot;&quot;)
+    {
+        log ??= Console.WriteLine;
+
+        if (performGainAdjustment)
+        {
+            _ = await api.PerformGainAdjustmentAsync(api.HandleId);
+            log(&quot;Gain adjustment completed.&quot;);
+        }
+        if (performCalibration)
+        {
+            _ = await api.PerformCalibrationAsync(api.HandleId);
+            log(&quot;Calibration completed.&quot;);
+        }
+
+        var experiment = new Experiment(api, 10, instantFrameCallback);
+        _ = experiment.SetLowpassFilter(2, 0.2, 10);
+        _ = await experiment.StartExperimentAsync(outputFolder);
+        log(&quot;Experiment started. Idling for 5 seconds...&quot;);
+        await Task.Delay(TimeSpan.FromSeconds(5));
+        log(&quot;Idling finished&quot;);
+
+        int preFittingSeconds = 5;
+        int taskSeconds = 5;
+        int calmDownSeconds = 5;
+        int postFittingSeconds = 5;
+        var preTaskMetaData = new MetaData(api, &quot;TestTask&quot;, preFittingSeconds, taskSeconds, calmDownSeconds, postFittingSeconds);
+        var postTaskMetaData = new MetaData(api, &quot;TestTask&quot;, preFittingSeconds, taskSeconds, calmDownSeconds, postFittingSeconds);
+        int totalSeconds = preFittingSeconds + taskSeconds + calmDownSeconds + postFittingSeconds;
+
+        string outputDir = outputFolder ?? &quot;&quot;;
+        log($&quot;Starting block1 ({totalSeconds} seconds)&quot;);
+        Experiment.NotifyStageStartedCallback callback = stage =&gt;
+        {
+            switch (stage)
+            {
+                case BlockStage.PreFitting:
+                    break;
+                case BlockStage.Task:
+                    log(&quot;TASK&quot;);
+                    break;
+                case BlockStage.CalmDown:
+                    log(&quot;REST&quot;);
+                    break;
+                case BlockStage.PostFitting:
+                    break;
+                default:
+                    break;
+            }
+        };
+        log(&quot;REST&quot;);
+        Block block1 = await experiment.RunBlockAsync(preTaskMetaData, &quot;TestBlock&quot;, &quot;Participant1&quot;, callback);
+        log(&quot;Block1 finished&quot;);
+        await File.WriteAllTextAsync(Path.Combine(outputDir, &quot;block1.json&quot;), block1.ToJson());
+        Block block1_reconstructed = Block.FromJson(api, block1.ToJson())!;
+        await File.WriteAllTextAsync(Path.Combine(outputDir, &quot;block1.csv&quot;), block1_reconstructed.ToCsv());
+
+        log($&quot;Starting block2 ({totalSeconds} seconds)&quot;);
+        Block block2 = await experiment.RunBlockAsync(preTaskMetaData, &quot;TestBlock&quot;, &quot;Participant1&quot;, callback);
+        log(&quot;Block2 finished&quot;);
+        await File.WriteAllTextAsync(Path.Combine(outputDir, &quot;block2.json&quot;), block2.ToJson());
+
+        log($&quot;Starting block3 ({totalSeconds} seconds)&quot;);
+        Block block3 = await experiment.RunBlockAsync(preTaskMetaData, &quot;TestBlock&quot;, &quot;Participant1&quot;, callback);
+        log(&quot;Block3 finished&quot;);
+        await File.WriteAllTextAsync(Path.Combine(outputDir, &quot;block3.json&quot;), block3.ToJson());
+
+        // Add your own intervention codes.
+
+        log($&quot;Starting block4 ({totalSeconds} seconds)&quot;);
+        Block block4 = await experiment.RunBlockAsync(postTaskMetaData, &quot;TestBlock&quot;, &quot;Participant1&quot;, callback);
+        log(&quot;Block4 finished&quot;);
+        await File.WriteAllTextAsync(Path.Combine(outputDir, &quot;block4.json&quot;), block4.ToJson());
+
+        log($&quot;Starting block5 ({totalSeconds} seconds)&quot;);
+        Block block5 = await experiment.RunBlockAsync(postTaskMetaData, &quot;TestBlock&quot;, &quot;Participant1&quot;, callback);
+        log(&quot;Block5 finished&quot;);
+        await File.WriteAllTextAsync(Path.Combine(outputDir, &quot;block5.json&quot;), block5.ToJson());
+
+        log($&quot;Starting block6 ({totalSeconds} seconds)&quot;);
+        Block block6 = await experiment.RunBlockAsync(postTaskMetaData, &quot;TestBlock&quot;, &quot;Participant1&quot;, callback);
+        log(&quot;Block6 finished&quot;);
+        await File.WriteAllTextAsync(Path.Combine(outputDir, &quot;block6.json&quot;), block6.ToJson());
+
+        _ = await experiment.FinishExperimentAsync();
+        await api.DisconnectDeviceAsync();
+
+        var comparison = TaskComparison.CompareWithinParticipantPrePost(api, [block1, block2, block3], [block4, block5, block6]);
+        log($&quot;The statistical test being used is: {comparison.HbDensityLTestKind}&quot;);
+        log(&quot;Comparison for hbDensityL&quot;);
+        log($&quot;  P-value = {comparison.HbDensityLPValue}, Significant = {comparison.HbDensityLPValue &lt; 0.05}&quot;);
+    }
+}
+</code></pre>
+<h2 id="各パートのコード解説">各パートのコード解説</h2>
+<p>続いて、各パート毎のコード解説を行っていきます。
+このサンプルでは、トップレベルの <code>Program.cs</code> で初期化と接続を行い、その後 <code>HighLevelSample.Run(...)</code> で計測処理全体を実行します。</p>
+<h3 id="1-programcs-の内容">1. Program.cs の内容</h3>
+<pre><code class="lang-csharp">using ExBrainSdk;
+using ExBrainSdk.Enumerations;
+
+var api = new ExBrainApi((_, s) =&gt; Console.WriteLine(&quot;C# Status &quot; + s), (id, message, type) =&gt;
+{
+    Console.WriteLine($&quot;C# Log: [{id}] [{type}] {message}&quot;);
+});
+
+_ = api.InitApi(true, false, null, null);
+if (await api.SearchAndConnectDeviceAsync(EnmSdkConnectType.eNotSelected, 3) == EnmSdkResult.eSuccess)
+{
+    await HighLevelSample.Run(api);
+    Console.WriteLine(&quot;High-Level Sample finished&quot;);
+}
+else
+{
+    Console.WriteLine(&quot;Failed to connect to device.&quot;);
+}
+api.ExitApi();
+
+Console.WriteLine(&quot;Press any key to quit&quot;);
+Console.ReadKey();
+</code></pre>
+<h4 id="11-exbrainapi-の生成">1.1 ExBrainApi の生成</h4>
+<p>最初に <a class="xref" href="../low-level-api/ExBrainSdk.ExBrainApi.html">ExBrainApi のコンストラクタ</a> を呼び出し、API インスタンスを生成しています。
+コンストラクタにはステータス変化通知用コールバックとログ出力用コールバックを渡しており、SDK 内部の状態変化やメッセージをコンソールへ表示できるようにしています。</p>
+<pre><code class="lang-csharp">var api = new ExBrainApi((_, s) =&gt; Console.WriteLine(&quot;C# Status &quot; + s), (id, message, type) =&gt;
+{
+    Console.WriteLine($&quot;C# Log: [{id}] [{type}] {message}&quot;);
+});
+</code></pre>
+<p>これにより、接続や計測の進行状態をサンプル実行中に確認できます。</p>
+<hr>
+<h4 id="12-api-の初期化">1.2 API の初期化</h4>
+<p>次に <a class="xref" href="../low-level-api/ExBrainSdk.ExBrainApi.html#ExBrainSdk_ExBrainApi_InitApi_">InitApi メソッド</a> を呼び出し、SDK を初期化します。
+このサンプルでは戻り値を利用しないため、discard である <code>_</code> に代入しています。</p>
+<pre><code class="lang-csharp">_ = api.InitApi(true, false, null, null);
+</code></pre>
+<p>引数では、トレースログ出力を有効にし、通信ログ出力や追加のディレクトリ設定は省略しています。
+実運用アプリケーションでは、戻り値を確認して失敗時のエラー処理を実装することを推奨します。</p>
+<hr>
+<h4 id="13-デバイスの検索と接続">1.3 デバイスの検索と接続</h4>
+<p>初期化後は <a class="xref" href="../low-level-api/ExBrainSdk.ExBrainApi.html#ExBrainSdk_ExBrainApi_SearchAndConnectDeviceAsync_ExBrainSdk_Enumerations_EnmSdkConnectType_System_Int32_">SearchAndConnectDeviceAsync メソッド</a> を呼び出して、デバイスの検索と接続を行います。</p>
+<pre><code class="lang-csharp">if (await api.SearchAndConnectDeviceAsync(EnmSdkConnectType.eNotSelected, 3) == EnmSdkResult.eSuccess)
+{
+    // 計測処理（1.4 で解説）
+}
+else
+{
+    Console.WriteLine(&quot;Failed to connect to device.&quot;);
+}
+</code></pre>
+<p>ここでは <code>EnmSdkConnectType.eNotSelected</code> を指定しているため、接続方式を固定せず、利用可能な接続手段から接続を試みる構成になっています。
+第 2 引数 <code>3</code> は検索・接続処理に関するタイムアウト秒数です。
+接続に成功した場合のみ計測処理（1.4）を実行し、失敗した場合はメッセージを表示します。
+いずれの場合も後続の終了処理（1.5）に進み、キー入力を待ってからアプリが終了するため、接続に失敗してもエラーメッセージを確認できます。</p>
+<hr>
+<h4 id="14-実験本体の実行">1.4 実験本体の実行</h4>
+<p>デバイス接続が成功した場合（1.3 の <code>if</code> ブロック内）、実験本体である <code>HighLevelSample.Run(api)</code> を呼び出します。</p>
+<pre><code class="lang-csharp">await HighLevelSample.Run(api);
+Console.WriteLine(&quot;High-Level Sample finished&quot;);
+</code></pre>
+<p>ここでは <code>HighLevelSample.Run(api)</code> を呼び出すことで、計測に関する一連の処理を実行し、完了後に終了メッセージを表示しています。</p>
+<hr>
+<h4 id="15-api-の終了処理">1.5 API の終了処理</h4>
+<p>最後に <a class="xref" href="../low-level-api/ExBrainSdk.ExBrainApi.html#ExBrainSdk_ExBrainApi_ExitApi_">ExitApi メソッド</a> を呼び出して API をクリーンに終了します。</p>
+<pre><code class="lang-csharp">api.ExitApi();
+
+Console.WriteLine(&quot;Press any key to quit&quot;);
+Console.ReadKey();
+</code></pre>
+<p><code>api.ExitApi()</code> は接続の成否にかかわらず（1.3 の <code>if</code>／<code>else</code> のどちらを通った場合でも）呼び出され、初期化時に確保された内部リソースを解放します。
+その後 <code>Console.ReadKey()</code> でキー入力を待ってからアプリが終了します。これを最後に置くことで、ターミナルから実行した際にウィンドウが即座に閉じてしまうのを防ぎ、接続失敗時のエラーメッセージも確認できるようにしています。</p>
+<hr>
+<h3 id="2-highlevelsamplerun-の内容">2. HighLevelSample.Run(...) の内容</h3>
+<pre><code class="lang-csharp">public static async Task Run(ExBrainApi api, Action&lt;string&gt;? log = null, bool performGainAdjustment = true, bool performCalibration = true, Experiment.NotifyInstantFrameCallback? instantFrameCallback = null, string? outputFolder = &quot;&quot;)
+{
+    log ??= Console.WriteLine;
+
+    if (performGainAdjustment)
+    {
+        _ = await api.PerformGainAdjustmentAsync(api.HandleId);
+        log(&quot;Gain adjustment completed.&quot;);
+    }
+    if (performCalibration)
+    {
+        _ = await api.PerformCalibrationAsync(api.HandleId);
+        log(&quot;Calibration completed.&quot;);
+    }
+
+    var experiment = new Experiment(api, 10, instantFrameCallback);
+    _ = experiment.SetLowpassFilter(2, 0.2, 10);
+    _ = await experiment.StartExperimentAsync(outputFolder);
+    log(&quot;Experiment started. Idling for 5 seconds...&quot;);
+    await Task.Delay(TimeSpan.FromSeconds(5));
+    log(&quot;Idling finished&quot;);
+
+    int preFittingSeconds = 5;
+    int taskSeconds = 5;
+    int calmDownSeconds = 5;
+    int postFittingSeconds = 5;
+    var preTaskMetaData = new MetaData(api, &quot;TestTask&quot;, preFittingSeconds, taskSeconds, calmDownSeconds, postFittingSeconds);
+    var postTaskMetaData = new MetaData(api, &quot;TestTask&quot;, preFittingSeconds, taskSeconds, calmDownSeconds, postFittingSeconds);
+    int totalSeconds = preFittingSeconds + taskSeconds + calmDownSeconds + postFittingSeconds;
+
+    string outputDir = outputFolder ?? &quot;&quot;;
+    log($&quot;Starting block1 ({totalSeconds} seconds)&quot;);
+    Experiment.NotifyStageStartedCallback callback = stage =&gt;
+    {
+        switch (stage)
+        {
+            case BlockStage.PreFitting:
+                break;
+            case BlockStage.Task:
+                log(&quot;TASK&quot;);
+                break;
+            case BlockStage.CalmDown:
+                log(&quot;REST&quot;);
+                break;
+            case BlockStage.PostFitting:
+                break;
+            default:
+                break;
+        }
+    };
+    log(&quot;REST&quot;);
+    Block block1 = await experiment.RunBlockAsync(preTaskMetaData, &quot;TestBlock&quot;, &quot;Participant1&quot;, callback);
+    log(&quot;Block1 finished&quot;);
+    await File.WriteAllTextAsync(Path.Combine(outputDir, &quot;block1.json&quot;), block1.ToJson());
+    Block block1_reconstructed = Block.FromJson(api, block1.ToJson())!;
+    await File.WriteAllTextAsync(Path.Combine(outputDir, &quot;block1.csv&quot;), block1_reconstructed.ToCsv());
+
+    log($&quot;Starting block2 ({totalSeconds} seconds)&quot;);
+    Block block2 = await experiment.RunBlockAsync(preTaskMetaData, &quot;TestBlock&quot;, &quot;Participant1&quot;, callback);
+    log(&quot;Block2 finished&quot;);
+    await File.WriteAllTextAsync(Path.Combine(outputDir, &quot;block2.json&quot;), block2.ToJson());
+
+    log($&quot;Starting block3 ({totalSeconds} seconds)&quot;);
+    Block block3 = await experiment.RunBlockAsync(preTaskMetaData, &quot;TestBlock&quot;, &quot;Participant1&quot;, callback);
+    log(&quot;Block3 finished&quot;);
+    await File.WriteAllTextAsync(Path.Combine(outputDir, &quot;block3.json&quot;), block3.ToJson());
+
+    // Add your own intervention codes.
+
+    log($&quot;Starting block4 ({totalSeconds} seconds)&quot;);
+    Block block4 = await experiment.RunBlockAsync(postTaskMetaData, &quot;TestBlock&quot;, &quot;Participant1&quot;, callback);
+    log(&quot;Block4 finished&quot;);
+    await File.WriteAllTextAsync(Path.Combine(outputDir, &quot;block4.json&quot;), block4.ToJson());
+
+    log($&quot;Starting block5 ({totalSeconds} seconds)&quot;);
+    Block block5 = await experiment.RunBlockAsync(postTaskMetaData, &quot;TestBlock&quot;, &quot;Participant1&quot;, callback);
+    log(&quot;Block5 finished&quot;);
+    await File.WriteAllTextAsync(Path.Combine(outputDir, &quot;block5.json&quot;), block5.ToJson());
+
+    log($&quot;Starting block6 ({totalSeconds} seconds)&quot;);
+    Block block6 = await experiment.RunBlockAsync(postTaskMetaData, &quot;TestBlock&quot;, &quot;Participant1&quot;, callback);
+    log(&quot;Block6 finished&quot;);
+    await File.WriteAllTextAsync(Path.Combine(outputDir, &quot;block6.json&quot;), block6.ToJson());
+
+    _ = await experiment.FinishExperimentAsync();
+    await api.DisconnectDeviceAsync();
+
+    var comparison = TaskComparison.CompareWithinParticipantPrePost(api, [block1, block2, block3], [block4, block5, block6]);
+    log($&quot;The statistical test being used is: {comparison.HbDensityLTestKind}&quot;);
+    log(&quot;Comparison for hbDensityL&quot;);
+    log($&quot;  P-value = {comparison.HbDensityLPValue}, Significant = {comparison.HbDensityLPValue &lt; 0.05}&quot;);
+}
+</code></pre>
+<h4 id="21-ログ出力先の決定">2.1 ログ出力先の決定</h4>
+<p>関数冒頭では、呼び出し元からログ出力先が渡されていない場合に <code>Console.WriteLine</code> を使用するよう設定しています。</p>
+<pre><code class="lang-csharp">log ??= Console.WriteLine;
+</code></pre>
+<p>これにより、このサンプルはコンソールアプリとしてそのまま使える一方で、GUI アプリケーションやテストコードから別のログ出力先を差し込むこともできます。</p>
+<hr>
+<h4 id="22-ゲイン調整の実行">2.2 ゲイン調整の実行</h4>
+<p><code>performGainAdjustment</code> が <code>true</code> の場合、<a class="xref" href="../low-level-api/ExBrainSdk.ExBrainApi.html#ExBrainSdk_ExBrainApi_PerformGainAdjustmentAsync_System_String_System_String_">PerformGainAdjustmentAsync メソッド</a> を呼び出してゲイン調整を行います。</p>
+<pre><code class="lang-csharp">if (performGainAdjustment)
+{
+    _ = await api.PerformGainAdjustmentAsync(api.HandleId);
+    log(&quot;Gain adjustment completed.&quot;);
+}
+</code></pre>
+<p><code>api.HandleId</code> は接続済みデバイスを識別するためのハンドルです。
+ゲイン調整は、計測値が適切なレンジに収まるよう補正するための前処理として利用されます。
+このサンプルでは戻り値を検証していませんが、実際のアプリケーションでは結果コードに基づく分岐処理を追加するのが一般的です。</p>
+<hr>
+<h4 id="23-キャリブレーションの実行">2.3 キャリブレーションの実行</h4>
+<p>次に <code>performCalibration</code> が <code>true</code> の場合、<a class="xref" href="../low-level-api/ExBrainSdk.ExBrainApi.html#ExBrainSdk_ExBrainApi_PerformCalibrationAsync_System_String_">PerformCalibrationAsync メソッド</a> を呼び出してキャリブレーションを行います。</p>
+<pre><code class="lang-csharp">if (performCalibration)
+{
+    _ = await api.PerformCalibrationAsync(api.HandleId);
+    log(&quot;Calibration completed.&quot;);
+}
+</code></pre>
+<p>キャリブレーションは装着状態や個人差を反映した補正処理です。
+ゲイン調整と同様に、このサンプルでは正常系の流れを分かりやすく示すため簡潔な記述にしています。</p>
+<hr>
+<h4 id="24-experiment-インスタンスの生成とフィルタ設定">2.4 Experiment インスタンスの生成とフィルタ設定</h4>
+<p>計測本体は <a class="xref" href="../high-level-api/ExBrainSdk.HighLevel.Experiment.html">Experiment クラス</a> によって管理されます。
+ここでは <code>Experiment(api, 10, instantFrameCallback)</code> を生成し、その後ローパスフィルタを設定しています。</p>
+<pre><code class="lang-csharp">var experiment = new Experiment(api, 10, instantFrameCallback);
+_ = experiment.SetLowpassFilter(2, 0.2, 10);
+</code></pre>
+<p>第 2 引数 <code>10</code> は SMD 計算用のターゲットウィンドウサイズです。
+<code>instantFrameCallback</code> を指定すれば、計測中のリアルタイムフレーム通知を受け取ることもできます。
+また、<code>SetLowpassFilter(2, 0.2, 10)</code> では Butterworth ローパスフィルタを設定しています。
+パラメータは順に、フィルタ次数、カットオフ周波数、サンプリングレートを表します。</p>
+<hr>
+<h4 id="25-実験の開始">2.5 実験の開始</h4>
+<p>フィルタ設定後、<a class="xref" href="../high-level-api/ExBrainSdk.HighLevel.Experiment.html#ExBrainSdk_HighLevel_Experiment_StartExperimentAsync_System_String_">StartExperimentAsync メソッド</a> を呼び出して計測を開始します。</p>
+<pre><code class="lang-csharp">_ = await experiment.StartExperimentAsync(outputFolder);
+log(&quot;Experiment started. Idling for 5 seconds...&quot;);
+await Task.Delay(TimeSpan.FromSeconds(5));
+log(&quot;Idling finished&quot;);
+</code></pre>
+<p><code>outputFolder</code> を指定すると、実験開始時に CSV 出力先として利用されます。
+開始直後には 5 秒の待機時間を設けており、ここでは計測開始後の安定化期間や、ユーザーによる導入処理の余地を表現しています。</p>
+<hr>
+<h4 id="26-ブロック時間設定と-metadata-の作成">2.6 ブロック時間設定と MetaData の作成</h4>
+<p>次に、各ブロックで使用する時間設定を定義し、<a class="xref" href="../high-level-api/ExBrainSdk.HighLevel.MetaData.html">MetaData クラス</a> を生成します。</p>
+<pre><code class="lang-csharp">int preFittingSeconds = 5;
+int taskSeconds = 5;
+int calmDownSeconds = 5;
+int postFittingSeconds = 5;
+var preTaskMetaData = new MetaData(api, &quot;TestTask&quot;, preFittingSeconds, taskSeconds, calmDownSeconds, postFittingSeconds);
+var postTaskMetaData = new MetaData(api, &quot;TestTask&quot;, preFittingSeconds, taskSeconds, calmDownSeconds, postFittingSeconds);
+int totalSeconds = preFittingSeconds + taskSeconds + calmDownSeconds + postFittingSeconds;
+</code></pre>
+<p>各値は以下の意味を持ちます。</p>
+<ul>
+<li><code>preFittingSeconds</code>: タスク前の事前装着調整フェーズ</li>
+<li><code>taskSeconds</code>: 実タスクフェーズ</li>
+<li><code>calmDownSeconds</code>: タスク後のクールダウンフェーズ</li>
+<li><code>postFittingSeconds</code>: 最後の事後装着調整フェーズ</li>
+</ul>
+<p>このサンプルでは前半と後半で同一設定を使用していますが、<code>preTaskMetaData</code> と <code>postTaskMetaData</code> を分けることで、将来的に条件の異なるブロック構成へ拡張しやすくしています。</p>
+<hr>
+<h4 id="27-前半ブロックの実行と出力">2.7 前半ブロックの実行と出力</h4>
+<p>最初の 3 ブロックは前半条件として実行されます。
+各ブロックでは <a class="xref" href="../high-level-api/ExBrainSdk.HighLevel.Experiment.html#ExBrainSdk_HighLevel_Experiment_RunBlockAsync_">RunBlockAsync メソッド</a> を呼び出し、完了後に JSON ファイルを保存します。
+1 ブロック目のみ CSV も併せて出力しています。</p>
+<pre><code class="lang-csharp">string outputDir = outputFolder ?? &quot;&quot;;
+log($&quot;Starting block1 ({totalSeconds} seconds)&quot;);
+Experiment.NotifyStageStartedCallback callback = stage =&gt;
+{
+    switch (stage)
+    {
+        case BlockStage.PreFitting:
+            break;
+        case BlockStage.Task:
+            log(&quot;TASK&quot;);
+            break;
+        case BlockStage.CalmDown:
+            log(&quot;REST&quot;);
+            break;
+        case BlockStage.PostFitting:
+            break;
+        default:
+            break;
+    }
+};
+log(&quot;REST&quot;);
+Block block1 = await experiment.RunBlockAsync(preTaskMetaData, &quot;TestBlock&quot;, &quot;Participant1&quot;, callback);
+log(&quot;Block1 finished&quot;);
+await File.WriteAllTextAsync(Path.Combine(outputDir, &quot;block1.json&quot;), block1.ToJson());
+Block block1_reconstructed = Block.FromJson(api, block1.ToJson())!;
+await File.WriteAllTextAsync(Path.Combine(outputDir, &quot;block1.csv&quot;), block1_reconstructed.ToCsv());
+
+log($&quot;Starting block2 ({totalSeconds} seconds)&quot;);
+Block block2 = await experiment.RunBlockAsync(preTaskMetaData, &quot;TestBlock&quot;, &quot;Participant1&quot;, callback);
+log(&quot;Block2 finished&quot;);
+await File.WriteAllTextAsync(Path.Combine(outputDir, &quot;block2.json&quot;), block2.ToJson());
+
+log($&quot;Starting block3 ({totalSeconds} seconds)&quot;);
+Block block3 = await experiment.RunBlockAsync(preTaskMetaData, &quot;TestBlock&quot;, &quot;Participant1&quot;, callback);
+log(&quot;Block3 finished&quot;);
+await File.WriteAllTextAsync(Path.Combine(outputDir, &quot;block3.json&quot;), block3.ToJson());
+</code></pre>
+<p><code>RunBlockAsync(...)</code> は、事前装着調整、タスク、クールダウン、事後装着調整を含む 1 ブロック分の処理を完了まで実行し、その結果を <a class="xref" href="../high-level-api/ExBrainSdk.HighLevel.Block.html">Block クラス</a> として返します。
+<code>ToJson()</code> と <code>ToCsv()</code> を使うことで、ブロック単位の結果をそのまま保存できます。</p>
+<p>block1 では CSV を出力する前に <code>Block.FromJson(api, block1.ToJson())</code> で JSON 経由のラウンドトリップを行い、シリアライズ／デシリアライズが正しく機能することを示しています。
+通常のアプリケーションでは <code>block1.ToCsv()</code> を直接呼び出すだけで十分です。</p>
+<p>第 4 引数の <a class="xref" href="../high-level-api/ExBrainSdk.HighLevel.Experiment.NotifyStageStartedCallback.html">NotifyStageStartedCallback</a> は <a class="xref" href="../high-level-api/ExBrainSdk.HighLevel.BlockStage.html">BlockStage</a> の各フェーズが開始するたびに <code>PreFitting</code> / <code>Task</code> / <code>CalmDown</code> / <code>PostFitting</code> の順で通知されます。
+このサンプルでは <code>callback</code> という変数に一度だけ定義し、全 6 ブロックで使い回しています。<code>switch</code> 文で受け取ったステージごとに分岐し、<code>Task</code> 開始時（タスク開始時）に <code>TASK</code>、<code>CalmDown</code> 開始時（タスク終了時）に <code>REST</code> をログ出力することで、参加者に対するタスク／休憩の合図を表現しています。block1 の直前に <code>log(&quot;REST&quot;)</code> を出力しているのは、最初のブロック開始までの初期待機状態を <code>REST</code> として扱うためです。
+コールバック自体は省略可能ですが、ここでは全ブロックで同一の挙動が必要なため明示的に渡しています。</p>
+<hr>
+<h4 id="28-介入処理の挿入ポイント">2.8 介入処理の挿入ポイント</h4>
+<p>前半と後半のブロック群の間には、コメントで介入処理の挿入ポイントが示されています。</p>
+<pre><code class="lang-csharp">// Add your own intervention codes.
+</code></pre>
+<p>ここでは、前半ブロック群と後半ブロック群の間に、刺激提示、条件変更、外部タスク開始などの独自処理を差し込むことを想定しています。</p>
+<hr>
+<h4 id="29-後半ブロックの実行">2.9 後半ブロックの実行</h4>
+<p>後半の 3 ブロックも同様に <code>RunBlockAsync(...)</code> で実行し、結果を JSON として保存します。</p>
+<pre><code class="lang-csharp">log($&quot;Starting block4 ({totalSeconds} seconds)&quot;);
+Block block4 = await experiment.RunBlockAsync(postTaskMetaData, &quot;TestBlock&quot;, &quot;Participant1&quot;, callback);
+log(&quot;Block4 finished&quot;);
+await File.WriteAllTextAsync(Path.Combine(outputDir, &quot;block4.json&quot;), block4.ToJson());
+
+log($&quot;Starting block5 ({totalSeconds} seconds)&quot;);
+Block block5 = await experiment.RunBlockAsync(postTaskMetaData, &quot;TestBlock&quot;, &quot;Participant1&quot;, callback);
+log(&quot;Block5 finished&quot;);
+await File.WriteAllTextAsync(Path.Combine(outputDir, &quot;block5.json&quot;), block5.ToJson());
+
+log($&quot;Starting block6 ({totalSeconds} seconds)&quot;);
+Block block6 = await experiment.RunBlockAsync(postTaskMetaData, &quot;TestBlock&quot;, &quot;Participant1&quot;, callback);
+log(&quot;Block6 finished&quot;);
+await File.WriteAllTextAsync(Path.Combine(outputDir, &quot;block6.json&quot;), block6.ToJson());
+</code></pre>
+<p>後半ブロックも前半と同じ <code>callback</code> を使い回すことで、<code>TASK</code> / <code>REST</code> の合図表示を全ブロックで統一しています。
+前半ブロック群と後半ブロック群を分けて保存することで、解析時に条件ごとのまとまりを維持しやすくなります。</p>
+<hr>
+<h4 id="210-実験の終了とデバイス切断">2.10 実験の終了とデバイス切断</h4>
+<p>すべてのブロック実行後、<a class="xref" href="../high-level-api/ExBrainSdk.HighLevel.Experiment.html#ExBrainSdk_HighLevel_Experiment_FinishExperimentAsync_">FinishExperimentAsync メソッド</a> で実験を終了し、その後 <a class="xref" href="../low-level-api/ExBrainSdk.ExBrainApi.html#ExBrainSdk_ExBrainApi_DisconnectDeviceAsync">DisconnectDeviceAsync メソッド</a> でデバイスを切断します。</p>
+<pre><code class="lang-csharp">_ = await experiment.FinishExperimentAsync();
+await api.DisconnectDeviceAsync();
+</code></pre>
+<p>計測を終了する際には <code>FinishExperimentAsync()</code> を呼び出し、その後にデバイス切断処理を行います。</p>
+<hr>
+<h4 id="211-介入前後の統計比較">2.11 介入前後の統計比較</h4>
+<p>最後に、前半 3 ブロックと後半 3 ブロックを <a class="xref" href="../high-level-api/ExBrainSdk.HighLevel.TaskComparison.html#ExBrainSdk_HighLevel_TaskComparison_CompareWithinParticipantPrePost_">TaskComparison.CompareWithinParticipantPrePost メソッド</a> で比較します。</p>
+<pre><code class="lang-csharp">var comparison = TaskComparison.CompareWithinParticipantPrePost(api, [block1, block2, block3], [block4, block5, block6]);
+log($&quot;The statistical test being used is: {comparison.HbDensityLTestKind}&quot;);
+log(&quot;Comparison for hbDensityL&quot;);
+log($&quot;  P-value = {comparison.HbDensityLPValue}, Significant = {comparison.HbDensityLPValue &lt; 0.05}&quot;);
+</code></pre>
+<p>この比較は、同一参加者の介入前後ブロック群を対象にした統計評価です。
+ログには使用された検定種別と <code>hbDensityL</code> の p 値、有意差判定結果を出力しています。
+必要に応じて右側データや差分値の出力を追加することも可能です。</p>
+<hr>
+<p>以上で、High-Level API サンプルアプリのソースコード解説を終わります。</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

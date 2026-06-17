@@ -1,0 +1,989 @@
+{
+  "source_base_path": "C:/actions-runner/_work/general/general/docfx",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/basic-functionality.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/basic-functionality.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/csv-data.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/csv-data.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/high-level-sample.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/high-level-sample.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/low-level-sample.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/low-level-sample.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/neu-license.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/neu-license.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/others.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/others.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/release-license-internals.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/release-license-internals.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/release-license-packaging.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/release-license-packaging.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/terms-of-service.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/terms-of-service.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docs/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/toc.html"
+        },
+        ".json": {
+          "relative_path": "docs/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/trouble-shooting.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/trouble-shooting.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "high-level-api/ExBrainSdk.HighLevel.Block.yml",
+      "output": {
+        ".html": {
+          "relative_path": "high-level-api/ExBrainSdk.HighLevel.Block.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.HighLevel.Block",
+      "Summary": "<p sourcefile=\"high-level-api/ExBrainSdk.HighLevel.Block.yml\" sourcestartlinenumber=\"1\">全フレームデータを含む完了済み計測ブロック / A completed measurement block with all frame data.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "high-level-api/ExBrainSdk.HighLevel.BlockStage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "high-level-api/ExBrainSdk.HighLevel.BlockStage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.HighLevel.BlockStage",
+      "Summary": "<p sourcefile=\"high-level-api/ExBrainSdk.HighLevel.BlockStage.yml\" sourcestartlinenumber=\"1\">計測ブロックの 4 つのフェーズ / The four phases of a measurement block.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "high-level-api/ExBrainSdk.HighLevel.CsvExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "high-level-api/ExBrainSdk.HighLevel.CsvExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.HighLevel.CsvExtensions",
+      "Summary": "<p sourcefile=\"high-level-api/ExBrainSdk.HighLevel.CsvExtensions.yml\" sourcestartlinenumber=\"1\">CSV 出力用拡張メソッド群 / Extension methods for CSV export.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "high-level-api/ExBrainSdk.HighLevel.Experiment.NotifyInstantFrameCallback.yml",
+      "output": {
+        ".html": {
+          "relative_path": "high-level-api/ExBrainSdk.HighLevel.Experiment.NotifyInstantFrameCallback.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.HighLevel.Experiment.NotifyInstantFrameCallback",
+      "Summary": "<p sourcefile=\"high-level-api/ExBrainSdk.HighLevel.Experiment.NotifyInstantFrameCallback.yml\" sourcestartlinenumber=\"1\">SMD 値付きリアルタイム計測フレームごとに呼び出されるコールバック / Callback invoked for each real-time measurement frame with SMD values.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "high-level-api/ExBrainSdk.HighLevel.Experiment.NotifyStageStartedCallback.yml",
+      "output": {
+        ".html": {
+          "relative_path": "high-level-api/ExBrainSdk.HighLevel.Experiment.NotifyStageStartedCallback.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.HighLevel.Experiment.NotifyStageStartedCallback",
+      "Summary": "<p sourcefile=\"high-level-api/ExBrainSdk.HighLevel.Experiment.NotifyStageStartedCallback.yml\" sourcestartlinenumber=\"1\">ブロックの各フェーズ開始時に呼び出されるコールバック / Callback invoked when each phase of a block begins.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "high-level-api/ExBrainSdk.HighLevel.Experiment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "high-level-api/ExBrainSdk.HighLevel.Experiment.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.HighLevel.Experiment",
+      "Summary": "<p sourcefile=\"high-level-api/ExBrainSdk.HighLevel.Experiment.yml\" sourcestartlinenumber=\"1\">ブロック進行とデータ収集を管理するハイレベル実験 API。所有者は API / High-level experiment API that manages block sequencing and data collection. Owned by the API.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "high-level-api/ExBrainSdk.HighLevel.FrameData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "high-level-api/ExBrainSdk.HighLevel.FrameData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.HighLevel.FrameData",
+      "Summary": "<p sourcefile=\"high-level-api/ExBrainSdk.HighLevel.FrameData.yml\" sourcestartlinenumber=\"1\">完了した Block に格納される単一の処理済み計測フレーム / A single processed measurement frame stored in a completed Block.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "high-level-api/ExBrainSdk.HighLevel.InstantFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "high-level-api/ExBrainSdk.HighLevel.InstantFrame.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.HighLevel.InstantFrame",
+      "Summary": "<p sourcefile=\"high-level-api/ExBrainSdk.HighLevel.InstantFrame.yml\" sourcestartlinenumber=\"1\">SMD 値を含むハイレベルのリアルタイム計測フレーム / High-level real-time measurement frame including SMD values.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "high-level-api/ExBrainSdk.HighLevel.JsonExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "high-level-api/ExBrainSdk.HighLevel.JsonExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.HighLevel.JsonExtensions",
+      "Summary": "<p sourcefile=\"high-level-api/ExBrainSdk.HighLevel.JsonExtensions.yml\" sourcestartlinenumber=\"1\">JSON シリアライズ拡張メソッド群 / Extension methods for JSON serialization.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "high-level-api/ExBrainSdk.HighLevel.MetaData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "high-level-api/ExBrainSdk.HighLevel.MetaData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.HighLevel.MetaData",
+      "Summary": "<p sourcefile=\"high-level-api/ExBrainSdk.HighLevel.MetaData.yml\" sourcestartlinenumber=\"1\">計測ブロックの時間フェーズ設定。所有者は API / Configuration for a measurement block's timing phases. Owned by the API.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "high-level-api/ExBrainSdk.HighLevel.StatisticalTest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "high-level-api/ExBrainSdk.HighLevel.StatisticalTest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.HighLevel.StatisticalTest",
+      "Summary": "<p sourcefile=\"high-level-api/ExBrainSdk.HighLevel.StatisticalTest.yml\" sourcestartlinenumber=\"1\">TaskComparison で使用される統計検定種別 / Statistical test used in a TaskComparison.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "high-level-api/ExBrainSdk.HighLevel.Tail.yml",
+      "output": {
+        ".html": {
+          "relative_path": "high-level-api/ExBrainSdk.HighLevel.Tail.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.HighLevel.Tail",
+      "Summary": "<p sourcefile=\"high-level-api/ExBrainSdk.HighLevel.Tail.yml\" sourcestartlinenumber=\"1\">統計検定の片側・両側指定 / Tail direction for statistical tests.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "high-level-api/ExBrainSdk.HighLevel.TaskComparison.yml",
+      "output": {
+        ".html": {
+          "relative_path": "high-level-api/ExBrainSdk.HighLevel.TaskComparison.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.HighLevel.TaskComparison",
+      "Summary": "<p sourcefile=\"high-level-api/ExBrainSdk.HighLevel.TaskComparison.yml\" sourcestartlinenumber=\"1\">2 つのブロック集合間の統計比較結果。インスタンス生成は static メソッドを使用 / Result of a statistical comparison between two sets of blocks. Use the static methods to create instances.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "high-level-api/ExBrainSdk.HighLevel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "high-level-api/ExBrainSdk.HighLevel.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.HighLevel",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "high-level-api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "high-level-api/toc.html"
+        },
+        ".json": {
+          "relative_path": "high-level-api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/ApiFlow_1.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/ApiFlow_1.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/ApiFlow_2.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/ApiFlow_2.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/LicenseDialog.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/LicenseDialog.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/LicenseManager.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/LicenseManager.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/N_logo.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/N_logo.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/NeU_logo.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/NeU_logo.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/StateTransition.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/StateTransition.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Datas.BatteryState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Datas.BatteryState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Datas.BatteryState",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Datas.BatteryState.yml\" sourcestartlinenumber=\"1\">バッテリー状態 / Battery state</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Datas.DeviceHwInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Datas.DeviceHwInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Datas.DeviceHwInfo",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Datas.DeviceHwInfo.yml\" sourcestartlinenumber=\"1\">ハードウェア装置情報 / Hardware device information</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Datas.DeviceHwState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Datas.DeviceHwState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Datas.DeviceHwState",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Datas.DeviceHwState.yml\" sourcestartlinenumber=\"1\">ハードウェア装置状態 / Device hardware state</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Datas.DeviceInformationEx.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Datas.DeviceInformationEx.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Datas.DeviceInformationEx",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Datas.DeviceInformationEx.yml\" sourcestartlinenumber=\"1\">拡張装置情報データ / Extended device information</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Datas.ExBrainCalibration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Datas.ExBrainCalibration.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Datas.ExBrainCalibration",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Datas.ExBrainCalibration.yml\" sourcestartlinenumber=\"1\">脳計測キャリブレーションデータ / Brain measurement calibration data</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Datas.ExBrainDiscoveredDevice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Datas.ExBrainDiscoveredDevice.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Datas.ExBrainDiscoveredDevice",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Datas.ExBrainDiscoveredDevice.yml\" sourcestartlinenumber=\"1\">発見された装置データ / Discovered device information</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Datas.ExBrainGainInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Datas.ExBrainGainInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Datas.ExBrainGainInfo",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Datas.ExBrainGainInfo.yml\" sourcestartlinenumber=\"1\">ゲイン情報 / Gain information</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Datas.ExBrainMeasureData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Datas.ExBrainMeasureData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Datas.ExBrainMeasureData",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Datas.ExBrainMeasureData.yml\" sourcestartlinenumber=\"1\">装置計測結果データ / Device measurement result data</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Datas.ExBrainSearchParameter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Datas.ExBrainSearchParameter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Datas.ExBrainSearchParameter",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Datas.ExBrainSearchParameter.yml\" sourcestartlinenumber=\"1\">装置検索パラメータ / Device search parameters</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Datas.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Datas.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Datas",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkAccRange.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkAccRange.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Enumerations.EnmSdkAccRange",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Enumerations.EnmSdkAccRange.yml\" sourcestartlinenumber=\"1\">モーション加速度レンジ区分 / Motion acceleration range categories</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkConnectType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkConnectType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Enumerations.EnmSdkConnectType",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Enumerations.EnmSdkConnectType.yml\" sourcestartlinenumber=\"1\">接続方式定義 / Connection type definitions</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkDeviceInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkDeviceInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Enumerations.EnmSdkDeviceInfo",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Enumerations.EnmSdkDeviceInfo.yml\" sourcestartlinenumber=\"1\">デバイス情報区分定義 / Device info categories</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkDeviceState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkDeviceState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Enumerations.EnmSdkDeviceState",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Enumerations.EnmSdkDeviceState.yml\" sourcestartlinenumber=\"1\">デバイス状態区分定義 / Device state categories</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkDeviceType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkDeviceType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Enumerations.EnmSdkDeviceType",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Enumerations.EnmSdkDeviceType.yml\" sourcestartlinenumber=\"1\">機種区分 / Device type categories</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkDiagRecordType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkDiagRecordType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Enumerations.EnmSdkDiagRecordType",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Enumerations.EnmSdkDiagRecordType.yml\" sourcestartlinenumber=\"1\">ダイアグレコードタイプ / Diagnostic record types</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Enumerations.EnmSdkEvent",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Enumerations.EnmSdkEvent.yml\" sourcestartlinenumber=\"1\">動作イベント定義 / SDK event definitions</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkGyroRange.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkGyroRange.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Enumerations.EnmSdkGyroRange",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Enumerations.EnmSdkGyroRange.yml\" sourcestartlinenumber=\"1\">モーション角速度レンジ区分 / Motion gyro range categories</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkMeasurementCycle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkMeasurementCycle.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Enumerations.EnmSdkMeasurementCycle",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Enumerations.EnmSdkMeasurementCycle.yml\" sourcestartlinenumber=\"1\">計測サイクル定義 / Measurement cycle definitions</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkMeasurementMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkMeasurementMode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Enumerations.EnmSdkMeasurementMode",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Enumerations.EnmSdkMeasurementMode.yml\" sourcestartlinenumber=\"1\">計測モード定義 / Measurement mode definitions</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkMessageType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkMessageType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Enumerations.EnmSdkMessageType",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Enumerations.EnmSdkMessageType.yml\" sourcestartlinenumber=\"1\">テキストメッセージタイプ / Text message types</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkPdLocations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkPdLocations.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Enumerations.EnmSdkPdLocations",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Enumerations.EnmSdkPdLocations.yml\" sourcestartlinenumber=\"1\">計測位置区分 / Measurement locations</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Enumerations.EnmSdkResult",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Enumerations.EnmSdkResult.yml\" sourcestartlinenumber=\"1\">処理結果定義 / Result code definitions</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkSamplingBattery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkSamplingBattery.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Enumerations.EnmSdkSamplingBattery",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Enumerations.EnmSdkSamplingBattery.yml\" sourcestartlinenumber=\"1\">バッテリーサンプリング区分 / Battery sampling rate categories</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkSamplingMotion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkSamplingMotion.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Enumerations.EnmSdkSamplingMotion",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Enumerations.EnmSdkSamplingMotion.yml\" sourcestartlinenumber=\"1\">モーションサンプリング区分 / Motion sampling rate categories</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkSearchEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkSearchEvent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Enumerations.EnmSdkSearchEvent",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Enumerations.EnmSdkSearchEvent.yml\" sourcestartlinenumber=\"1\">機器検索結果区分 / Device discovery event categories</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Enumerations.EnmSdkStatus",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Enumerations.EnmSdkStatus.yml\" sourcestartlinenumber=\"1\">動作状態定義 / SDK status definitions</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkTransRateBattery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkTransRateBattery.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Enumerations.EnmSdkTransRateBattery",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Enumerations.EnmSdkTransRateBattery.yml\" sourcestartlinenumber=\"1\">バッテリー転送周期区分 / Battery transfer rate categories</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkTransRateHR.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkTransRateHR.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Enumerations.EnmSdkTransRateHR",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Enumerations.EnmSdkTransRateHR.yml\" sourcestartlinenumber=\"1\">心拍数転送周期区分 / Heart-rate transfer rate categories</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkTransRateMotion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkTransRateMotion.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Enumerations.EnmSdkTransRateMotion",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Enumerations.EnmSdkTransRateMotion.yml\" sourcestartlinenumber=\"1\">モーション転送周期区分 / Motion transfer rate categories</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkTransRatePD.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Enumerations.EnmSdkTransRatePD.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Enumerations.EnmSdkTransRatePD",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.Enumerations.EnmSdkTransRatePD.yml\" sourcestartlinenumber=\"1\">脳活動計測データ転送周期区分 / Brain activity transfer rate categories</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.Enumerations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.Enumerations.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.Enumerations",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.ExBrainApi.NotifyMeasureDatasCallBack.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.ExBrainApi.NotifyMeasureDatasCallBack.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.ExBrainApi.NotifyMeasureDatasCallBack",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.ExBrainApi.NotifyMeasureDatasCallBack.yml\" sourcestartlinenumber=\"1\">装置計測データ通知用コールバック関数 / Callback for device measurement data notification</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.ExBrainApi.NotifyProcessMessageCallBack.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.ExBrainApi.NotifyProcessMessageCallBack.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.ExBrainApi.NotifyProcessMessageCallBack",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.ExBrainApi.NotifyProcessMessageCallBack.yml\" sourcestartlinenumber=\"1\">テキストメッセージ通知用コールバック関数 / Callback for text message notification</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.ExBrainApi.NotifySearchDevicesCallBack.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.ExBrainApi.NotifySearchDevicesCallBack.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.ExBrainApi.NotifySearchDevicesCallBack",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.ExBrainApi.NotifySearchDevicesCallBack.yml\" sourcestartlinenumber=\"1\">装置検索結果通知用コールバック関数 / Callback for device search result notification</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.ExBrainApi.NotifyStatusChangedCallBack.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.ExBrainApi.NotifyStatusChangedCallBack.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.ExBrainApi.NotifyStatusChangedCallBack",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.ExBrainApi.NotifyStatusChangedCallBack.yml\" sourcestartlinenumber=\"1\">状態変化通知用コールバック関数 / Callback for status change notification</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.ExBrainApi.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.ExBrainApi.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk.ExBrainApi",
+      "Summary": "<p sourcefile=\"low-level-api/ExBrainSdk.ExBrainApi.yml\" sourcestartlinenumber=\"1\">ExBrain low-level API クラス / ExBrain low-level API class</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "low-level-api/ExBrainSdk.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/ExBrainSdk.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "ExBrainSdk",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "low-level-api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "low-level-api/toc.html"
+        },
+        ".json": {
+          "relative_path": "low-level-api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

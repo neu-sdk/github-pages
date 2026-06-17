@@ -1,0 +1,1799 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ExBrainApi | ExBrainSDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ExBrainApi | ExBrainSDK ">
+      
+      <meta name="description" content="ExBrain low-level API クラス / ExBrain low-level API class">
+      <link rel="icon" href="../images/N_logo.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/neu-sdk/general/new/main/apiSpec/new?filename=ExBrainSdk_ExBrainApi.md&amp;value=---%0Auid%3A%20ExBrainSdk.ExBrainApi%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/NeU_logo.svg" alt="ExBrainSDK v3.0.1">
+            ExBrainSDK v3.0.1
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="ExBrainSdk.ExBrainApi">
+
+
+
+  <h1 id="ExBrainSdk_ExBrainApi" data-uid="ExBrainSdk.ExBrainApi" class="text-break">
+Class ExBrainApi  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="ExBrainSdk.html">ExBrainSdk</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>ExBrainSdk.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>ExBrain low-level API クラス / ExBrain low-level API class</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ExBrainApi</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">ExBrainApi</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="ExBrainSdk_ExBrainApi__ctor_" data-uid="ExBrainSdk.ExBrainApi.#ctor*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi__ctor_ExBrainSdk_ExBrainApi_NotifyStatusChangedCallBack_ExBrainSdk_ExBrainApi_NotifyProcessMessageCallBack_System_Boolean_" data-uid="ExBrainSdk.ExBrainApi.#ctor(ExBrainSdk.ExBrainApi.NotifyStatusChangedCallBack,ExBrainSdk.ExBrainApi.NotifyProcessMessageCallBack,System.Boolean)">
+  ExBrainApi(NotifyStatusChangedCallBack?, NotifyProcessMessageCallBack?, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L147"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ExBrainApi インスタンスを生成する / Creates an ExBrainApi instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ExBrainApi(ExBrainApi.NotifyStatusChangedCallBack? notifyStatusChangedCallBack = null, ExBrainApi.NotifyProcessMessageCallBack? notifyProcessMessageCallBack = null, bool waitReconnectionWhenLost = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>notifyStatusChangedCallBack</code> <a class="xref" href="ExBrainSdk.ExBrainApi.html">ExBrainApi</a>.<a class="xref" href="ExBrainSdk.ExBrainApi.NotifyStatusChangedCallBack.html">NotifyStatusChangedCallBack</a></dt>
+    <dd><p>状態変化通知用コールバック / Callback for status change notification</p>
+</dd>
+    <dt><code>notifyProcessMessageCallBack</code> <a class="xref" href="ExBrainSdk.ExBrainApi.html">ExBrainApi</a>.<a class="xref" href="ExBrainSdk.ExBrainApi.NotifyProcessMessageCallBack.html">NotifyProcessMessageCallBack</a></dt>
+    <dd><p>テキストメッセージ通知用コールバック / Callback for text message notification</p>
+</dd>
+    <dt><code>waitReconnectionWhenLost</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>切断時再接続フラグ / Reconnect on disconnect flag</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="ExBrainSdk_ExBrainApi_Calibration_" data-uid="ExBrainSdk.ExBrainApi.Calibration*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_Calibration" data-uid="ExBrainSdk.ExBrainApi.Calibration">
+  Calibration
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L671"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>現状のキャリブレーション情報の参照 / Current calibration information reference</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ExBrainCalibration? Calibration { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ExBrainSdk.Datas.ExBrainCalibration.html">ExBrainCalibration</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_ConnectType_" data-uid="ExBrainSdk.ExBrainApi.ConnectType*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_ConnectType" data-uid="ExBrainSdk.ExBrainApi.ConnectType">
+  ConnectType
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>接続方式 / Connection type</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EnmSdkConnectType ConnectType { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ExBrainSdk.Enumerations.EnmSdkConnectType.html">EnmSdkConnectType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_CurrentStatus_" data-uid="ExBrainSdk.ExBrainApi.CurrentStatus*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_CurrentStatus" data-uid="ExBrainSdk.ExBrainApi.CurrentStatus">
+  CurrentStatus
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L80"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>SDK動作状態 / SDK operation status</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EnmSdkStatus CurrentStatus { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ExBrainSdk.Enumerations.EnmSdkStatus.html">EnmSdkStatus</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_DiscoveredDevice_" data-uid="ExBrainSdk.ExBrainApi.DiscoveredDevice*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_DiscoveredDevice" data-uid="ExBrainSdk.ExBrainApi.DiscoveredDevice">
+  DiscoveredDevice
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L95"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>装置検索結果リスト / Device search result list</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ExBrainDiscoveredDevice DiscoveredDevice { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ExBrainSdk.Datas.ExBrainDiscoveredDevice.html">ExBrainDiscoveredDevice</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_Gain_" data-uid="ExBrainSdk.ExBrainApi.Gain*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_Gain" data-uid="ExBrainSdk.ExBrainApi.Gain">
+  Gain
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L656"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>現在ゲイン値参照 / Current gain value reference</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ExBrainGainInfo? Gain { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ExBrainSdk.Datas.ExBrainGainInfo.html">ExBrainGainInfo</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_HandleId_" data-uid="ExBrainSdk.ExBrainApi.HandleId*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_HandleId" data-uid="ExBrainSdk.ExBrainApi.HandleId">
+  HandleId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>装置接続ID / Device connection ID</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string HandleId { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_HwInfo_" data-uid="ExBrainSdk.ExBrainApi.HwInfo*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_HwInfo" data-uid="ExBrainSdk.ExBrainApi.HwInfo">
+  HwInfo
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L117"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ハードウェア情報データ / Hardware information data</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DeviceHwInfo? HwInfo { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ExBrainSdk.Datas.DeviceHwInfo.html">DeviceHwInfo</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_HwState_" data-uid="ExBrainSdk.ExBrainApi.HwState*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_HwState" data-uid="ExBrainSdk.ExBrainApi.HwState">
+  HwState
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L128"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ハードウェア状態データ / Hardware state data</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DeviceHwState? HwState { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ExBrainSdk.Datas.DeviceHwState.html">DeviceHwState</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_IsConnected_" data-uid="ExBrainSdk.ExBrainApi.IsConnected*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_IsConnected" data-uid="ExBrainSdk.ExBrainApi.IsConnected">
+  IsConnected
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>装置接続済み状態 / Device connected state</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsConnected { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_IsInitiated_" data-uid="ExBrainSdk.ExBrainApi.IsInitiated*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_IsInitiated" data-uid="ExBrainSdk.ExBrainApi.IsInitiated">
+  IsInitiated
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>SDK初期化済み状態 / SDK initialized state</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsInitiated { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_LogFolder_" data-uid="ExBrainSdk.ExBrainApi.LogFolder*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_LogFolder" data-uid="ExBrainSdk.ExBrainApi.LogFolder">
+  LogFolder
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L109"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ログ出力先フォルダ / Log output folder</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? LogFolder { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_ProductName_" data-uid="ExBrainSdk.ExBrainApi.ProductName*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_ProductName" data-uid="ExBrainSdk.ExBrainApi.ProductName">
+  ProductName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>SDK製品名称 / SDK product name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ProductName { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_ProductVersion_" data-uid="ExBrainSdk.ExBrainApi.ProductVersion*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_ProductVersion" data-uid="ExBrainSdk.ExBrainApi.ProductVersion">
+  ProductVersion
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>SDK製品バージョン / SDK product version</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ProductVersion { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_SettingsFolder_" data-uid="ExBrainSdk.ExBrainApi.SettingsFolder*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_SettingsFolder" data-uid="ExBrainSdk.ExBrainApi.SettingsFolder">
+  SettingsFolder
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>設定フォルダ / Settings folder</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? SettingsFolder { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_Tag_" data-uid="ExBrainSdk.ExBrainApi.Tag*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_Tag" data-uid="ExBrainSdk.ExBrainApi.Tag">
+  Tag
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L139"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>タグ / Tag</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? Tag { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="ExBrainSdk_ExBrainApi_ConnectDeviceAsync_" data-uid="ExBrainSdk.ExBrainApi.ConnectDeviceAsync*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_ConnectDeviceAsync_System_String_ExBrainSdk_Enumerations_EnmSdkConnectType_" data-uid="ExBrainSdk.ExBrainApi.ConnectDeviceAsync(System.String,ExBrainSdk.Enumerations.EnmSdkConnectType)">
+  ConnectDeviceAsync(string, EnmSdkConnectType)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L324"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>装置接続 / Connect device</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;EnmSdkResult&gt; ConnectDeviceAsync(string handleId, EnmSdkConnectType connectType)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>handleId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>装置接続ID / Device ID for connection</p>
+</dd>
+    <dt><code>connectType</code> <a class="xref" href="ExBrainSdk.Enumerations.EnmSdkConnectType.html">EnmSdkConnectType</a></dt>
+    <dd><p>接続方式 / Connection type</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="ExBrainSdk.Enumerations.EnmSdkResult.html">EnmSdkResult</a>&gt;</dt>
+    <dd><p>結果コード / Result code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_DisconnectDeviceAsync_" data-uid="ExBrainSdk.ExBrainApi.DisconnectDeviceAsync*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_DisconnectDeviceAsync" data-uid="ExBrainSdk.ExBrainApi.DisconnectDeviceAsync">
+  DisconnectDeviceAsync()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L374"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>装置切断 / Disconnect device</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DisconnectDeviceAsync()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_ExitApi_" data-uid="ExBrainSdk.ExBrainApi.ExitApi*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_ExitApi" data-uid="ExBrainSdk.ExBrainApi.ExitApi">
+  ExitApi()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L248"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>API終了 / API termination</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ExitApi()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_GetBatteryStateAsync_" data-uid="ExBrainSdk.ExBrainApi.GetBatteryStateAsync*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_GetBatteryStateAsync_System_String_" data-uid="ExBrainSdk.ExBrainApi.GetBatteryStateAsync(System.String)">
+  GetBatteryStateAsync(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L505"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>バッテリー状態取得 / Get battery state</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;BatteryState?&gt; GetBatteryStateAsync(string handleId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>handleId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>装置接続ID / Device connection ID</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="ExBrainSdk.Datas.BatteryState.html">BatteryState</a>&gt;</dt>
+    <dd><p>バッテリー状態データ / Battery state data</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_InitApi_" data-uid="ExBrainSdk.ExBrainApi.InitApi*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_InitApi_System_Boolean_System_Boolean_System_String_System_String_System_String_" data-uid="ExBrainSdk.ExBrainApi.InitApi(System.Boolean,System.Boolean,System.String,System.String,System.String)">
+  InitApi(bool, bool, string?, string?, string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L176"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>API初期化 / API initialization</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[SuppressMessage(&quot;CodeQuality&quot;, &quot;IDE0060:Remove unused parameter&quot;, Justification = &quot;needOutputCommLog, settingsDir, and tag is not implemented yet&quot;)]
+public EnmSdkResult InitApi(bool needOutputTraceLog = false, bool needOutputCommLog = false, string? logDir = null, string? settingsDir = null, string? tag = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>needOutputTraceLog</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>トレースログ出力有無 / Output trace log flag</p>
+</dd>
+    <dt><code>needOutputCommLog</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>通信ログ出力有無 / Output communication log flag</p>
+</dd>
+    <dt><code>logDir</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>ログフォルダパス / Log folder path</p>
+</dd>
+    <dt><code>settingsDir</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>設定フォルダパス / Settings folder path</p>
+</dd>
+    <dt><code>tag</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>タグ / Tag</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ExBrainSdk.Enumerations.EnmSdkResult.html">EnmSdkResult</a></dt>
+    <dd><p>結果コード / Result code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="ExBrainSdk_ExBrainApi_InitApi_System_Boolean_System_Boolean_System_String_System_String_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>[1.1.5] modify 引数にtag追加 / [1.1.5] added 'tag' argument</p>
+</div>
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_PerformCalibrationAsync_" data-uid="ExBrainSdk.ExBrainApi.PerformCalibrationAsync*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_PerformCalibrationAsync_System_String_" data-uid="ExBrainSdk.ExBrainApi.PerformCalibrationAsync(System.String)">
+  PerformCalibrationAsync(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L406"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>キャリブレーション開始 / Start calibration</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;EnmSdkResult&gt; PerformCalibrationAsync(string handleId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>handleId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>装置接続ID / Device connection ID</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="ExBrainSdk.Enumerations.EnmSdkResult.html">EnmSdkResult</a>&gt;</dt>
+    <dd><p>結果コード / Result code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_PerformGainAdjustmentAsync_" data-uid="ExBrainSdk.ExBrainApi.PerformGainAdjustmentAsync*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_PerformGainAdjustmentAsync_System_String_System_String_" data-uid="ExBrainSdk.ExBrainApi.PerformGainAdjustmentAsync(System.String,System.String)">
+  PerformGainAdjustmentAsync(string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L391"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ゲイン調整開始 / Start gain adjustment</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;EnmSdkResult&gt; PerformGainAdjustmentAsync(string handleId, string mgcParamLogFolder = &quot;&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>handleId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>装置接続ID / Device connection ID</p>
+</dd>
+    <dt><code>mgcParamLogFolder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>ゲイン調整ログフォルダ / Gain adjustment log folder</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="ExBrainSdk.Enumerations.EnmSdkResult.html">EnmSdkResult</a>&gt;</dt>
+    <dd><p>結果コード / Result code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_RequestHardwareInfoAsync_" data-uid="ExBrainSdk.ExBrainApi.RequestHardwareInfoAsync*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_RequestHardwareInfoAsync_System_String_ExBrainSdk_Enumerations_EnmSdkDeviceInfo_" data-uid="ExBrainSdk.ExBrainApi.RequestHardwareInfoAsync(System.String,ExBrainSdk.Enumerations.EnmSdkDeviceInfo)">
+  RequestHardwareInfoAsync(string, EnmSdkDeviceInfo)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L476"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>装置からハードウェア情報を取得 / Get hardware info from device</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;EnmSdkResult&gt; RequestHardwareInfoAsync(string handleId, EnmSdkDeviceInfo type)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>handleId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>装置接続ID / Device connection ID</p>
+</dd>
+    <dt><code>type</code> <a class="xref" href="ExBrainSdk.Enumerations.EnmSdkDeviceInfo.html">EnmSdkDeviceInfo</a></dt>
+    <dd><p>デバイス情報区分 / Device info type</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="ExBrainSdk.Enumerations.EnmSdkResult.html">EnmSdkResult</a>&gt;</dt>
+    <dd><p>結果コード / Result code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_RequestHardwareStateAsync_" data-uid="ExBrainSdk.ExBrainApi.RequestHardwareStateAsync*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_RequestHardwareStateAsync_System_String_ExBrainSdk_Enumerations_EnmSdkDeviceState_" data-uid="ExBrainSdk.ExBrainApi.RequestHardwareStateAsync(System.String,ExBrainSdk.Enumerations.EnmSdkDeviceState)">
+  RequestHardwareStateAsync(string, EnmSdkDeviceState)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L491"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>装置からハードウェア状態を取得 / Get hardware state from device</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;EnmSdkResult&gt; RequestHardwareStateAsync(string handleId, EnmSdkDeviceState type)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>handleId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>装置接続ID / Device connection ID</p>
+</dd>
+    <dt><code>type</code> <a class="xref" href="ExBrainSdk.Enumerations.EnmSdkDeviceState.html">EnmSdkDeviceState</a></dt>
+    <dd><p>デバイス状態区分 / Device state type</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="ExBrainSdk.Enumerations.EnmSdkResult.html">EnmSdkResult</a>&gt;</dt>
+    <dd><p>結果コード / Result code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_ResetBluetoothModuleAsync_" data-uid="ExBrainSdk.ExBrainApi.ResetBluetoothModuleAsync*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_ResetBluetoothModuleAsync" data-uid="ExBrainSdk.ExBrainApi.ResetBluetoothModuleAsync">
+  ResetBluetoothModuleAsync()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L280"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>PC内蔵もしくは外付けのBluetooth機能をリセットする / Reset built-in or external Bluetooth function</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ResetBluetoothModuleAsync()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_ResetToDefaultParametersAsync_" data-uid="ExBrainSdk.ExBrainApi.ResetToDefaultParametersAsync*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_ResetToDefaultParametersAsync_System_String_" data-uid="ExBrainSdk.ExBrainApi.ResetToDefaultParametersAsync(System.String)">
+  ResetToDefaultParametersAsync(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L684"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>デフォルト設定にリセットする / Reset to default parameters</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ResetToDefaultParametersAsync(string handleId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>handleId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>装置接続ID / Device connection ID</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_ResetToDefaultParametersFullAsync_" data-uid="ExBrainSdk.ExBrainApi.ResetToDefaultParametersFullAsync*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_ResetToDefaultParametersFullAsync_System_String_ExBrainSdk_Enumerations_EnmSdkDeviceType_System_String_" data-uid="ExBrainSdk.ExBrainApi.ResetToDefaultParametersFullAsync(System.String,ExBrainSdk.Enumerations.EnmSdkDeviceType,System.String)">
+  ResetToDefaultParametersFullAsync(string, EnmSdkDeviceType, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L701"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>全機能をデフォルト設定へリセットする / Reset all functions to default</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ResetToDefaultParametersFullAsync(string handleId, EnmSdkDeviceType deviceType, string lotId = &quot;&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>handleId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>装置接続ID / Device connection ID</p>
+</dd>
+    <dt><code>deviceType</code> <a class="xref" href="ExBrainSdk.Enumerations.EnmSdkDeviceType.html">EnmSdkDeviceType</a></dt>
+    <dd><p>デバイス機種 / Device type</p>
+</dd>
+    <dt><code>lotId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>ロットID / Lot ID</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_SearchAndConnectDeviceAsync_" data-uid="ExBrainSdk.ExBrainApi.SearchAndConnectDeviceAsync*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_SearchAndConnectDeviceAsync_ExBrainSdk_Enumerations_EnmSdkConnectType_System_Int32_" data-uid="ExBrainSdk.ExBrainApi.SearchAndConnectDeviceAsync(ExBrainSdk.Enumerations.EnmSdkConnectType,System.Int32)">
+  SearchAndConnectDeviceAsync(EnmSdkConnectType, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L350"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>装置の検索と接続 / Device search and connect</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;EnmSdkResult&gt; SearchAndConnectDeviceAsync(EnmSdkConnectType connectType, int timeoutSecond)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>connectType</code> <a class="xref" href="ExBrainSdk.Enumerations.EnmSdkConnectType.html">EnmSdkConnectType</a></dt>
+    <dd><p>接続方式 / Connection type</p>
+</dd>
+    <dt><code>timeoutSecond</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>検索タイムアウト（秒） / Search timeout (seconds)</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="ExBrainSdk.Enumerations.EnmSdkResult.html">EnmSdkResult</a>&gt;</dt>
+    <dd><p>接続結果 / Connection result</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_SetBlockMarker_" data-uid="ExBrainSdk.ExBrainApi.SetBlockMarker*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_SetBlockMarker_System_String_System_Boolean_" data-uid="ExBrainSdk.ExBrainApi.SetBlockMarker(System.String,System.Boolean)">
+  SetBlockMarker(string, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L788"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ブロックマーカーを設定する / Set block marker</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetBlockMarker(string markerText, bool markerActive)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>markerText</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>マーカー文字列 / Marker string</p>
+</dd>
+    <dt><code>markerActive</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>マーカー有効/無効 / Marker enabled/disabled</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_SetBluetoothEnableAsync_" data-uid="ExBrainSdk.ExBrainApi.SetBluetoothEnableAsync*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_SetBluetoothEnableAsync_System_Boolean_" data-uid="ExBrainSdk.ExBrainApi.SetBluetoothEnableAsync(System.Boolean)">
+  SetBluetoothEnableAsync(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L291"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>PC内蔵もしくは外付けのBluetooth機能をON/OFFする / Enable/disable built-in or external Bluetooth function</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task SetBluetoothEnableAsync(bool onOff)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>onOff</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>T:ON, F:OFF / T:ON, F:OFF</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_SetDeviceNameAsync_" data-uid="ExBrainSdk.ExBrainApi.SetDeviceNameAsync*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_SetDeviceNameAsync_System_String_System_String_" data-uid="ExBrainSdk.ExBrainApi.SetDeviceNameAsync(System.String,System.String)">
+  SetDeviceNameAsync(string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L526"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>デバイス機器名称更新 / Update device name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;EnmSdkResult&gt; SetDeviceNameAsync(string handleId, string devname)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>handleId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>装置接続ID / Device connection ID</p>
+</dd>
+    <dt><code>devname</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>デバイス名称(最大8文字) / Device name (max 8 chars)</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="ExBrainSdk.Enumerations.EnmSdkResult.html">EnmSdkResult</a>&gt;</dt>
+    <dd><p>結果コード / Result code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_SetEventMarker_" data-uid="ExBrainSdk.ExBrainApi.SetEventMarker*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_SetEventMarker_System_String_" data-uid="ExBrainSdk.ExBrainApi.SetEventMarker(System.String)">
+  SetEventMarker(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L774"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>イベントマーカーを設定する / Set event marker</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetEventMarker(string markerText)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>markerText</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>マーカー文字列 / Marker string</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_SetIRInitSettingAsync_" data-uid="ExBrainSdk.ExBrainApi.SetIRInitSettingAsync*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_SetIRInitSettingAsync_System_String_System_Int32___System_Int32___System_Int32___System_Int32___" data-uid="ExBrainSdk.ExBrainApi.SetIRInitSettingAsync(System.String,System.Int32[],System.Int32[],System.Int32[],System.Int32[])">
+  SetIRInitSettingAsync(string, int[], int[], int[], int[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L575"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>待機時IR設定の更新 / Update IR settings during standby</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;EnmSdkResult&gt; SetIRInitSettingAsync(string handleId, int[] swGains, int[] pwGains, int[] ioValues, int[] brights)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>handleId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>装置接続ID / Device connection ID</p>
+</dd>
+    <dt><code>swGains</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]</dt>
+    <dd><p>SWゲイン配列 / SW gain array</p>
+</dd>
+    <dt><code>pwGains</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]</dt>
+    <dd><p>PWゲイン配列 / PW gain array</p>
+</dd>
+    <dt><code>ioValues</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]</dt>
+    <dd><p>IO値配列 / IO values array</p>
+</dd>
+    <dt><code>brights</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]</dt>
+    <dd><p>明るさ配列 / Brightness array</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="ExBrainSdk.Enumerations.EnmSdkResult.html">EnmSdkResult</a>&gt;</dt>
+    <dd><p>結果コード / Result code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_SetMgcGainAsync_" data-uid="ExBrainSdk.ExBrainApi.SetMgcGainAsync*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_SetMgcGainAsync_System_String_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="ExBrainSdk.ExBrainApi.SetMgcGainAsync(System.String,System.Int32,System.Int32,System.Int32,System.Int32)">
+  SetMgcGainAsync(string, int, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L616"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ゲイン値更新 / Update gain values</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;EnmSdkResult&gt; SetMgcGainAsync(string handleId, int gainL1, int gainL3, int gainR1, int gainR3)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>handleId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>装置接続ID / Device connection ID</p>
+</dd>
+    <dt><code>gainL1</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>左L1ゲイン / Left L1 gain</p>
+</dd>
+    <dt><code>gainL3</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>左L3ゲイン / Left L3 gain</p>
+</dd>
+    <dt><code>gainR1</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>右R1ゲイン / Right R1 gain</p>
+</dd>
+    <dt><code>gainR3</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>右R3ゲイン / Right R3 gain</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="ExBrainSdk.Enumerations.EnmSdkResult.html">EnmSdkResult</a>&gt;</dt>
+    <dd><p>結果コード / Result code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_SetMgcLedAsync_" data-uid="ExBrainSdk.ExBrainApi.SetMgcLedAsync*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_SetMgcLedAsync_System_String_System_Int32_System_Int32_" data-uid="ExBrainSdk.ExBrainApi.SetMgcLedAsync(System.String,System.Int32,System.Int32)">
+  SetMgcLedAsync(string, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L639"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>赤外線光量値更新 / Update infrared LED brightness</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;EnmSdkResult&gt; SetMgcLedAsync(string handleId, int ledBrightnessL, int ledBrightnessR)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>handleId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>装置接続ID / Device connection ID</p>
+</dd>
+    <dt><code>ledBrightnessL</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>左LED光量 / Left LED brightness</p>
+</dd>
+    <dt><code>ledBrightnessR</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>右LED光量 / Right LED brightness</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="ExBrainSdk.Enumerations.EnmSdkResult.html">EnmSdkResult</a>&gt;</dt>
+    <dd><p>結果コード / Result code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_SetMotionRangeAccAsync_" data-uid="ExBrainSdk.ExBrainApi.SetMotionRangeAccAsync*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_SetMotionRangeAccAsync_System_String_ExBrainSdk_Enumerations_EnmSdkAccRange_" data-uid="ExBrainSdk.ExBrainApi.SetMotionRangeAccAsync(System.String,ExBrainSdk.Enumerations.EnmSdkAccRange)">
+  SetMotionRangeAccAsync(string, EnmSdkAccRange)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L542"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>モーション加速度レンジ更新 / Update motion acceleration range</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;EnmSdkResult&gt; SetMotionRangeAccAsync(string handleId, EnmSdkAccRange range)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>handleId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>装置接続ID / Device connection ID</p>
+</dd>
+    <dt><code>range</code> <a class="xref" href="ExBrainSdk.Enumerations.EnmSdkAccRange.html">EnmSdkAccRange</a></dt>
+    <dd><p>モーション加速度レンジ区分 / Motion acceleration range type</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="ExBrainSdk.Enumerations.EnmSdkResult.html">EnmSdkResult</a>&gt;</dt>
+    <dd><p>結果コード / Result code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_SetMotionRangeGyroAsync_" data-uid="ExBrainSdk.ExBrainApi.SetMotionRangeGyroAsync*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_SetMotionRangeGyroAsync_System_String_ExBrainSdk_Enumerations_EnmSdkGyroRange_" data-uid="ExBrainSdk.ExBrainApi.SetMotionRangeGyroAsync(System.String,ExBrainSdk.Enumerations.EnmSdkGyroRange)">
+  SetMotionRangeGyroAsync(string, EnmSdkGyroRange)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L557"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>モーション角速度レンジ更新 / Update motion gyro range</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;EnmSdkResult&gt; SetMotionRangeGyroAsync(string handleId, EnmSdkGyroRange range)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>handleId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>装置接続ID / Device connection ID</p>
+</dd>
+    <dt><code>range</code> <a class="xref" href="ExBrainSdk.Enumerations.EnmSdkGyroRange.html">EnmSdkGyroRange</a></dt>
+    <dd><p>モーション角速度レンジ区分 / Motion gyro range type</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="ExBrainSdk.Enumerations.EnmSdkResult.html">EnmSdkResult</a>&gt;</dt>
+    <dd><p>結果コード / Result code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_SetUsbRTOutputModeAsync_" data-uid="ExBrainSdk.ExBrainApi.SetUsbRTOutputModeAsync*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_SetUsbRTOutputModeAsync_System_String_System_Boolean_" data-uid="ExBrainSdk.ExBrainApi.SetUsbRTOutputModeAsync(System.String,System.Boolean)">
+  SetUsbRTOutputModeAsync(string, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L598"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>リアルタイムUSB出力機能更新 / Update real-time USB output mode</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;EnmSdkResult&gt; SetUsbRTOutputModeAsync(string handleId, bool output)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>handleId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>装置接続ID / Device connection ID</p>
+</dd>
+    <dt><code>output</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>T=使用／F=未使用 / T=enabled/F=disabled</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="ExBrainSdk.Enumerations.EnmSdkResult.html">EnmSdkResult</a>&gt;</dt>
+    <dd><p>結果コード / Result code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_StartMeasureAsync_" data-uid="ExBrainSdk.ExBrainApi.StartMeasureAsync*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_StartMeasureAsync_System_String_System_String_ExBrainSdk_ExBrainApi_NotifyMeasureDatasCallBack_System_Boolean_ExBrainSdk_Enumerations_EnmSdkMeasurementCycle_ExBrainSdk_Enumerations_EnmSdkMeasurementMode_" data-uid="ExBrainSdk.ExBrainApi.StartMeasureAsync(System.String,System.String,ExBrainSdk.ExBrainApi.NotifyMeasureDatasCallBack,System.Boolean,ExBrainSdk.Enumerations.EnmSdkMeasurementCycle,ExBrainSdk.Enumerations.EnmSdkMeasurementMode)">
+  StartMeasureAsync(string, string?, NotifyMeasureDatasCallBack, bool, EnmSdkMeasurementCycle, EnmSdkMeasurementMode)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L425"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>自動計測開始 / Start automatic measurement</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;EnmSdkResult&gt; StartMeasureAsync(string handleId, string? measureLogFolder, ExBrainApi.NotifyMeasureDatasCallBack callback, bool recalibrate = false, EnmSdkMeasurementCycle measurementCycle = EnmSdkMeasurementCycle.e10Hz, EnmSdkMeasurementMode measurementMode = EnmSdkMeasurementMode.eNormal)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>handleId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>装置接続ID / Device connection ID</p>
+</dd>
+    <dt><code>measureLogFolder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>計測結果出力先フォルダパス / Measurement log folder path</p>
+</dd>
+    <dt><code>callback</code> <a class="xref" href="ExBrainSdk.ExBrainApi.html">ExBrainApi</a>.<a class="xref" href="ExBrainSdk.ExBrainApi.NotifyMeasureDatasCallBack.html">NotifyMeasureDatasCallBack</a></dt>
+    <dd><p>計測データ通知用コールバック / Callback for measurement data notification</p>
+</dd>
+    <dt><code>recalibrate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>再キャリブレーションフラグ / Recalibration flag</p>
+</dd>
+    <dt><code>measurementCycle</code> <a class="xref" href="ExBrainSdk.Enumerations.EnmSdkMeasurementCycle.html">EnmSdkMeasurementCycle</a></dt>
+    <dd><p>計測サイクル / Measurement cycle</p>
+</dd>
+    <dt><code>measurementMode</code> <a class="xref" href="ExBrainSdk.Enumerations.EnmSdkMeasurementMode.html">EnmSdkMeasurementMode</a></dt>
+    <dd><p>計測モード / Measurement mode</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="ExBrainSdk.Enumerations.EnmSdkResult.html">EnmSdkResult</a>&gt;</dt>
+    <dd><p>結果コード / Result code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_StartSearchDevice_" data-uid="ExBrainSdk.ExBrainApi.StartSearchDevice*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_StartSearchDevice_ExBrainSdk_Datas_ExBrainSearchParameter_ExBrainSdk_ExBrainApi_NotifySearchDevicesCallBack_" data-uid="ExBrainSdk.ExBrainApi.StartSearchDevice(ExBrainSdk.Datas.ExBrainSearchParameter,ExBrainSdk.ExBrainApi.NotifySearchDevicesCallBack)">
+  StartSearchDevice(ExBrainSearchParameter, NotifySearchDevicesCallBack?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L304"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>装置検索開始 / Start device search</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StartSearchDevice(ExBrainSearchParameter param, ExBrainApi.NotifySearchDevicesCallBack? callback = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>param</code> <a class="xref" href="ExBrainSdk.Datas.ExBrainSearchParameter.html">ExBrainSearchParameter</a></dt>
+    <dd><p>検索パラメータ / Search parameter</p>
+</dd>
+    <dt><code>callback</code> <a class="xref" href="ExBrainSdk.ExBrainApi.html">ExBrainApi</a>.<a class="xref" href="ExBrainSdk.ExBrainApi.NotifySearchDevicesCallBack.html">NotifySearchDevicesCallBack</a></dt>
+    <dd><p>検索結果通知用コールバック / Callback for search result notification</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_StopMeasureAsync_" data-uid="ExBrainSdk.ExBrainApi.StopMeasureAsync*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_StopMeasureAsync_System_String_" data-uid="ExBrainSdk.ExBrainApi.StopMeasureAsync(System.String)">
+  StopMeasureAsync(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L461"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>自動計測停止 / Stop measurement</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;EnmSdkResult&gt; StopMeasureAsync(string handleId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>handleId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>装置接続ID / Device connection ID</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="ExBrainSdk.Enumerations.EnmSdkResult.html">EnmSdkResult</a>&gt;</dt>
+    <dd><p>結果コード / Result code</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ExBrainSdk_ExBrainApi_StopSearchDevice_" data-uid="ExBrainSdk.ExBrainApi.StopSearchDevice*"></a>
+
+  <h3 id="ExBrainSdk_ExBrainApi_StopSearchDevice" data-uid="ExBrainSdk.ExBrainApi.StopSearchDevice">
+  StopSearchDevice()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/neu-sdk/general/blob/main/src/Bindings/CSharp/ExBrainApi.cs/#L313"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>装置検索停止 / Stop device search</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StopSearchDevice()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
