@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>チュートリアル：デバイスの検索から計測データ取得まで | ExBrainSDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="チュートリアル：デバイスの検索から計測データ取得まで | ExBrainSDK ">
+      
+      
+      <link rel="icon" href="../images/N_logo.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/neu-sdk/general/blob/main/docfx/docs/tutorial-basic.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/NeU_logo.svg" alt="ExBrainSDK v3.1.0">
+            ExBrainSDK v3.1.0
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="チュートリアルデバイスの検索から計測データ取得まで">チュートリアル：デバイスの検索から計測データ取得まで</h1>
+
+<p>このチュートリアルでは、サンプルコード <code>tutorial.cs</code> を例に、Low-Level API を使って以下のステップを順に実装する方法を説明します。</p>
+<ol>
+<li>API の初期化</li>
+<li>デバイスの検索と接続</li>
+<li>ゲイン調整</li>
+<li>キャリブレーション</li>
+<li>計測の開始とデータ受信</li>
+<li>計測の停止と切断</li>
+</ol>
+<p>各ステップのコードは <code>tutorial.cs</code> の該当部分の抜粋です。末尾の「<a href="#%E3%82%B3%E3%83%BC%E3%83%89%E5%85%A8%E4%BD%93">コード全体</a>」に <code>tutorial.cs</code> の完全なコードを掲載しています。</p>
+<hr>
+<h2 id="コンソール出力のプレフィックス">コンソール出力のプレフィックス</h2>
+<p>このチュートリアルのコードでは、コンソール出力に以下のプレフィックスを付けてメッセージの種類を識別できるようにしています。</p>
+<table>
+<thead>
+<tr>
+<th>プレフィックス</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[SDK]</code></td>
+<td>SDK からの状態変化通知</td>
+</tr>
+<tr>
+<td><code>[LOG]</code></td>
+<td>SDK 内部ログ</td>
+</tr>
+<tr>
+<td><code>[OK]</code></td>
+<td>処理成功</td>
+</tr>
+<tr>
+<td><code>[ERROR]</code></td>
+<td>処理失敗</td>
+</tr>
+<tr>
+<td><code>[DATA]</code></td>
+<td>計測データ出力</td>
+</tr>
+<tr>
+<td>なし</td>
+<td>ユーザーへの案内・操作指示</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="前提条件">前提条件</h2>
+<ul>
+<li>.NET 8.0 以上</li>
+<li>ExBrain SDK の NuGet パッケージを参照済み</li>
+<li>デバイスが PC と Bluetooth または USB で接続済み（Bluetooth の場合はペアリング済み）</li>
+</ul>
+<hr>
+<h2 id="起動方法">起動方法</h2>
+<p>SDK の Tutorial フォルダに本チュートリアルのプログラム（<code>tutorial.cs</code>）が掲載されています。
+.NET がインストールされている環境では、Tutorial フォルダで以下のコマンドを実行すると <code>tutorial.cs</code> を起動できます。</p>
+<pre><code>dotnet run
+</code></pre>
+<hr>
+<h2 id="ステップ-1-api-の初期化">ステップ 1: API の初期化</h2>
+<pre><code class="lang-csharp">// ▼ Main() の中
+var api = new ExBrainApi(
+    notifyStatusChangedCallBack: (id, status) =&gt; Console.WriteLine($&quot;[SDK] ID: {id}  Status: {status}&quot;),
+    notifyProcessMessageCallBack: (id, message, type) =&gt; Console.WriteLine($&quot;[LOG] ID: {id}  [{type}] {message}&quot;)
+);
+
+// ▼ Run() の中
+EnmSdkResult sdkResult = api.InitApi(
+    needOutputTraceLog: true,
+    needOutputCommLog: false,
+    logDir: null,       // ログファイルの出力先フォルダ。null の場合はカレントディレクトリ
+    settingsDir: null,  // 設定ファイルの読み込み先（未実装）
+    tag: &quot;&quot;             // 識別タグ（未実装）
+);
+if (sdkResult != EnmSdkResult.eSuccess)
+{
+    Console.WriteLine(&quot;[ERROR] API の初期化に失敗しました。&quot;);
+    return;
+}
+</code></pre>
+<p><code>logDir</code> にフォルダパスを指定するとトレースログファイルが出力されます。<code>null</code> の場合はカレントディレクトリに出力されます。</p>
+<hr>
+<h2 id="ステップ-2-デバイスの検索と接続">ステップ 2: デバイスの検索と接続</h2>
+<pre><code class="lang-csharp">await api.ResetBluetoothModuleAsync();
+
+api.StartSearchDevice(new ExBrainSearchParameter
+{
+    Keywords = [&quot;HOT&quot;, &quot;XB&quot;],
+    ShouldUSB = true,
+    ShouldPairedBluetooth = true,
+    ShouldNonPairedBluetooth = true,
+    TimeoutSecond = 3
+});
+await Task.Delay(TimeSpan.FromSeconds(3));
+api.StopSearchDevice();
+
+if (api.DiscoveredDevice.DeviceCount == 0)
+{
+    Console.WriteLine(&quot;[ERROR] デバイスが見つかりませんでした。&quot;);
+    return;
+}
+
+// 検出されたデバイスを一覧表示する
+IReadOnlyList&lt;DeviceInformationEx&gt; devices = api.DiscoveredDevice.Devices;
+Console.WriteLine(&quot;検出されたデバイス一覧:&quot;);
+for (int i = 0; i &lt; devices.Count; i++)
+{
+    Console.WriteLine($&quot;  番号 {i}: 種類={devices[i].ConnectType}  ID={devices[i].DeviceId}&quot;);
+}
+
+// 接続するデバイスを選択する
+Console.WriteLine($&quot;接続する番号を入力してください (0 ～ {devices.Count - 1}):&quot;);
+string? indexInput = await Console.In.ReadLineAsync();
+if (!int.TryParse(indexInput, out int selectedIndex) || selectedIndex &lt; 0 || selectedIndex &gt;= devices.Count)
+{
+    Console.WriteLine(&quot;[ERROR] 番号が正しくありません。&quot;);
+    return;
+}
+
+sdkResult = await api.ConnectDeviceAsync(devices[selectedIndex].DeviceId, devices[selectedIndex].ConnectType);
+if (sdkResult != EnmSdkResult.eSuccess)
+{
+    Console.WriteLine(&quot;[ERROR] 接続に失敗しました。&quot;);
+    return;
+}
+
+Console.WriteLine(&quot;[OK] 接続しました。&quot;);
+</code></pre>
+<hr>
+<h2 id="ステップ-3-ゲイン調整">ステップ 3: ゲイン調整</h2>
+<p>ゲイン調整は光センサーの出力レベルを最適化する処理です。計測前に毎回実施してください。</p>
+<pre><code class="lang-csharp">// 装着確認
+Console.WriteLine(&quot;デバイスを額に装着してください。&quot;);
+Console.WriteLine(&quot;センサーユニットが眉の上に来るように装着し、髪の毛が挟まらないように注意してください。&quot;);
+Console.WriteLine(&quot;装着が完了したら Enter キーを押してください。&quot;);
+_ = await Console.In.ReadLineAsync();
+
+// ゲイン調整
+Console.WriteLine(&quot;ゲイン調整を開始します。準備ができたら Enter キーを押してください。&quot;);
+_ = await Console.In.ReadLineAsync();
+sdkResult = await api.PerformGainAdjustmentAsync(api.HandleId);
+if (sdkResult != EnmSdkResult.eSuccess)
+{
+    Console.WriteLine(&quot;[ERROR] ゲイン調整に失敗しました。&quot;);
+    await api.DisconnectDeviceAsync();
+    return;
+}
+Console.WriteLine(&quot;[OK] ゲイン調整が完了しました。&quot;);
+</code></pre>
+<hr>
+<h2 id="ステップ-4-キャリブレーション">ステップ 4: キャリブレーション</h2>
+<p>キャリブレーションは <code>dTHbL</code> のベースラインをゼロに補正する処理です。</p>
+<pre><code class="lang-csharp">// キャリブレーション
+Console.WriteLine(&quot;キャリブレーションを開始します。準備ができたら Enter キーを押してください。&quot;);
+_ = await Console.In.ReadLineAsync();
+sdkResult = await api.PerformCalibrationAsync(api.HandleId);
+if (sdkResult != EnmSdkResult.eSuccess)
+{
+    Console.WriteLine(&quot;[ERROR] キャリブレーションに失敗しました。&quot;);
+    await api.DisconnectDeviceAsync();
+    return;
+}
+Console.WriteLine(&quot;[OK] キャリブレーションが完了しました。&quot;);
+</code></pre>
+<hr>
+<h2 id="ステップ-5-計測の開始とデータ受信">ステップ 5: 計測の開始とデータ受信</h2>
+<p>計測データは 10Hz（1秒に10回）でコールバックされます。毎フレーム出力するとコンソールが流れるため、ここでは5フレームに1回表示します。</p>
+<pre><code class="lang-csharp">Console.WriteLine(&quot;計測を開始します。計測中は Enter キーで停止できます。&quot;);
+Console.WriteLine(&quot;準備ができたら Enter キーを押してください。&quot;);
+_ = await Console.In.ReadLineAsync();
+
+var receivedData = new List&lt;ExBrainMeasureData&gt;();
+int frameCount = 0;
+
+sdkResult = await api.StartMeasureAsync(
+    handleId: api.HandleId,
+    measureLogFolder: &quot;./&quot;,   // CSV ログをカレントディレクトリに出力する
+    callback: (_, data) =&gt;
+    {
+        receivedData.Add(data);
+        frameCount++;
+
+        // 5フレームに1回だけコンソールに出力する
+        if (frameCount % 5 == 0)
+        {
+            Console.WriteLine(
+                $&quot;[DATA][{frameCount}] &quot; +
+                $&quot;左 1cm: {data.dTHbL_leftSD1cm:F4}  &quot; +
+                $&quot;左 3cm: {data.dTHbL_leftSD3cm:F4}  &quot; +
+                $&quot;右 1cm: {data.dTHbL_rightSD1cm:F4}  &quot; +
+                $&quot;右 3cm: {data.dTHbL_rightSD3cm:F4}&quot;
+            );
+        }
+    },
+    measurementCycle: EnmSdkMeasurementCycle.e10Hz,
+    measurementMode: EnmSdkMeasurementMode.eNormal
+);
+
+if (sdkResult != EnmSdkResult.eSuccess)
+{
+    Console.WriteLine(&quot;[ERROR] 計測の開始に失敗しました。&quot;);
+    await api.DisconnectDeviceAsync();
+    return;
+}
+
+// Enter キーが押されるまで計測を継続する
+_ = Console.ReadLine();
+</code></pre>
+<p><code>measureLogFolder</code> にフォルダパスを指定すると <code>HOTLog_YYYYMMDD_HHMMSS.csv</code> が自動出力されます。CSV が不要な場合は <code>null</code> を渡してください。</p>
+<p>コールバック内で受け取れる主なデータは以下のとおりです。</p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dTHbL_leftSD1cm</code></td>
+<td>左チャンネル 1cm のヘモグロビン濃度変化</td>
+</tr>
+<tr>
+<td><code>dTHbL_leftSD3cm</code></td>
+<td>左チャンネル 3cm のヘモグロビン濃度変化</td>
+</tr>
+<tr>
+<td><code>dTHbL_rightSD1cm</code></td>
+<td>右チャンネル 1cm のヘモグロビン濃度変化</td>
+</tr>
+<tr>
+<td><code>dTHbL_rightSD3cm</code></td>
+<td>右チャンネル 3cm のヘモグロビン濃度変化</td>
+</tr>
+<tr>
+<td><code>SamplingMotion</code></td>
+<td>モーションセンサーデータ（加速度・ジャイロ）</td>
+</tr>
+<tr>
+<td><code>SamplingBattery</code></td>
+<td>バッテリー情報</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>注意:</strong> v3.1.0 では <code>EnmSdkMeasurementCycle.e10Hz</code> と <code>EnmSdkMeasurementMode.eNormal</code> の組み合わせのみ対応しています。</p>
+</blockquote>
+<hr>
+<h2 id="ステップ-6-計測の停止と切断">ステップ 6: 計測の停止と切断</h2>
+<pre><code class="lang-csharp">sdkResult = await api.StopMeasureAsync(api.HandleId);
+if (sdkResult != EnmSdkResult.eSuccess)
+{
+    Console.WriteLine(&quot;[ERROR] 計測の停止に失敗しました。&quot;);
+}
+
+await api.DisconnectDeviceAsync();
+Console.WriteLine($&quot;[OK] 計測終了。受信フレーム数: {receivedData.Count}&quot;);
+</code></pre>
+<p><code>api.ExitApi()</code> はコード全体の <code>Main()</code> で呼び出されます。</p>
+<hr>
+<h2 id="コード全体tutorialcs">コード全体（tutorial.cs）</h2>
+<pre><code class="lang-csharp">using ExBrainSdk;
+using ExBrainSdk.Datas;
+using ExBrainSdk.Enumerations;
+
+internal class Program
+{
+    private static void Main()
+    {
+        var api = new ExBrainApi(
+            notifyStatusChangedCallBack: (id, status) =&gt; Console.WriteLine($&quot;[SDK] ID: {id}  Status: {status}&quot;),
+            notifyProcessMessageCallBack: (id, message, type) =&gt; Console.WriteLine($&quot;[LOG] ID: {id}  [{type}] {message}&quot;)
+        );
+
+        Run(api).Wait();
+        api.ExitApi();
+
+        Console.WriteLine(&quot;Press any key to quit&quot;);
+        _ = Console.ReadKey();
+    }
+
+    public static async Task Run(ExBrainApi api)
+    {
+        // 初期化
+        EnmSdkResult sdkResult = api.InitApi(
+            needOutputTraceLog: true,
+            needOutputCommLog: false,
+            logDir: null,
+            settingsDir: null,
+            tag: &quot;&quot;
+        );
+        if (sdkResult != EnmSdkResult.eSuccess)
+        {
+            Console.WriteLine(&quot;[ERROR] API の初期化に失敗しました。&quot;);
+            return;
+        }
+
+        await api.ResetBluetoothModuleAsync();
+
+        // デバイス検索
+        api.StartSearchDevice(new ExBrainSearchParameter
+        {
+            Keywords = [&quot;HOT&quot;, &quot;XB&quot;],
+            ShouldUSB = true,
+            ShouldPairedBluetooth = true,
+            ShouldNonPairedBluetooth = true,
+            TimeoutSecond = 3
+        });
+        await Task.Delay(TimeSpan.FromSeconds(3));
+        api.StopSearchDevice();
+
+        if (api.DiscoveredDevice.DeviceCount == 0)
+        {
+            Console.WriteLine(&quot;[ERROR] デバイスが見つかりませんでした。&quot;);
+            return;
+        }
+
+        // 接続するデバイスを選択する
+        IReadOnlyList&lt;DeviceInformationEx&gt; devices = api.DiscoveredDevice.Devices;
+        Console.WriteLine(&quot;検出されたデバイス一覧:&quot;);
+        for (int i = 0; i &lt; devices.Count; i++)
+        {
+            Console.WriteLine($&quot;  番号 {i}: 種類={devices[i].ConnectType}  ID={devices[i].DeviceId}&quot;);
+        }
+        Console.WriteLine($&quot;接続する番号を入力してください (0 ～ {devices.Count - 1}):&quot;);
+        string? indexInput = await Console.In.ReadLineAsync();
+        if (!int.TryParse(indexInput, out int selectedIndex) || selectedIndex &lt; 0 || selectedIndex &gt;= devices.Count)
+        {
+            Console.WriteLine(&quot;[ERROR] 番号が正しくありません。&quot;);
+            return;
+        }
+
+        sdkResult = await api.ConnectDeviceAsync(devices[selectedIndex].DeviceId, devices[selectedIndex].ConnectType);
+        if (sdkResult != EnmSdkResult.eSuccess)
+        {
+            Console.WriteLine(&quot;[ERROR] 接続に失敗しました。&quot;);
+            return;
+        }
+        Console.WriteLine(&quot;[OK] 接続しました。&quot;);
+
+        // 装着確認
+        Console.WriteLine(&quot;デバイスを額に装着してください。&quot;);
+        Console.WriteLine(&quot;センサーユニットが眉の上に来るように装着し、髪の毛が挟まらないように注意してください。&quot;);
+        Console.WriteLine(&quot;装着が完了したら Enter キーを押してください。&quot;);
+        _ = await Console.In.ReadLineAsync();
+
+        // ゲイン調整
+        Console.WriteLine(&quot;ゲイン調整を開始します。準備ができたら Enter キーを押してください。&quot;);
+        _ = await Console.In.ReadLineAsync();
+        sdkResult = await api.PerformGainAdjustmentAsync(api.HandleId);
+        if (sdkResult != EnmSdkResult.eSuccess)
+        {
+            Console.WriteLine(&quot;[ERROR] ゲイン調整に失敗しました。&quot;);
+            await api.DisconnectDeviceAsync();
+            return;
+        }
+        Console.WriteLine(&quot;[OK] ゲイン調整が完了しました。&quot;);
+
+        // キャリブレーション
+        Console.WriteLine(&quot;キャリブレーションを開始します。準備ができたら Enter キーを押してください。&quot;);
+        _ = await Console.In.ReadLineAsync();
+        sdkResult = await api.PerformCalibrationAsync(api.HandleId);
+        if (sdkResult != EnmSdkResult.eSuccess)
+        {
+            Console.WriteLine(&quot;[ERROR] キャリブレーションに失敗しました。&quot;);
+            await api.DisconnectDeviceAsync();
+            return;
+        }
+        Console.WriteLine(&quot;[OK] キャリブレーションが完了しました。&quot;);
+
+        // 計測開始確認
+        Console.WriteLine(&quot;計測を開始します。計測中は Enter キーで停止できます。&quot;);
+        Console.WriteLine(&quot;準備ができたら Enter キーを押してください。&quot;);
+        _ = await Console.In.ReadLineAsync();
+
+        var receivedData = new List&lt;ExBrainMeasureData&gt;();
+        int frameCount = 0;
+
+        sdkResult = await api.StartMeasureAsync(
+            handleId: api.HandleId,
+            measureLogFolder: &quot;./&quot;,
+            callback: (_, data) =&gt;
+            {
+                receivedData.Add(data);
+                frameCount++;
+                if (frameCount % 5 == 0)
+                {
+                    Console.WriteLine(
+                        $&quot;[DATA][{frameCount}] &quot; +
+                        $&quot;左 1cm: {data.dTHbL_leftSD1cm:F4}  &quot; +
+                        $&quot;左 3cm: {data.dTHbL_leftSD3cm:F4}  &quot; +
+                        $&quot;右 1cm: {data.dTHbL_rightSD1cm:F4}  &quot; +
+                        $&quot;右 3cm: {data.dTHbL_rightSD3cm:F4}&quot;
+                    );
+                }
+            },
+            measurementCycle: EnmSdkMeasurementCycle.e10Hz,
+            measurementMode: EnmSdkMeasurementMode.eNormal
+        );
+
+        if (sdkResult != EnmSdkResult.eSuccess)
+        {
+            Console.WriteLine(&quot;[ERROR] 計測の開始に失敗しました。&quot;);
+            await api.DisconnectDeviceAsync();
+            return;
+        }
+
+        _ = Console.ReadLine();
+
+        // 計測停止・切断
+        sdkResult = await api.StopMeasureAsync(api.HandleId);
+        if (sdkResult != EnmSdkResult.eSuccess)
+        {
+            Console.WriteLine(&quot;[ERROR] 計測の停止に失敗しました。&quot;);
+        }
+
+        await api.DisconnectDeviceAsync();
+        Console.WriteLine($&quot;[OK] 計測終了。受信フレーム数: {receivedData.Count}&quot;);
+    }
+}
+</code></pre>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

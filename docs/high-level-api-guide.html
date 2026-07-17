@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>ExBrain SDK High-Level API 解説書 | ExBrainSDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="ExBrain SDK High-Level API 解説書 | ExBrainSDK ">
+      
+      
+      <link rel="icon" href="../images/N_logo.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/neu-sdk/general/blob/main/docfx/docs/high-level-api-guide.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/NeU_logo.svg" alt="ExBrainSDK v3.1.0">
+            ExBrainSDK v3.1.0
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="exbrain-sdk-high-level-api-解説書">ExBrain SDK High-Level API 解説書</h1>
+
+<h2 id="はじめに">はじめに</h2>
+<p>この文書は、プログラミングや統計、脳機能計測の専門知識がない方でも、ExBrain SDK の
+「High-Level API」が <strong>何をしているのか／どうやって実現しているのか</strong> を
+理解できるように、できるだけ平易に解説します。</p>
+<p>Low-Level APIが「センサと会話してきれいな計測データを作る」土台だったのに対し、
+**High-Level APIは「実験を進行させ、結果を統計的に分析する」**役割を担います。
+脳活動の実験（たとえば「ある課題をやっているときと安静時で脳活動に差があるか？」）を
+行う研究者・実験者を支える層です。</p>
+<p>統計の部分は本 SDK の中でも特に専門性が高いところなので、
+<strong>身近なたとえ</strong>を交えて丁寧に説明します。</p>
+<hr>
+<h2 id="1-high-level-apiが実現することの全体像">1. High-Level APIが実現することの全体像</h2>
+<pre><code>  実験を組み立てる（Experiment / Block / MetaData）
+        ↓
+  測りながらリアルタイムに加工する（SMD）
+        ↓
+  ブロックごとにデータを整える（フィルタ・ベースライン補正）
+        ↓
+  集めたデータを統計で比較する（検定・条件間比較）
+</code></pre>
+<p>順番に見ていきます。</p>
+<hr>
+<h2 id="2-実験をブロックで組み立てる">2. 実験を「ブロック」で組み立てる</h2>
+<p>心理・生理の実験は、ふつう同じ手順を何度も繰り返します。本 SDK では、
+その 1 回分を <strong>「ブロック」</strong> と呼び、ブロックを 4 つの段階に分けて管理します。</p>
+<pre><code>  ① 事前ベースライン補正(preFitting)  … 課題前の安静・準備
+  ② 課題(task)            … 計算問題を解く、など実際の課題
+  ③ 安静(calmDown)        … 課題後の落ち着き時間
+  ④ 事後ベースライン補正(postFitting) … 締めの安静
+</code></pre>
+<p>各段階を<strong>何秒にするか</strong>は「MetaData」というテンプレートで決めておきます。
+あとは「ブロックを実行」と指示すれば、SDK が<strong>時間を計りながら自動で段階を進め</strong>、
+それぞれの境目に**目印（マーカー）**をデータへ書き込みます。これにより、
+あとから「ここからが課題区間」とはっきり区別できます。</p>
+<p>複数のブロックには、<strong>被験者の識別子</strong>や<strong>繰り返し番号</strong>を付けられるので、
+「誰の・何回目の・どの段階のデータか」を正確に管理できます。</p>
+<hr>
+<h2 id="3-測りながら加工するリアルタイム処理">3. 測りながら加工する（リアルタイム処理）</h2>
+<h3 id="31-注目する量関心量">3.1 注目する量（関心量）</h3>
+<p>とくに注目するのは、<strong>「3cm の信号 − 1cm の信号」</strong>（dTHbL）です。Low-Level API 解説書で述べたとおり、
+これは皮膚表面の影響を差し引いた、<strong>より脳に近い活動の指標</strong>です。</p>
+<h3 id="32-デジタルフィルタなめらかにする">3.2 デジタルフィルタ（なめらかにする）</h3>
+<p>計測値には細かなゆらぎや、目的外の速い／遅い変動が混じります。
+これを取り除くのが <strong>デジタルフィルタ</strong> です。本 SDK では
+<strong>Butterworth（バターワース）フィルタ</strong>という、音響機器などでも広く使われる
+定番のフィルタを用意しています。</p>
+<ul>
+<li><strong>ローパス</strong>：速すぎる変動（高周波の雑音）を削り、ゆっくりした本質的な変化を残す。</li>
+<li><strong>バンドパス</strong>：「速すぎる」「遅すぎる」の両方を削り、<strong>ちょうど見たい速さの変化だけ</strong>を残す。</li>
+</ul>
+<p>本 SDK では、<strong>ブロックの計測が終わった時点で、そのブロック全体にまとめてローパスフィルタをかけます</strong>。
+しかも<strong>前向き・後ろ向きの二重がけ</strong>を行うことで、「時間のずれ（位相の遅れ）が出ない」方式を
+採用しています。これにより、波形の山や谷の位置がずれず、課題に対する反応のタイミングを
+正確に保ったままなめらかにできます。</p>
+<h3 id="33-smd標準化平均差-基準と比べてどれだけ違うか">3.3 SMD（標準化平均差）── 「基準と比べてどれだけ違うか」</h3>
+<p>実験では、「<strong>ある基準の状態に比べて、いま脳活動がどれくらい変化したか</strong>」を
+知りたいことがよくあります。これを数値化するのが <strong>SMD（標準化平均差）</strong> です。</p>
+<p>身近なたとえで言うと——</p>
+<blockquote>
+<p>あるクラスのテストで、A さんが 70 点を取りました。これは「良い」のでしょうか？
+それは<strong>クラスの平均点とばらつき</strong>によります。平均 50 点・みんなの点が
+バラバラなクラスでの 70 点と、平均 68 点・みんな僅差のクラスでの 70 点とでは、
+「目立ち具合」がまるで違います。</p>
+</blockquote>
+<p>SMD は、この「<strong>ばらつきを物差しにした、目立ち具合</strong>」を表す数値です。
+具体的には、</p>
+<pre><code>SMD ＝（いまの平均 − 基準の平均）÷ 全体のばらつき（標準偏差）
+</code></pre>
+<p>として計算します。割り算で「ばらつき」を物差しにしているので、
+<strong>単位やスケールによらず公平に「効果の大きさ」を比べられる</strong>のが利点です。
+（統計学では Cohen's d と呼ばれる考え方で、本 SDK ではサンプルが少ないときの
+偏りを補正する工夫も入れています。）</p>
+<p>ただし、生体信号は自己相関と呼ばれる自分自身との類似性が高いため、統計学で用いられる効果量より値が大きくなることに注意してください。
+また、信号の立上りや立下りなど急峻な変化は「ばらつき」を大きくするため、SMDは減少する方向に働きます。</p>
+<p>使い方は次のとおりです。</p>
+<ol>
+<li>まず <strong>基準区間（リファレンス）</strong> を設定します（例：安静状態を一定時間記録）。
+SDK はこの区間の<strong>平均とばらつき</strong>を覚えます。
+[コード：開始は <code>StartReferencePeriod(name)</code>、確定は <code>FinishReferencePeriod()</code>]</li>
+<li>その後の計測では、<strong>直近の一定区間</strong>と基準区間を比べて SMD を計算し、
+リアルタイムにアプリへ通知します。
+[コード：「直近の一定区間」のフレーム数は <code>Experiment</code> 生成時の <code>smdTargetWindowSize</code>]</li>
+</ol>
+<p>これにより、「いま、基準よりどれだけ脳活動が安定的に高まっているか」を<strong>その場で</strong>把握できます。</p>
+<hr>
+<h2 id="4-ブロックを整えるベースライン補正">4. ブロックを整える（ベースライン補正）</h2>
+<p>ゆっくりした血液量変動のため、データ全体が<strong>ゆっくり右肩上がり
+（または右肩下がり）に流れていく</strong>ことがあります。これを「ドリフト（基線変動）」と呼びます。
+ドリフトは、課題遂行以外の脳活動や全身性の血液量変化により発生します。
+このまま課題区間を見ると、課題の効果なのかドリフトなのか区別できません。</p>
+<p>そこで本 SDK は、<strong>課題の前後にある安静的な区間</strong>（事前ベースライン補正区間・事後ベースライン補正区間）に注目します。
+この 2 区間は本来「課題遂行による脳活動変化が無い」はずなので、ここを結ぶ<strong>まっすぐな傾きの線</strong>を
+引いて「これがドリフトの正体」と推定し、<strong>ブロック全体からその傾きを差し引きます</strong>。</p>
+<p>たとえるなら、傾いた机の上で測ったグラフを、机の傾きぶんだけ<strong>水平に直す</strong>作業です。
+課題区間と課題終了後に血液が元にもどるまでの期間は傾きの推定に使わない点がポイントで、課題の効果を
+ドリフトと取り違えないようにしています。</p>
+<hr>
+<h2 id="5-統計で比べる--その差は意味があるのか">5. 統計で比べる ── 「その差は意味があるのか？」</h2>
+<p>実験データが集まったら、いよいよ分析です。ここがHigh-Level APIの最も専門的な部分です。</p>
+<h3 id="51-そもそも統計的に比べるとは">5.1 そもそも「統計的に比べる」とは</h3>
+<p>たとえば「課題中の脳活動は安静時より高い」と言いたいとします。たまたま
+高い値が出ただけかもしれません。<strong>「その差は、偶然では説明しにくいほど大きいか？」</strong>
+を判断するのが<strong>統計的仮説検定</strong>です。</p>
+<p>検定の結果は <strong>p 値（ピーチ）</strong> という数値で出ます。ざっくり言うと、</p>
+<blockquote>
+<p><strong>p 値 ＝「本当は差が無いのに、たまたまこれくらいの差が出てしまう確率」</strong></p>
+</blockquote>
+<p>です。p 値が小さい（慣習的に 0.05 未満）ほど、「偶然とは考えにくい ＝ <strong>本物の差</strong>らしい」
+と判断します。本 SDK の各検定は、この <strong>p 値を計算して返す</strong>のが役目です。</p>
+<h3 id="52-用意されている検定の種類">5.2 用意されている検定の種類</h3>
+<p>データの性質に応じて、適切な検定は変わります。本 SDK は主要な検定を揃えています。</p>
+<table>
+<thead>
+<tr>
+<th>検定</th>
+<th>コード（C# 直接呼び出し）</th>
+<th>どんなときに使う（ざっくり）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Student の t 検定</strong></td>
+<td><code>Statistics.StudentT</code></td>
+<td>2 グループの平均を比べる。データが釣鐘型で、ばらつきが同程度</td>
+</tr>
+<tr>
+<td><strong>Welch の t 検定</strong></td>
+<td><code>Statistics.WelchT</code></td>
+<td>同上だが、2 グループの<strong>ばらつきが違う</strong>とき</td>
+</tr>
+<tr>
+<td><strong>対応のある t 検定</strong></td>
+<td><code>Statistics.PairedT</code></td>
+<td><strong>同じ人</strong>の「前」と「後」など、ペアになったデータを比べる</td>
+</tr>
+<tr>
+<td><strong>Mann-Whitney U 検定</strong></td>
+<td><code>Statistics.MannWhitneyU</code></td>
+<td>釣鐘型でなくてもよい。2 グループを<strong>順位</strong>で比べる</td>
+</tr>
+<tr>
+<td><strong>Wilcoxon 符号順位検定</strong></td>
+<td><code>Statistics.WilcoxonSignedRank</code></td>
+<td>ペアのデータを、釣鐘型を仮定せず<strong>順位</strong>で比べる</td>
+</tr>
+<tr>
+<td><strong>Shapiro-Wilk 検定</strong></td>
+<td><code>Statistics.ShapiroWilk</code></td>
+<td>データが<strong>釣鐘型（正規分布）か</strong>を調べる</td>
+</tr>
+<tr>
+<td><strong>Levene 検定</strong></td>
+<td><code>Statistics.Levene</code></td>
+<td>2 グループの<strong>ばらつきが同じか</strong>を調べる</td>
+</tr>
+</tbody>
+</table>
+<p>ここで「釣鐘型（正規分布）」とは、平均の周りに山なりに分布する、<strong>自然界でよくある形</strong>の
+ことです。t 検定はこの形を前提にしますが、現実のデータがそうでないこともあります。
+そのときは順位を使う <strong>Mann-Whitney / Wilcoxon</strong>（ノンパラメトリック検定）が頑健です。</p>
+<h3 id="53-平均ではなく順位で比べるとは">5.3 「平均」ではなく「順位」で比べるとは</h3>
+<p>Mann-Whitney や Wilcoxon は、値そのものではなく<strong>順位</strong>を使います。たとえば
+2 グループの数値を全部いっしょに小さい順に並べ、「グループ A は上位に固まっているか、
+下位に固まっているか」を見ます。A が上位ばかりなら「A の方が大きい」と言えます。
+<strong>外れ値（極端な値）に振り回されにくい</strong>のが長所です。</p>
+<h3 id="54-計算の中身数学が好きな方向けの補足">5.4 計算の中身（数学が好きな方向けの補足）</h3>
+<p>専門外の方は読み飛ばして構いませんが、内部では次のような数学的部品を使っています。</p>
+<ul>
+<li><strong>正規分布・t 分布・F 分布の確率計算</strong>：これらの「確率の面積」を求めるために、
+<strong>正則化不完全ベータ関数</strong>という関数を<strong>連分数</strong>という方法で精密に計算します。</li>
+<li><strong>正規分布の逆計算</strong>（ある確率に対応する値を求める）には、<strong>有理式による高精度近似</strong>を使います。</li>
+<li><strong>Wilcoxon 検定</strong>では、データが少ないときは<strong>すべての可能な並び方を数え上げて
+厳密な確率</strong>を出し、多いときは<strong>正規分布で近似</strong>します。さらに同じ値が複数あるとき
+（同順位）の<strong>補正</strong>も入れています。</li>
+<li><strong>Shapiro-Wilk 検定</strong>は、Royston という研究者が提案した近似式に基づいて、
+データが釣鐘型からどれだけ外れているかを数値化します。</li>
+</ul>
+<p>これらはいずれも、<strong>専用の統計ソフトと同等の結果</strong>を、SDK 単体で出すための実装です。</p>
+<h3 id="55-検定の自動選択">5.5 検定の自動選択</h3>
+<p>「どの検定を使えばいいか分からない」という方のために、本 SDK は
+<strong>検定を自動で選ぶ</strong>機能を持っています。判断の流れは、統計の教科書どおりです。</p>
+<pre><code>  まず Shapiro-Wilk で「データは釣鐘型か？」を判定
+        ├─ 釣鐘型でない → 順位の検定（Mann-Whitney / Wilcoxon）
+        └─ 釣鐘型である → 次へ
+                Levene で「2 グループのばらつきは同じか？」を判定
+                    ├─ 同じ   → Student の t 検定
+                    └─ 違う   → Welch の t 検定
+        （同じ人のペアデータなら → 対応のある検定を選ぶ）
+</code></pre>
+<p>利用者は「お任せ（自動）」を選ぶだけで、データに合った妥当な検定が使われます。
+[コード：比較関数の <code>isParametric</code> / <code>isEqualVariance</code> を未指定（C# では <code>null</code>）にすると自動判定]
+もちろん、検定を<strong>自分で指定</strong>することもできます。
+[コード：<code>isParametric</code> / <code>isEqualVariance</code> に <code>true</code>/<code>false</code> を明示するか、
+個別の検定関数（<code>Statistics.WelchT</code> など）を直接呼ぶ]</p>
+<h3 id="56-すぐ使える条件間の比較メニュー">5.6 すぐ使える「条件間の比較」メニュー</h3>
+<p>実際の研究でよくある比較を、<strong>そのまま呼べる関数</strong>として用意しています。
+利用者は細かい統計手続きを意識せず、目的に合うものを選ぶだけです。</p>
+<table>
+<thead>
+<tr>
+<th>比較メニュー</th>
+<th>コード（C# 関数）</th>
+<th>何を比べるか</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>被験者内・課題間比較</td>
+<td><code>TaskComparison.CompareWithinParticipantTasks</code></td>
+<td>同じ人が行った<strong>2 種類の課題</strong>の脳活動を比べる</td>
+</tr>
+<tr>
+<td>被験者内・事前事後比較</td>
+<td><code>TaskComparison.CompareWithinParticipantPrePost</code></td>
+<td>同じ人の<strong>訓練前と訓練後</strong>などを比べる</td>
+</tr>
+<tr>
+<td>対応のある群課題比較</td>
+<td><code>TaskComparison.ComparePairedGroupTasks</code></td>
+<td>ペア対応のある<strong>2 群</strong>を比べる</td>
+</tr>
+<tr>
+<td>群間・課題比較</td>
+<td><code>TaskComparison.CompareBetweenGroupsTask</code></td>
+<td><strong>別々の人からなる 2 グループ</strong>を比べる</td>
+</tr>
+<tr>
+<td>被験者間・課題比較</td>
+<td><code>TaskComparison.CompareBetweenParticipantsTasks</code></td>
+<td>異なる被験者<strong>集団</strong>どうしを比べる</td>
+</tr>
+<tr>
+<td>課題対ベースライン比較</td>
+<td><code>TaskComparison.CompareTaskAndBaseline</code></td>
+<td><strong>課題区間 と 事前安静区間</strong>を比べる（課題の効果を見る）</td>
+</tr>
+</tbody>
+</table>
+<p>それぞれの比較では、<strong>正しい使い方を守っているか</strong>も自動でチェックします
+（例：「被験者内比較なのに別人のデータが混ざっていないか」「ペア比較なのに
+数が合っているか」など）。間違いがあればエラーで知らせます。</p>
+<p>結果は、「使った検定の種類」「p 値」「グループ間の差」が
+返ります。左の計算でつまずいても右の計算は止まらないなど、<strong>頑丈な作り</strong>になっています。</p>
+<hr>
+<h2 id="6-裏側の安全設計簡単に">6. 裏側の安全設計（簡単に）</h2>
+<ul>
+<li>計測データは<strong>測りながら次々と書き足され</strong>、同時に分析側から参照されます。
+この同時アクセスでデータが壊れないよう、**鍵（排他制御）**で守っています。</li>
+<li>各統計計算で異常（例：データが少なすぎる）が起きても、アプリ全体が落ちないよう、
+<strong>エラーは数値や結果コードに変換</strong>して安全に返します。</li>
+</ul>
+<hr>
+<h2 id="7-まとめ">7. まとめ</h2>
+<p>High-Level APIは、脳活動の<strong>実験そのものを支える</strong>APIです。</p>
+<ul>
+<li>実験を<strong>ブロックと段階</strong>で組み立て、時間管理と目印付けを自動で行う。</li>
+<li>測りながら<strong>SMD</strong>で「基準からの変化」をその場で数値化する。</li>
+<li>ブロックごとに<strong>フィルタ</strong>（位相のずれない二重がけ）でなめらかにし、<strong>ベースライン補正</strong>でドリフトを取り除く。</li>
+<li>集めたデータを、<strong>用途別の比較メニュー</strong>と<strong>自動で選ばれる統計検定</strong>で分析し、
+「その差に意味があるか（p 値）」を判定する。</li>
+</ul>
+<p>これらにより、脳機能計測や統計の専門家でなくても、<strong>脳活動データから意味のある結論</strong>を
+引き出せるよう設計されています。これまでは、計測後に解析を行うことが一般的でしたが、
+本SDKを用いれば、計測途中に解析をして、その結果を後の計測に活かすというような、高度なアプリを簡単に作成できます。
+土台となる計測のしくみについては、
+別冊の <strong>Low-Level API 解説書</strong> を参照してください。</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

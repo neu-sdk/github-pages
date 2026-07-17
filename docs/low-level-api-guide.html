@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>ExBrain SDK Low-Level API 解説書 | ExBrainSDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="ExBrain SDK Low-Level API 解説書 | ExBrainSDK ">
+      
+      
+      <link rel="icon" href="../images/N_logo.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/neu-sdk/general/blob/main/docfx/docs/low-level-api-guide.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/NeU_logo.svg" alt="ExBrainSDK v3.1.0">
+            ExBrainSDK v3.1.0
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="exbrain-sdk-low-level-api-解説書">ExBrain SDK Low-Level API 解説書</h1>
+
+<h2 id="はじめに">はじめに</h2>
+<p>この文書は、プログラミングや脳機能計測の専門知識がない方でも、ExBrain SDK のLow-Level APIが <strong>何をしているのか／どうやって実現しているのか</strong> を
+理解できるように、平易な言葉で解説するものです。</p>
+<p>ExBrain SDK は、NeU 製の小型脳活動センサ（額に装着する HOT-2000 や XB-01 など）を
+パソコンから操作するための「部品集」です。Low-Level APIは、その中でも
+<strong>センサとの通信・データの受け取り・数値への変換</strong> という、最も土台になる部分を担当します。</p>
+<hr>
+<h2 id="1-このセンサは何を測っているのか">1. このセンサは何を測っているのか</h2>
+<p>額に当たる部分に、赤外線に近い光を出す「光源」と、戻ってきた光を受け取る
+「受光素子（フォトダイオード、略して PD）」が並んでいます。</p>
+<ul>
+<li>光は皮膚や頭蓋骨を通って脳の表面（前頭前野）まで届き、一部が戻ってきます。</li>
+<li>血液中のヘモグロビンは、この光を吸収します。</li>
+<li><strong>脳が活発に働くと血流が増え、ヘモグロビンの量が変わる</strong> ため、
+戻ってくる光の量も変わります。その量は、ヘモグロビン濃度と光路長（光が辿った距離）の積の変化量（<strong>dTHbL</strong>）に比例します。
+（計測原理上、ヘモグロビン濃度の絶対値を求めることはできません。）</li>
+</ul>
+<p>センサは左右それぞれに、光源から <strong>1cm 離れた受光素子</strong> と <strong>3cm 離れた受光素子</strong>
+を持っています。近い方（1cm）は主に皮膚表面の血流を、遠い方（3cm）は
+より深い脳の血流を反映します。<strong>「3cm の信号 − 1cm の信号」</strong> を計算して表面の影響を差し引き、
+さらに脈拍や呼吸による変動を取り除いて <strong>脳活動の指標（ブレインインデックス）</strong> を求めます。</p>
+<p>この「光の戻り量」から「ヘモグロビン濃度×光路長の変化量（dTHbL）」を計算し、さらに「脳活動の指標」や
+「脈拍数」を求めるのが、低レベル層の中心的な仕事です。</p>
+<hr>
+<h2 id="2-全体の流れ">2. 全体の流れ</h2>
+<p>Low-Level APIを使うと、おおむね次の順序で処理が進みます。</p>
+<pre><code>  ① センサを探す（探索）
+        ↓
+  ② センサにつなぐ（接続）
+        ↓
+  ③ 装着の具合を整える（装着調整）
+        ↓
+  ④ 基準値を取る（キャリブレーション）
+        ↓
+  ⑤ 測る（計測）── データがどんどん届く
+        ↓
+  ⑥ 終わる（切断）
+</code></pre>
+<p>それぞれの段階を順に見ていきます。</p>
+<hr>
+<h2 id="3-各機能のしくみ">3. 各機能のしくみ</h2>
+<h3 id="31-センサを探すデバイス探索">3.1 センサを探す（デバイス探索）</h3>
+<p>パソコンの近くにあるセンサを見つける機能です。USB ケーブルでつないだもの、
+Bluetooth で過去にペア設定したもの、まだペア設定していないもの、を
+それぞれ対象にするか選べます。
+[コード：探索条件は <code>ExBrainSearchParameter</code> の <code>ShouldUSB</code> / <code>ShouldPairedBluetooth</code> /
+<code>ShouldNonPairedBluetooth</code>（各 <code>bool</code>）で指定]</p>
+<p>見つかったセンサは「追加されました」「情報が変わりました」「消えました」と
+いった**お知らせ（コールバック）**でアプリ側に随時伝えられます。
+たくさんのセンサがある環境では、<strong>名前の一部（キーワード）で絞り込む</strong>こともできます。
+[コード：絞り込みは <code>ExBrainSearchParameter.Keywords</code>（文字列配列、複数可）]</p>
+<h3 id="32-センサにつなぐ接続">3.2 センサにつなぐ（接続）</h3>
+<p>探索で見つけたセンサを選んで接続します。接続すると、まずセンサから
+<strong>機種・固有番号・ファームウェアの版・各種設定</strong>といった情報を読み取ります。</p>
+<ul>
+<li>センサの古いファームウェア（2019 年 4 月版より前）は対応していないため、接続を中止します。</li>
+<li>センサ本体が独自に脈拍計算などをする設定になっていると、SDK 側の処理と
+二重になるため、接続時にその機能をオフにします。</li>
+<li>通信が突然切れても、設定によっては<strong>自動でつなぎ直し</strong>ます。
+さらに、計測中に切れて再接続できた場合は、<strong>計測も自動で再開</strong>します。</li>
+</ul>
+<p>接続中・計測中・切断中といった状態は、常にアプリ側へ通知されるので、
+利用者に「いま何をしているか」を画面表示できます。</p>
+<h3 id="33-装着の具合を整える装着調整--ゲイン調整">3.3 装着の具合を整える（装着調整 / ゲイン調整）</h3>
+<p>センサを額にどう当てているか（髪の量、肌の色、押し当て具合）によって、
+戻ってくる光の強さは大きく変わります。光が弱すぎても強すぎても、
+良いデータは取れません。</p>
+<p>そこで、受光素子の<strong>増幅率（ゲイン）を自動で調整</strong>します。</p>
+<ul>
+<li>信号が<strong>弱すぎる</strong>（基準値より小さい）→ 増幅率を<strong>上げる</strong></li>
+<li>信号が<strong>強すぎる</strong>（飽和している）→ 増幅率を<strong>下げる</strong></li>
+<li>ちょうど良くなるまで、少し変えては測り直す、を繰り返す</li>
+</ul>
+<p>ちょうど良い範囲に収まったら、最後に<strong>目標値ぴったりへ微調整</strong>し、
+もう一度確認して仕上げます。何度繰り返しても収まらない場合は
+「これ以上調整できません」とエラーで知らせます。
+通常、このエラーは装着状態を改善することで回避できます。
+調整の経過は<code>MGCParam.csv</code> というファイルに記録することもできます。</p>
+<p>この<strong>ゲイン調整は、装着後に必ず実施してください。</strong></p>
+<h3 id="34-基準値を取るキャリブレーション">3.4 基準値を取る（キャリブレーション）</h3>
+<p>人や装着状態によって、計測値には個人差の「下駄（ゲタ）」が乗っています。
+計測開始の最初の十数秒（標準で約 12.8 秒）のあいだ静かにしてもらい、
+その平均を**基準（ゼロ点）**として記録します。以降のデータからこの基準を
+差し引くことで、<strong>変化分だけ</strong>を正しく見られるようにします。</p>
+<p>一度取った基準は使い回すことも、毎回取り直すこともできます。
+[コード：計測開始時の <code>recalibrate</code> フラグ（<code>false</code>＝既存を再利用／<code>true</code>＝取り直し）]</p>
+<h3 id="35-測る計測">3.5 測る（計測）</h3>
+<p>センサからは毎秒10 回、 次のような生データが届きます。</p>
+<ul>
+<li>4つの受光素子（HOT-2000 左右 × 1cm/3cm）の信号と飽和度 （XB-01は2つの受光素子）</li>
+<li>加速度・角速度（体の動き）</li>
+<li>バッテリ残量・電圧</li>
+</ul>
+<p>Low-Level APIは、これらが<strong>すべて揃ってから 1 件分のデータとして確定</strong>し、
+以下の加工を施してアプリへ届けます。</p>
+<ol>
+<li><strong>ヘモグロビン濃度</strong>に変換（光の戻り量を対数計算し、係数をかけて濃度に直す）</li>
+<li>基準値を差し引く（キャリブレーション）</li>
+<li><strong>ブレインインデックス</strong>を計算:（3cm − 1cm）の信号を平滑化（後述の「フィルタ」）</li>
+<li><strong>脈拍数</strong>を計算</li>
+<li>**脳活動度（カラーインデックス）**を計算</li>
+<li>体動などによる<strong>ノイズの有無</strong>を判定</li>
+</ol>
+<p>計測データはアプリへ渡すと同時に、CSV ファイルへ保存することもできます。</p>
+<h3 id="36-ノイズの扱いとフィルタ">3.6 ノイズの扱いと「フィルタ」</h3>
+<p>計測データには、まばたき・体の動き・電気的なゆらぎなど、さまざまな<strong>雑音</strong>が
+混じります。これを和らげるのが「フィルタ」です。本 SDK では主に次を使います。</p>
+<ul>
+<li><strong>メディアンフィルタ</strong>：直近数件を小さい順に並べ、<strong>真ん中の値</strong>を採用する。
+突発的なトゲ（外れ値）に強い。</li>
+<li><strong>移動平均</strong>：直近数件の<strong>平均</strong>をとってなめらかにする。</li>
+<li><strong>最大／最小フィルタ</strong>：直近数件の最大・最小を見る。値の暴れ具合の検出に使う。</li>
+</ul>
+<p>たとえば、ある信号の一定期間の「直近の最大と最小の差」が大きすぎるときは、
+体が動いたとみなして<strong>NoiseDetectionFlag</strong>を付けます。</p>
+<h3 id="37-脈拍数の求め方">3.7 脈拍数の求め方</h3>
+<p>額のdHbTLデータには、**心臓の鼓動に合わせた細かな波（脈波）**が含まれています。
+ここから脈拍数を割り出します。手順は次の通りです。</p>
+<ol>
+<li>一定時間分（約 6.4 秒分）のデータをためる。</li>
+<li>体が動いた区間は信頼できないので<strong>印を付け、近くの良い値で埋める</strong>。</li>
+<li>**周波数の分解（FFT）**という数学的な手法で、脈拍に相当する波（毎分 48〜180 回の範囲）だけを取り出す。</li>
+<li>取り出した波が**プラスとマイナスを横切る回数（ゼロクロス）**を数え、
+1 拍にかかる時間を逆算して <strong>1 分あたりの拍数</strong>を求める。</li>
+</ol>
+<p>複数の受光素子から別々に推定し、極端な値を避けるため<strong>中央寄りの値</strong>を採用します。</p>
+<h3 id="38-脳活動度カラーインデックス">3.8 脳活動度（カラーインデックス）</h3>
+<p>「脳が活発／落ち着いている」を、おおまかな<strong>段階（メーター）<strong>で表す指標です。
+ブレインインデックスが</strong>上がり続けているか／下がり続けているか</strong>の傾向を
+時間をかけて集計し、急に跳ねないよう<strong>ゆっくり追従する数値</strong>として表現します。
+一方向に偏りすぎた場合は自動的に中庸の値へ戻す仕組みも入っています。</p>
+<h3 id="39-その他">3.9 その他</h3>
+<ul>
+<li>センサは、6軸の加速度計を持っていて、頭部の動きを表す加速度(Acc)と角加速度(Gyro)が送られてきます。
+現在は、標準モード（１秒間に10回計測）のみに対応しています。</li>
+<li>脳活動量の変化の基準となる期間や、注目する期間を設定して、各計測データにマークを付けることができます。</li>
+<li>信号が振れすぎて正しい値が得られなかった場合に、Saturationフラグを付けます。</li>
+<li>センサのバッテリー状態を取得します。</li>
+</ul>
+<hr>
+<h2 id="4-裏側で待たずに動くしくみ">4. 「裏側で待たずに動く」しくみ</h2>
+<p>センサとの通信は、命令を送って返事を待つ、という往復が何度も発生します。
+これを画面操作と同じスレッド（処理の流れ）で行うと、返事を待つあいだ
+<strong>アプリが固まって</strong>しまいます。</p>
+<p>そこで本 SDK は、通信や計測やファイル保存を<strong>専用の裏方スレッド</strong>に任せ、
+アプリ側は固まらずに動き続けられるようにしています。さらに、
+「命令を送る → 返事を待つ → 次の命令」という一連の流れを、待ち時間に
+他の処理を譲りながら順番にこなす<strong>タスク（コルーチン）<strong>という仕組みで
+記述しています。これにより、複雑な手順を</strong>読みやすく・安全に</strong>実行できます。</p>
+<p>複数の裏方スレッドが同じデータに同時に触れて壊さないよう、共有データには
+**鍵（排他制御）**をかけて、一度に 1 つの処理だけが触れるようにしています。</p>
+<hr>
+<h2 id="5-エラーと安全性">5. エラーと安全性</h2>
+<ul>
+<li>すべての操作は、成功・失敗を<strong>結果コード</strong>（例：成功、未接続、パラメータ不正、
+ライセンスエラーなど）で返します。途中で異常が起きても、アプリ全体が
+落ちないように設計されています。
+[コード：<code>EnmSdkResult</code>（<code>eSuccess</code>＝成功 / <code>eNotConnected</code>＝未接続 / <code>eParamWrong</code>＝パラメータ不正 /
+<code>eLicenseError</code>＝ライセンスエラー など）]</li>
+<li>利用には<strong>ライセンス</strong>が必要で、無い場合はエラーで知らせます。</li>
+<li>接続を終えるときは、裏方スレッドの後始末を確実に行ってから、 ログファイルを閉じます。</li>
+</ul>
+<hr>
+<h2 id="6-まとめ">6. まとめ</h2>
+<p>Low-Level APIは、脳活動センサとの**「会話」**を一手に引き受ける土台です。</p>
+<ul>
+<li>センサを<strong>探し・つなぎ・装着を整え・基準を取り・測る</strong>、という一連を担う。</li>
+<li>光の戻り量を<strong>dTHbL</strong>へ、さらに<strong>脳活動の指標・脈拍・活動度</strong>へ変換する。</li>
+<li>雑音を<strong>フィルタ</strong>で抑え、必要なら<strong>CSV 保存</strong>する。</li>
+<li>すべてを<strong>裏方スレッド</strong>で処理し、アプリを固まらせない。</li>
+</ul>
+<p>ここで作られた「きれいな計測データ」を受け取り、実験の進行管理や統計解析を行うのが、
+上位の <strong>High-Level API</strong> です（別冊の High-Level API 解説書を参照）。</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

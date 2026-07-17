@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Low-Level API サンプルアプリ | ExBrainSDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Low-Level API サンプルアプリ | ExBrainSDK ">
+      
+      
+      <link rel="icon" href="../images/N_logo.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/neu-sdk/general/blob/main/docfx/docs/low-level-sample.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/NeU_logo.svg" alt="ExBrainSDK v3.1.0">
+            ExBrainSDK v3.1.0
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="low-level-api-サンプルアプリ">Low-Level API サンプルアプリ</h1>
+
+<h2 id="操作ガイド">操作ガイド</h2>
+<ol>
+<li>装置を起動させて、PCとBluetooth かUSB 接続させて下さい。</li>
+<li>装置を装着してください。センサーユニットが眉の上に来るように装着し、髪の毛が挟まらないように注意して下さい。具体的な装着方法については、取扱説明書(<strong>リンク</strong>)をご覧ください。</li>
+<li>PowerShell を開いていただき、<code>LowLevelSample.exe</code>を実行してください。処理がすべて完了すると「Press any key to quit」と表示され、キー入力を受け取るまでアプリは終了しません。これにより、デフォルトのターミナルから実行した場合でもウィンドウが即座に閉じてしまうことを防げます。</li>
+<li>実行開始すると、API 初期化、装置検出・選択・接続、（任意）ゲイン調整、（任意）キャリブレーション、計測開始、計測停止、装置切断の順に処理が進行します。</li>
+</ol>
+<p>また、装置の選択時とゲイン・キャリブレーション開始時、計測開始時、計測終了時の進行をコマンドインターフェースで進める仕様になっております。</p>
+<h2 id="コード全体">コード全体</h2>
+<p>このセクションでは、Low-Level API を利用して計測処理を一通り実行するサンプルアプリのコードを掲載しています。</p>
+<pre><code class="lang-csharp">using ExBrainSdk;
+using ExBrainSdk.Datas;
+using ExBrainSdk.Enumerations;
+
+internal class Program
+{
+    private static void Main()
+    {
+        var api = new ExBrainApi((_, s) =&gt; Console.WriteLine(&quot;C# Status &quot; + s), (id, message, type) =&gt;
+        {
+            Console.WriteLine($&quot;C# Log: [{id}] [{type}] {message}&quot;);
+        });
+
+        Sample(api).Wait();
+        api.ExitApi();
+
+        Console.WriteLine(&quot;Low-Level Sample finished&quot;);
+        Console.WriteLine(&quot;Press any key to quit&quot;);
+        _ = Console.ReadKey();
+    }
+
+    public static async Task Sample(ExBrainApi api)
+    {
+        EnmSdkResult sdkResult = api.InitApi(
+            needOutputTraceLog: true,
+            needOutputCommLog: false, // Not implemented
+            logDir: null,
+            settingsDir: null, // Not implemented
+            tag: &quot;&quot; // Not implemented
+        );
+        if (sdkResult != EnmSdkResult.eSuccess)
+        {
+            Console.WriteLine(&quot;Failed to initialize API.&quot;);
+            return;
+        }
+
+        await api.ResetBluetoothModuleAsync();
+
+        var searchParam = new ExBrainSearchParameter()
+        {
+            Keywords = [&quot;HOT&quot;, &quot;XB&quot;],
+            ShouldUSB = true,
+            ShouldPairedBluetooth = true,
+            ShouldNonPairedBluetooth = true,
+            TimeoutSecond = 3
+        };
+        api.StartSearchDevice(searchParam);
+        await Task.Delay(3000);
+        api.StopSearchDevice();
+        if (api.DiscoveredDevice.DeviceCount == 0)
+        {
+            Console.WriteLine(&quot;No devices found.&quot;);
+            return;
+        }
+        else
+        {
+            IReadOnlyList&lt;DeviceInformationEx&gt; devicesInfo = api.DiscoveredDevice.Devices;
+            for (int i = 0; i &lt; devicesInfo.Count; i++)
+            {
+                Console.WriteLine($&quot;Find Device #{i}: Type: {devicesInfo[i].ConnectType}, DeviceId: {devicesInfo[i].DeviceId}&quot;);
+            }
+            Console.WriteLine(&quot;Please select a device index to connect:&quot;);
+            string? index = await Console.In.ReadLineAsync();
+            if (!int.TryParse(index, out int selectedIndex) || selectedIndex &lt; 0 || selectedIndex &gt;= devicesInfo.Count)
+            {
+                Console.WriteLine(&quot;Invalid index.&quot;);
+                return;
+            }
+            else
+            {
+                DeviceInformationEx selectedDeviceInfo = devicesInfo[selectedIndex];
+                sdkResult = await api.ConnectDeviceAsync(selectedDeviceInfo.DeviceId, selectedDeviceInfo.ConnectType);
+                if (sdkResult != EnmSdkResult.eSuccess)
+                {
+                    Console.WriteLine(&quot;Failed to connect to device.&quot;);
+                    return;
+                }
+            }
+        }
+
+        do
+        {
+            Console.WriteLine(&quot;Perform Gain Adjustment? (y/n):&quot;);
+            string? input = await Console.In.ReadLineAsync();
+            if (input?.ToLower() == &quot;y&quot;)
+            {
+                sdkResult = await api.PerformGainAdjustmentAsync(api.HandleId);
+                if (sdkResult != EnmSdkResult.eSuccess)
+                {
+                    Console.WriteLine(&quot;Gain adjustment failed.&quot;);
+                    await api.DisconnectDeviceAsync();
+                    return;
+                }
+                Console.WriteLine(&quot;Gain adjustment completed.&quot;);
+                break;
+            }
+            else if (input?.ToLower() == &quot;n&quot;)
+            {
+                break;
+            }
+        }
+        while (true);
+
+        do
+        {
+            Console.WriteLine(&quot;Perform Calibration? (y/n):&quot;);
+            string? input = await Console.In.ReadLineAsync();
+            if (input?.ToLower() == &quot;y&quot;)
+            {
+                sdkResult = await api.PerformCalibrationAsync(api.HandleId);
+                if (sdkResult != EnmSdkResult.eSuccess)
+                {
+                    Console.WriteLine(&quot;Calibration failed.&quot;);
+                    await api.DisconnectDeviceAsync();
+                    return;
+                }
+                Console.WriteLine(&quot;Calibration completed.&quot;);
+                break;
+            }
+            else if (input?.ToLower() == &quot;n&quot;)
+            {
+                break;
+            }
+        }
+        while (true);
+
+        EnmSdkMeasurementCycle measurementCycle;
+        do
+        {
+            Console.WriteLine(&quot;Select measurement cycle:&quot;);
+            Console.WriteLine(&quot;  0: 10Hz&quot;);
+            Console.WriteLine(&quot;  1: 50Hz&quot;);
+            Console.WriteLine(&quot;  2: 100Hz&quot;);
+            Console.WriteLine(&quot;  3: 500Hz&quot;);
+            string? input = await Console.In.ReadLineAsync();
+            if (input == &quot;0&quot;)
+            {
+                measurementCycle = EnmSdkMeasurementCycle.e10Hz;
+                break;
+            }
+            if (input == &quot;1&quot;)
+            {
+                measurementCycle = EnmSdkMeasurementCycle.e50Hz;
+                break;
+            }
+            if (input == &quot;2&quot;)
+            {
+                measurementCycle = EnmSdkMeasurementCycle.e100Hz;
+                break;
+            }
+            if (input == &quot;3&quot;)
+            {
+                measurementCycle = EnmSdkMeasurementCycle.e500Hz;
+                break;
+            }
+
+            Console.WriteLine(&quot;Invalid selection. Please enter 0, 1, 2, or 3.&quot;);
+        }
+        while (true);
+
+        EnmSdkMeasurementMode measurementMode;
+        do
+        {
+            Console.WriteLine(&quot;Select measurement mode:&quot;);
+            Console.WriteLine(&quot;  0: Normal&quot;);
+            Console.WriteLine(&quot;  1: Low Precision / High Reliability&quot;);
+            Console.WriteLine(&quot;  2: High Precision / Low Reliability&quot;);
+            string? input = await Console.In.ReadLineAsync();
+            if (input == &quot;0&quot;)
+            {
+                measurementMode = EnmSdkMeasurementMode.eNormal;
+                break;
+            }
+            if (input == &quot;1&quot;)
+            {
+                measurementMode = EnmSdkMeasurementMode.eLowPrecisionHighReliability;
+                break;
+            }
+            if (input == &quot;2&quot;)
+            {
+                measurementMode = EnmSdkMeasurementMode.eHighPrecisionLowReliability;
+                break;
+            }
+
+            Console.WriteLine(&quot;Invalid selection. Please enter 0, 1, or 2.&quot;);
+        }
+        while (true);
+
+        List&lt;ExBrainMeasureData&gt; frames = [];
+        sdkResult = await api.StartMeasureAsync(api.HandleId, &quot;./&quot;, (_, data) =&gt;
+        {
+            frames.Add(data);
+        }, measurementCycle: measurementCycle, measurementMode: measurementMode);
+        if (sdkResult != EnmSdkResult.eSuccess)
+        {
+            Console.WriteLine(&quot;Failed to start measurement.&quot;);
+            await api.DisconnectDeviceAsync();
+            return;
+        }
+
+        do
+        {
+            Console.WriteLine(&quot;Stop Measurement? (y/n):&quot;);
+            string? input = await Console.In.ReadLineAsync();
+            if (input?.ToLower() == &quot;y&quot;)
+            {
+                break;
+            }
+        }
+        while (true);
+
+        sdkResult = await api.StopMeasureAsync(api.HandleId);
+        if (sdkResult != EnmSdkResult.eSuccess)
+        {
+            Console.WriteLine(&quot;Failed to stop measurement.&quot;);
+        }
+        await api.DisconnectDeviceAsync();
+    }
+}
+</code></pre>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

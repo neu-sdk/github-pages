@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>NIRSの基本 | ExBrainSDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="NIRSの基本 | ExBrainSDK ">
+      
+      
+      <link rel="icon" href="../images/N_logo.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/neu-sdk/general/blob/main/docfx/docs/basic-functionality.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/NeU_logo.svg" alt="ExBrainSDK v3.1.0">
+            ExBrainSDK v3.1.0
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="nirsの基本">NIRSの基本</h1>
+
+<h2 id="信号処理と解析方法">信号処理と解析方法</h2>
+<p>NIRS信号は、脳活動に伴う血液量変化を計測しています。しかし、これには脈波などの脳活動に由来しない信号も含まれます。タスクや刺激提示を開始すると血液量は5～7秒かけて増加し、止めると15～25秒（リカバリ期間）かけてベースラインに戻ります。これがタスク/刺激に関係する脳活動に由来した信号成分です。</p>
+<p>これ以外に、１Hz程度（安静時）の脈波、0.3Hz程度の呼吸成分がNIRS信号に現れます。脈波と呼吸の成分は、脳活動に由来する信号に比べて高い周波数を有するため、ローパスフィルタを用いて除去できます。更に、メイヤー波（0.1 Hz付近）などの生理活動に伴う低周波の血液量変動成分も存在します。また、脳は常に活動しているので、タスク/刺激に関係しないバックグラウンド脳活動による信号も観測されます。これらの信号を除去するには、ハイパスフィルタや同期検波の手法が用いられます。一般に周波数フィルタを掛けると、信号波形の両端が歪みます。計測時間を十分長くとれない場合には、この歪の影響が無視できなくなるので、ハイパスフィルタではなく、ベースラインを直線近似して減算するなど別の方法が選択されます。</p>
+<p>同期検波とは、前レスト期間＋タスク/刺激期間＋後レスト期間を１つのブロックとして、これを繰返し、その繰返しに同期して変動する信号成分を抽出する手法です。ここで、注目するタスク/刺激の無い状態をレストと呼びます。前レスト期間はベースライン補正の方法によって適切な時間を決めます。タスク開始時の１点を用いてベースラインとするならばその１点だけでも構いませんが、数秒程度の前レスト期間を設けてベースライン補正に使います。タスク/刺激時間はその種類によってケースバイケースですが、継続したタスクを行う場合には、上記血液の立ち上がり時間より長くとると信号強度が大きくなります。後レストは上記リカバリ時間にベースライン補正用の時間を加えた期間とします。リカバリ時間が十分に取れない場合は、異なる解析法が必要になりますが本SDKでは対応していません。ここで示した時間は、あくまで目安であり、実際に使うタスク/刺激を用いて計測し、適用可能性と要求精度を考慮して定めるようにして下さい。</p>
+<p>得られた信号波形をブロック毎に切り出し加算平均すると、繰返しに同期しない信号成分は位相がずれているため重ね合わせにより減少し、同期する成分、つまりタスク/刺激に関連して変動する信号成分を抽出することができます。更に、レスト期間に比べてタスク/刺激期間の信号が有意に変化しているかどうかを調べるには、平均値差検定を行います。
+繰返し計測を行わない場合でも、NIRS信号はその計測原理上、ある時点の値からの増量または減少量しか得られませんので、必ず信号の原点を決める必要があります。装置出力は、便宜的に計測開始時を0とすることが多いですが、前述のようにベースラインのゆらぎが大きいため、注目する脳活動を生じさせるタスクまたは刺戟の開始前の値または時間平均値を基準に取り直すことが一般的です。
+High-Level APIは、上記信号前処理と同期検波に対応した信号処理および解析を行なう機能を有します。これまで信号解析は計測後に行うことしかできませんでしたが、本APIを用いることにより、計測中に解析を実施して、その結果を用いて次の計測条件を選択するなど、リアルタイム性を備えたアプリを容易に作成することができます。</p>
+<p>本SDKでは、NIRS信号を取得するためのLow-Level APIとNIRS信号を適切に扱うためのHigh-Level APIを用意しています。</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

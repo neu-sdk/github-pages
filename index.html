@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>ExBrainSDK の概要 | ExBrainSDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="ExBrainSDK の概要 | ExBrainSDK ">
+      
+      
+      <link rel="icon" href="images/N_logo.svg">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/neu-sdk/general/blob/main/docfx/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="landing" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="images/NeU_logo.svg" alt="ExBrainSDK v3.1.0">
+            ExBrainSDK v3.1.0
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="exbrainsdk-の概要">ExBrainSDK の概要</h1>
+
+<p>本ソフトウェア開発キット <strong>ExBrainSDK</strong>（以下、本SDK）は、Windows OSをターゲットとしている。また、本SDKは「HOT-2000」装置もしくは「XB-01」装置を対象とし、SDK1つに対して装置1台の接続を基本とする。
+ユーザーアプリケーション（以下、ユーザーアプリ）にて複数ユーザーと接続し各種計測結果を収集する場合は、本SDK内の<strong>特定クラスのインスタンスを</strong>複数使用することで実現可能とする。
+<br><br>
+本ドキュメントは、一般ユーザーが第2世代小型NIRS装置(以下、装置)を使用した脳活動計測に関するアプリケーション作成時に容易に組み込み、且つ、装置の操作を可能する為のソフトウェア開発キット「ExBrainSDK」に適用するものとする。<br>
+※NIRS: Near Infra-Red Spectroscopy(近赤外分光法)
+<br><br></p>
+<h3 id="exbrainsdk-の構成">ExBrainSDK の構成</h3>
+<p>ExBrainSDK は以下のような機能で構成されます。APIはHigh-Level と Low-Level の2層に分かれております。</p>
+<table>
+<thead>
+<tr>
+<th>機能</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Low-Level API</td>
+<td>装置検索、接続、計測、データ取得、記録といった基礎的な機能を提供します。</td>
+</tr>
+<tr>
+<td>High-Level API</td>
+<td>アプリケーション開発を容易にするための便利な機能を提供します。High-Level APIは内部でLow-Level APIを呼び出しています。</td>
+</tr>
+<tr>
+<td>LowLevelSample</td>
+<td>Low-Level API だけを用いて構成された、一連の流れを実行するコンソールアプリ。装置選択と接続・計測開始・計測終了・装置切断のステップをキー入力による対話形式で操作して進めていきます。PowerShell 用いて実行することを推奨します（他ターミナルでは、終了時に自動的に閉じてしまうケースが発生します）。サンプルコードはLow-Level API のセクションをご確認ください。.NET がインストールされている環境では、SDK の LowLevelSample フォルダで dotnet run を実行することでサンプルを起動できます。生成される実行ファイルは <code>LowLevelSample.exe</code> です。</td>
+</tr>
+<tr>
+<td>HighLevelSample</td>
+<td>主にHigh-Level API を用いて構成された、一連の流れを実行するコンソールアプリ。　PowerShell 用いて実行することを推奨します（他ターミナルでは、終了時に自動的に閉じてしまうケースが発生します）。サンプルコードはHigh-Level API のセクションをご確認ください。.NET がインストールされている環境では、SDK の HighLevelSample フォルダで dotnet run を実行することでサンプルを起動できます。生成される実行ファイルは <code>HighLevelSample.exe</code> です。</td>
+</tr>
+<tr>
+<td>NeULicenseManager</td>
+<td>SDKやアプリを利用するためのライセンスキーを登録したり無効化するための管理アプリのインストーラー。</td>
+</tr>
+</tbody>
+</table>
+<br>
+<h3 id="sdkバージョンの変更ログと利用マニュアル対応表">SDKバージョンの変更ログと利用マニュアル対応表</h3>
+<table>
+<thead>
+<tr>
+<th>ExBrainSDK バージョン</th>
+<th>利用マニュアル バージョン</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v3.1.0</td>
+<td>v1.0.0</td>
+</tr>
+</tbody>
+</table>
+<br>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
