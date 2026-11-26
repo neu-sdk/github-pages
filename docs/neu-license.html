@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>NeUライセンスマネージャー 利用マニュアル | ExBrainSDK </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="NeUライセンスマネージャー 利用マニュアル | ExBrainSDK ">
+      
+      
+      <link rel="icon" href="../images/N_logo.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/neu-sdk/general/blob/main/docfx/docs/neu-license.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/NeU_logo.svg" alt="ExBrainSDK v3.2.0">
+            ExBrainSDK v3.2.0
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="neuライセンスマネージャー-利用マニュアル">NeUライセンスマネージャー 利用マニュアル</h1>
+
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>バージョン／発行日</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>本マニュアル</td>
+<td>v1.0.1</td>
+</tr>
+<tr>
+<td>NeUライセンスマネージャー</td>
+<td>v1.0.1</td>
+</tr>
+<tr>
+<td>対応ExBrainSDK</td>
+<td>v3.2.0</td>
+</tr>
+<tr>
+<td>発行日</td>
+<td>2026年8月31日</td>
+</tr>
+</tbody>
+</table>
+<h2 id="1-はじめに">1. はじめに</h2>
+<p>NeUライセンスマネージャーは、ExBrainSDKを利用するためのライセンスをWindows PC上で管理するアプリケーションです。主に次の操作を行えます。</p>
+<ul>
+<li>ライセンスの新規有効化</li>
+<li>インストール済みライセンスの確認</li>
+<li>ライセンス情報の再読み込みと再有効化</li>
+<li>ライセンスの無効化</li>
+<li>アプリケーション開発者向けリリースライセンスの作成</li>
+</ul>
+<p>ExBrainSDKを使用するには、原則として有効なライセンスが必要です。ライセンスが有効でない場合、SDKの初期化時またはライセンスが必要な機能の実行時にエラーが返されます。</p>
+<p>外部開発者向けの「リリースライセンス パッケージングガイド」も併せて提供しています。</p>
+<h2 id="2-動作環境と事前準備">2. 動作環境と事前準備</h2>
+<ul>
+<li>対応OS：Windows 10またはWindows 11（64ビット）</li>
+<li>インターネット接続：有効化、再有効化、無効化、リリースライセンス作成時に必要</li>
+<li>管理者権限：インストール、アンインストール、PC全体にインストールされたリリースライセンスの無効化時に必要</li>
+<li>ライセンスキー：NeUから発行されたもの</li>
+</ul>
+<div class="NOTE">
+<h5>Note</h5>
+<p>v1.0.1では、Windowsのコンピューター名に日本語などの非ASCII文字が含まれる環境でも、ライセンス認証を行えるようになりました。</p>
+</div>
+<h2 id="3-インストールと起動">3. インストールと起動</h2>
+<ol>
+<li><code>LicenseManager.msi</code>を実行します。</li>
+<li>Windowsの確認画面が表示された場合は、内容を確認してインストールを許可します。</li>
+<li>インストール完了後、Windowsのスタートメニューから「NeU License Manager」を起動します。</li>
+</ol>
+<p>標準のインストール先は次のとおりです。</p>
+<pre><code class="lang-text">C:\Program Files\NeU\LicenseManager
+</code></pre>
+<p>新しいバージョンのインストーラーを実行すると、既存のNeUライセンスマネージャーが更新されます。</p>
+<h2 id="4-メイン画面">4. メイン画面</h2>
+<p>メイン画面には、インストール済みライセンスの一覧と操作ボタンが表示されます。</p>
+<p>画面上部には「操作」メニューがあり、リリースライセンス作成機能を開けます。</p>
+<p>各ライセンスには次の情報が表示されます。</p>
+<table>
+<thead>
+<tr>
+<th>表示項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ライセンスタイプ</td>
+<td>開発者用、リリース用など、ライセンスの種類</td>
+</tr>
+<tr>
+<td>ライセンス名義</td>
+<td>ライセンスを使用する個人名または会社名</td>
+</tr>
+<tr>
+<td>GUID</td>
+<td>ライセンス固有の識別子</td>
+</tr>
+<tr>
+<td>有効期限</td>
+<td>「無期限」または有効期限の日付</td>
+</tr>
+<tr>
+<td>状態</td>
+<td>現在のライセンス状態</td>
+</tr>
+<tr>
+<td>アプリハッシュ</td>
+<td>リリースライセンスに登録されたアプリ情報（該当する場合のみ）</td>
+</tr>
+</tbody>
+</table>
+<p>主な状態表示は次のとおりです。</p>
+<table>
+<thead>
+<tr>
+<th>状態</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>有効</td>
+<td>ライセンスを使用できます</td>
+</tr>
+<tr>
+<td>期限切れ</td>
+<td>ライセンスの有効期限が終了しています</td>
+</tr>
+<tr>
+<td>破損</td>
+<td>保存されているライセンス情報が破損しています</td>
+</tr>
+<tr>
+<td>ハードウェア不一致</td>
+<td>ライセンスを有効化したPCと現在のPCが一致しません</td>
+</tr>
+<tr>
+<td>アプリ検証失敗</td>
+<td>リリースライセンスに登録されたアプリと実際のアプリが一致しません</td>
+</tr>
+<tr>
+<td>PC の時刻が正しくありません</td>
+<td>PCの日時設定に問題があります</td>
+</tr>
+<tr>
+<td>不明</td>
+<td>上記以外の状態です。括弧内に詳細な状態名が表示されます</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-新しいライセンスを有効化する">5. 新しいライセンスを有効化する</h2>
+<ol>
+<li>メイン画面下部の「新しいライセンスを有効化」を選択します。</li>
+<li>NeUから発行されたライセンスキーを入力します。</li>
+<li>「OK」を選択します。</li>
+<li>「ライセンスの有効化に成功しました」と表示されたことを確認します。</li>
+<li>メイン画面にライセンスが表示され、状態が「有効」であることを確認します。</li>
+</ol>
+<p><img src="../images/LicenseDialog.png" alt="ライセンス有効化ダイアログ"></p>
+<p>ライセンスキーの前後にある空白や改行は自動的に取り除かれます。キーの途中には空白や改行を入れないでください。有効化中はインターネット接続を切断しないでください。</p>
+<p>新しく有効化した開発者ライセンスは、現在サインインしているWindowsユーザー用として保存されます。同じPCでも、別のWindowsユーザーからは表示または使用できません。</p>
+<h2 id="6-ライセンス情報を更新する">6. ライセンス情報を更新する</h2>
+<h3 id="再読み込み">再読み込み</h3>
+<p>「再読み込み」を選択すると、PCに保存されているライセンス情報を読み直して画面を更新します。別のツールやインストーラーでライセンスを追加した場合や、表示を更新したい場合に使用します。</p>
+<h3 id="再有効化">再有効化</h3>
+<p>対象ライセンスの「再有効化」を選択すると、ライセンスサーバーと通信してライセンス情報を更新します。次の場合に使用してください。</p>
+<ul>
+<li>NeUから有効期限や設定の変更連絡を受けた場合</li>
+<li>PCの日時を修正した後</li>
+<li>ライセンスの状態が想定と異なる場合</li>
+</ul>
+<h2 id="7-ライセンスを無効化する">7. ライセンスを無効化する</h2>
+<p>PCを変更する場合や、別のPCで同じライセンスを使用する場合は、移行前のPCで次の操作を行います。</p>
+<ol>
+<li>対象ライセンスの「無効化」を選択します。</li>
+<li>「ライセンスを無効化しました」と表示されたことを確認します。</li>
+<li>一覧から対象ライセンスが削除されたことを確認します。</li>
+</ol>
+<p>無効化すると、PCに保存されたライセンスが削除され、ライセンスサーバー上の有効化状態も解除されます。再度有効化できるかどうかは、発行されたライセンスの条件によって異なります。</p>
+<p>アプリケーションのインストーラーによってPC全体にインストールされたリリースライセンスを無効化する場合は、NeUライセンスマネージャーを管理者として起動する必要があります。通常は、リリースアプリケーションのインストーラーまたはアンインストーラーで管理してください。</p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>PCの交換、初期化、廃棄、またはOSの再インストールを行う前に、必ずライセンスを無効化してください。先にPCを利用できなくなった場合は、NeUの担当窓口へお問い合わせください。</p>
+</div>
+<h2 id="8-リリースライセンスを作成するアプリケーション開発者向け">8. リリースライセンスを作成する（アプリケーション開発者向け）</h2>
+<p>この機能は、NeUからリリースライセンス作成権限（<code>CanSpawnLicenses</code>）を付与された開発者ライセンスでのみ使用できます。</p>
+<ol>
+<li>開発中のアプリケーションを、エンドユーザーと同じ方法でPCにインストールします。</li>
+<li>NeUライセンスマネージャーを起動します。</li>
+<li>画面上部の「操作」から「リリースライセンス作成」を選択します。</li>
+<li>使用する開発者ライセンスを選択します。</li>
+<li>ビルドフォルダーではなく、インストール済みのアプリケーションフォルダー、実行ファイル、またはスクリプトのエントリーポイントを選択します。</li>
+<li>出力先フォルダーを選択して、リリースライセンスを作成します。</li>
+<li>出力先に次のファイルが作成されたことを確認します。</li>
+</ol>
+<pre><code class="lang-text">NeUReleaseLicense_&lt;ライセンスGUID&gt;_instructions_and_license.txt
+</code></pre>
+<p>生成されたファイルには、リリースライセンス本文とインストーラーへの組み込み手順が含まれます。出荷するアプリケーションのファイルを変更した場合は、新しいリリースライセンスを作成してください。</p>
+<p>詳しい組み込み方法については、「<a href="release-license-packaging.html">リリースライセンス パッケージングガイド</a>」を参照してください。</p>
+<h2 id="9-トラブルシューティング">9. トラブルシューティング</h2>
+<table>
+<thead>
+<tr>
+<th>症状</th>
+<th>確認事項と対応</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>有効化、再有効化、または無効化に失敗する</td>
+<td>インターネット接続とPCの日時を確認し、再度実行してください</td>
+</tr>
+<tr>
+<td>「期限切れ」と表示される</td>
+<td>ライセンスの有効期限を確認し、必要に応じてNeUへ更新を依頼してください</td>
+</tr>
+<tr>
+<td>「ハードウェア不一致」と表示される</td>
+<td>別のPCで有効化されていないか確認してください。移行元PCを利用できる場合は、移行元で無効化してから再度有効化してください</td>
+</tr>
+<tr>
+<td>「PC の時刻が正しくありません」と表示される</td>
+<td>Windowsの日時とタイムゾーンを正しく設定し、「再有効化」を実行してください</td>
+</tr>
+<tr>
+<td>「アプリ検証失敗」と表示される</td>
+<td>インストール済みアプリのファイルが、リリースライセンス作成時から変更されていないか確認してください</td>
+</tr>
+<tr>
+<td>ライセンスが一覧に表示されない</td>
+<td>「再読み込み」を選択してください。改善しない場合は、ライセンスを再度有効化してください</td>
+</tr>
+<tr>
+<td>リリースライセンスを作成できない</td>
+<td>対応する開発者ライセンスが有効であり、リリースライセンス作成権限が付与されていることを確認してください</td>
+</tr>
+</tbody>
+</table>
+<p>問題が解決しない場合は、次の情報をNeUの担当窓口へお知らせください。</p>
+<ul>
+<li>使用しているNeUライセンスマネージャーのバージョン</li>
+<li>使用しているExBrainSDKのバージョン</li>
+<li>表示されたエラーメッセージ全文</li>
+<li>問題が発生した操作と日時</li>
+<li>Windowsのバージョン</li>
+</ul>
+<p>ライセンスキーや生成されたリリースライセンス本文は、公開チャンネルや不特定多数が閲覧できる場所へ投稿しないでください。</p>
+<h2 id="10-アンインストール">10. アンインストール</h2>
+<p>Windowsの「設定」から「アプリ」または「インストールされているアプリ」を開き、「NeU License Manager」をアンインストールします。</p>
+<p>アンインストールしても、有効化済みライセンスは自動的に無効化されません。PCの移行や廃棄を行う場合は、アンインストール前に本アプリから対象ライセンスを無効化してください。</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
